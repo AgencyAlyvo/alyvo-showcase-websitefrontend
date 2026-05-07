@@ -1,4 +1,4 @@
-# Alyvo - StarterKit - Frontend
+# Alyvo - ShowCase - WebSite Frontend
 
 ## 🛠 Tech Stack
 
