@@ -16,8 +16,8 @@
 
 ## 📚 Application URL to domains of different environments - WebSite
 
-- Staging : https://staging.seatyrants.com
-- Production : https://seatyrants.com
+- Staging : https://staging.alyvo.fr
+- Production : https:/alyvo.fr
 
 <br /><br />
 
