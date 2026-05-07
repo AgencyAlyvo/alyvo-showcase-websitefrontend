@@ -1,0 +1,615 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "switchLanguage": "Change language"
+  },
+  "seo": {
+    "home": {
+      "title": "Premium digital studio — Custom websites, apps and automations",
+      "description": "I help you turn a need, an idea or a business problem into a clear, performant and useful digital solution: websites, apps, automations and internal tools."
+    },
+    "projects": {
+      "title": "Projects — Digital solutions built to solve real business needs",
+      "description": "Discover real client projects: initial need, proposed solution, concrete results. SEO-optimized websites, custom apps, business automations."
+    },
+    "about": {
+      "title": "About — A method built around your business goals",
+      "description": "A development partner who turns your needs into clear, fast and maintainable digital solutions. Advice, clean execution, full support."
+    },
+    "contact": {
+      "title": "Contact — Let’s talk about your digital project",
+      "description": "Tell me about your need, even if it’s not fully defined yet. I help you clarify the best solution before going technical. Fast response, no commitment."
+    }
+  },
+  "buttons": {
+    "talkAboutProject": "Talk about my project",
+    "discoverProjects": "View projects",
+    "discoverProject": "View project",
+    "contactMe": "Contact me",
+    "sendMessage": "Send message",
+    "discoverHow": "See how",
+    "learnMore": "Learn more",
+    "backToProjects": "Back to projects",
+    "viewAllProjects": "View all projects",
+    "askForQuote": "Discuss my need",
+    "exploreSolutions": "Explore solutions"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Premium digital studio",
+      "title": "Turn your digital need into a concrete solution",
+      "lead": "You have a project, an idea or a problem to solve? I help you build a clear, performant digital solution designed for your goals.",
+      "subLead": "Website, app, automation or internal tool: I support you from idea to launch to deliver something useful, fast and durable.",
+      "ctaPrimary": "Talk about my project",
+      "ctaSecondary": "See real cases"
+    },
+    "problems": {
+      "eyebrow": "Your challenges",
+      "title": "What problems are you trying to solve?",
+      "lead": "Every project starts with a real problem. Do you recognise yourself in any of these?",
+      "items": {
+        "leads": {
+          "title": "My website doesn’t generate enough leads",
+          "description": "Plenty of visitors, not enough qualified leads. Your pages don’t convert and you don’t know why.",
+          "solution": "A site designed for conversion, with a clear message and guided journeys."
+        },
+        "time": {
+          "title": "I waste time on repetitive tasks",
+          "description": "You copy, paste, send the same emails, update the same files every week.",
+          "solution": "Automation that takes care of repetitive work and frees up your time."
+        },
+        "tool": {
+          "title": "I need a tool tailored to my activity",
+          "description": "Off-the-shelf tools don’t really fit your business. You patch things together with spreadsheets and hacks.",
+          "solution": "A custom tool that speaks your language and reflects how you work."
+        },
+        "idea": {
+          "title": "I want to launch an idea or a digital product",
+          "description": "You have a clear idea, but no technical vision to bring it online without breaking your budget.",
+          "solution": "A clean, value-focused MVP, ready to grow with your first users."
+        },
+        "performance": {
+          "title": "My site is slow, outdated or poorly ranked",
+          "description": "Looking dated, slow to load, invisible on Google. It costs more than it brings in.",
+          "solution": "A fast, SEO-optimized rebuild that preserves your existing rankings."
+        },
+        "integration": {
+          "title": "My tools don’t talk to each other",
+          "description": "Your data is scattered between CRM, emails, Excel and invoices. You lose time and visibility.",
+          "solution": "Reliable integrations that connect your tools and centralise the data that matters."
+        }
+      }
+    },
+    "value": {
+      "eyebrow": "What you gain",
+      "title": "What I can bring you",
+      "lead": "Not a list of services, but concrete outcomes for your business.",
+      "items": {
+        "visibility": {
+          "title": "More visibility",
+          "description": "A site optimized for Google and built for your target customers, from day one."
+        },
+        "leads": {
+          "title": "More qualified leads",
+          "description": "Pages that turn visitors into prospects, with a clear message and an effective call to action."
+        },
+        "time": {
+          "title": "Less manual work",
+          "description": "Your repetitive processes are automated. You get time back for what really matters."
+        },
+        "experience": {
+          "title": "A better user experience",
+          "description": "Smooth, fast and clear navigation on every device. Your visitors understand and move forward."
+        },
+        "fit": {
+          "title": "A tool that fits your activity",
+          "description": "A solution that matches the way you work, not the other way around. Simpler, more effective."
+        },
+        "evolutive": {
+          "title": "An evolutive, maintainable solution",
+          "description": "Clean, documented code that can grow with your business without rebuilding everything."
+        }
+      }
+    },
+    "solutions": {
+      "eyebrow": "Possible answers",
+      "title": "The solutions I can build",
+      "lead": "Each need maps to a concrete digital answer. Here is what I can put in place for you.",
+      "items": {
+        "seoWeb": {
+          "title": "SEO-optimized website",
+          "need": "You want to attract more clients from Google.",
+          "solution": "A fast, well-structured site that answers the real queries of your customers.",
+          "benefit": "More visibility, more qualified traffic, more requests."
+        },
+        "webApp": {
+          "title": "Custom web application",
+          "need": "You have a business need that off-the-shelf tools don’t cover.",
+          "solution": "A web application designed around your process, accessible everywhere, secure.",
+          "benefit": "A tool that perfectly fits your activity and saves time for your teams."
+        },
+        "mobileApp": {
+          "title": "Mobile application",
+          "need": "You want to offer a mobile experience to your clients or teams.",
+          "solution": "A clear, performant mobile app connected to your existing systems.",
+          "benefit": "A strong mobile presence and a simple, daily-use experience."
+        },
+        "automation": {
+          "title": "Automation",
+          "need": "You spend hours on repetitive tasks.",
+          "solution": "Scripts and workflows that take care of low-value actions.",
+          "benefit": "You get time back and reduce human errors."
+        },
+        "software": {
+          "title": "Business software",
+          "need": "You need software tailored to your activity.",
+          "solution": "Custom software designed for your users, robust and maintainable.",
+          "benefit": "Real productivity, no workarounds, no patches."
+        },
+        "dashboard": {
+          "title": "Dashboard / internal tool",
+          "need": "Your data is everywhere, but you have no clear view.",
+          "solution": "A centralised dashboard that brings your key indicators together.",
+          "benefit": "Faster decisions based on real data."
+        },
+        "api": {
+          "title": "API integrations",
+          "need": "Your tools don’t talk to each other.",
+          "solution": "Reliable integrations between your services (CRM, payments, email, etc.).",
+          "benefit": "A connected ecosystem, no double entry, no errors."
+        },
+        "redesign": {
+          "title": "Redesign and optimization",
+          "need": "Your existing site is slow, outdated or underperforming.",
+          "solution": "A focused redesign, keeping what works and improving what holds you back.",
+          "benefit": "A stronger image, measurable performance, better SEO."
+        }
+      }
+    },
+    "method": {
+      "eyebrow": "A clear approach",
+      "title": "A method designed to move forward clearly",
+      "lead": "No jargon, no vague promises. A simple framework that gives you visibility at every step.",
+      "steps": {
+        "understand": {
+          "title": "Understand your need",
+          "description": "We start from your situation, not from a fixed brief. We clarify what you really want to achieve."
+        },
+        "objectives": {
+          "title": "Identify the real goals",
+          "description": "We separate what is useful, what is critical, what can wait. The project serves your business."
+        },
+        "propose": {
+          "title": "Propose the right solution",
+          "description": "I suggest a concrete approach, with a clear scope, justified technical choices and a realistic budget."
+        },
+        "build": {
+          "title": "Build cleanly",
+          "description": "Clean, tested, performant development built to last. No shortcuts that cost you more later."
+        },
+        "improve": {
+          "title": "Measure, improve, support",
+          "description": "Once live, we observe, adjust and improve. You’re not delivered and forgotten."
+        }
+      }
+    },
+    "why": {
+      "eyebrow": "Why it works",
+      "title": "Why this approach works",
+      "items": {
+        "objective": {
+          "title": "We start from your goal, not from a technology",
+          "description": "Tech serves the outcome. The right tool is the one that best answers your need."
+        },
+        "convert": {
+          "title": "Every page is built to convert",
+          "description": "A clear message, a guided journey, a visible call to action. Nothing left to chance."
+        },
+        "seo": {
+          "title": "SEO is built in from the start",
+          "description": "Structure, performance and content: your site is optimized for Google from launch."
+        },
+        "automation": {
+          "title": "Automations save you time",
+          "description": "Each automatable process is treated as an investment that quickly pays for itself."
+        },
+        "maintain": {
+          "title": "A clear, fast and maintainable solution",
+          "description": "Clean code, best practices, useful documentation. You stay free, not dependent."
+        },
+        "vision": {
+          "title": "You keep a clear view of the project",
+          "description": "Direct communication, readable steps, documented decisions. No black box."
+        }
+      }
+    },
+    "projects": {
+      "eyebrow": "Real cases",
+      "title": "Projects designed to solve real business needs",
+      "lead": "Here are some projects built as answers to a precise need. Each one: a goal, a solution, a result.",
+      "viewAll": "View all projects"
+    },
+    "useCases": {
+      "eyebrow": "What kind of project",
+      "title": "What kind of project?",
+      "lead": "A few typical situations where I can really help.",
+      "items": {
+        "leads": {
+          "title": "Build a site to get more leads",
+          "description": "A clear, SEO-optimized site designed to turn visitors into requests."
+        },
+        "redesign": {
+          "title": "Rebuild a site that no longer converts",
+          "description": "A focused redesign that preserves your SEO and clarifies your message."
+        },
+        "clientApp": {
+          "title": "Build an app for your clients",
+          "description": "A web or mobile application that brings real value to your users."
+        },
+        "process": {
+          "title": "Automate an internal process",
+          "description": "A workflow or tool that removes repetitive tasks and saves time."
+        },
+        "data": {
+          "title": "Centralise your data",
+          "description": "A dashboard or tool that gathers your indicators and supports your decisions."
+        },
+        "google": {
+          "title": "Improve your Google presence",
+          "description": "A concrete SEO strategy embedded in a fast, well-structured site."
+        }
+      }
+    },
+    "tech": {
+      "eyebrow": "Technical quality",
+      "title": "Clean, durable, performant execution",
+      "lead": "Technology choices follow your need. Quality, on the other hand, is non-negotiable.",
+      "items": {
+        "modern": "Modern, proven stack",
+        "performance": "Performance and Core Web Vitals",
+        "accessibility": "Accessibility and best practices",
+        "security": "Security by design",
+        "maintainable": "Clean, maintainable code",
+        "evolutive": "Scalable architecture"
+      }
+    },
+    "faq": {
+      "eyebrow": "Still hesitating?",
+      "title": "Frequent questions before getting started",
+      "items": {
+        "unclear": {
+          "question": "I don’t know exactly what I need, can you help?",
+          "answer": "Yes. The first step is precisely to clarify your need. We start from your situation, identify the real goals, and I propose the most suitable solution — even if it’s not the most complex one."
+        },
+        "seo": {
+          "question": "Is SEO included?",
+          "answer": "Yes. Technical SEO, performance, HTML structure, tags and semantics are built in from the start. For deeper editorial SEO, we can add a dedicated content strategy."
+        },
+        "price": {
+          "question": "How much does a project cost?",
+          "answer": "It depends on the scope. After our first call, I propose a clear budget with options. The goal is not to do everything, but what brings the most value."
+        },
+        "time": {
+          "question": "How long does it take?",
+          "answer": "A clear marketing site can be delivered in a few weeks. A custom application takes longer. In every case, I split the project into short steps to deliver value early."
+        },
+        "existing": {
+          "question": "Can you improve an existing site?",
+          "answer": "Yes. I can audit an existing site, identify what holds back your results, and propose a focused redesign or targeted improvements without rebuilding everything."
+        },
+        "small": {
+          "question": "Can I start with a small version?",
+          "answer": "Yes, it’s often the smartest move. A useful version delivered fast and improved with real feedback is almost always more effective than a giant project in one go."
+        }
+      }
+    },
+    "finalCta": {
+      "eyebrow": "Let’s talk",
+      "title": "You have a need? Let’s talk about it.",
+      "lead": "Tell me about your situation. I help you clarify the best solution before going technical.",
+      "cta": "Talk about my project"
+    }
+  },
+  "projects": {
+    "hero": {
+      "eyebrow": "Real cases",
+      "title": "Projects designed to solve concrete needs",
+      "lead": "Each project below starts from a real need, a business goal and a constraint. Here is how they were solved."
+    },
+    "filters": {
+      "title": "Filter by goal",
+      "all": "All",
+      "visibility": "More visibility",
+      "conversion": "More conversion",
+      "time": "Time savings",
+      "automation": "Automation",
+      "tool": "Business tool",
+      "launch": "Product launch"
+    },
+    "demonstrate": {
+      "eyebrow": "What these projects demonstrate",
+      "title": "What every project demonstrates",
+      "items": {
+        "understand": "Understand the need first",
+        "adapt": "Propose a fitting solution",
+        "experience": "Build a clear experience",
+        "performance": "Optimize performance and SEO",
+        "maintain": "Deliver a maintainable base"
+      }
+    },
+    "cta": {
+      "title": "Do you have a similar need?",
+      "lead": "If one of these projects sounds like yours, we can explore together the version that fits your activity."
+    },
+    "card": {
+      "need": "Need",
+      "solution": "Solution",
+      "result": "Result",
+      "stack": "Stack"
+    },
+    "empty": {
+      "title": "No project for this filter",
+      "description": "Try another goal or go back to the full list."
+    }
+  },
+  "project": {
+    "hero": {
+      "back": "All projects"
+    },
+    "sections": {
+      "need": {
+        "title": "The client need",
+        "context": "Context",
+        "problem": "Problem",
+        "objective": "Goal"
+      },
+      "stakes": {
+        "title": "What’s at stake",
+        "items": {
+          "visibility": "Visibility",
+          "conversion": "Conversion",
+          "time": "Wasted time",
+          "organization": "Organization",
+          "experience": "User experience"
+        }
+      },
+      "solution": {
+        "title": "The proposed solution",
+        "what": "What was built",
+        "why": "Why this choice",
+        "how": "How it answers the need"
+      },
+      "features": {
+        "title": "Key features"
+      },
+      "results": {
+        "title": "Results",
+        "items": {
+          "gains": "Gains",
+          "improvement": "Improvement",
+          "performance": "Performance",
+          "seo": "SEO",
+          "experience": "Experience"
+        }
+      },
+      "stack": {
+        "title": "Tech stack",
+        "lead": "Technical choices used on this project."
+      },
+      "cta": {
+        "title": "Do you have a similar need?",
+        "lead": "Let’s talk about your project. I help you adapt this approach to your context."
+      }
+    },
+    "notFound": {
+      "title": "Project not found",
+      "description": "This project doesn’t exist or is no longer available.",
+      "back": "Back to projects"
+    }
+  },
+  "about": {
+    "hero": {
+      "eyebrow": "About",
+      "title": "I help you build useful digital solutions, not just code",
+      "lead": "My role is to understand your goals before suggesting a technology. The right project is the one that brings real value."
+    },
+    "vision": {
+      "eyebrow": "My vision",
+      "title": "Digital should serve your business",
+      "lead": "A good digital project must answer a real need: get more clients, save time, simplify a process or improve user experience.",
+      "extra": "Code is not an end in itself. It’s a means — efficient and measurable — to reach your goals."
+    },
+    "value": {
+      "eyebrow": "What I bring",
+      "title": "What you get when you work with me",
+      "items": {
+        "clarity": {
+          "title": "Clarity",
+          "description": "Explained decisions, readable scope, simple follow-up."
+        },
+        "advice": {
+          "title": "Advice",
+          "description": "An outside perspective that helps you avoid wrong technical choices."
+        },
+        "tech": {
+          "title": "Technical vision",
+          "description": "Solid, durable choices that won’t lock you in two years from now."
+        },
+        "business": {
+          "title": "Business vision",
+          "description": "Every decision is connected to your activity, not just to the code."
+        },
+        "execution": {
+          "title": "Clean execution",
+          "description": "Clear, tested, performant code. No hidden patchwork."
+        },
+        "seo": {
+          "title": "SEO and performance",
+          "description": "SEO, speed and accessibility built in from the start."
+        },
+        "support": {
+          "title": "Support",
+          "description": "A partner before, during and after the project."
+        }
+      }
+    },
+    "method": {
+      "eyebrow": "How I work",
+      "title": "A simple, effective approach",
+      "items": {
+        "understand": "Understand before developing",
+        "simplify": "Simplify before adding",
+        "user": "Think user",
+        "performance": "Think performance",
+        "maintain": "Deliver a maintainable solution"
+      }
+    },
+    "why": {
+      "eyebrow": "Why it matters for you",
+      "title": "What you gain",
+      "items": {
+        "decisions": "You avoid wrong technical decisions",
+        "time": "You save time",
+        "fit": "You get a fitting solution",
+        "understand": "You understand what’s being done",
+        "evolve": "You can grow the project over time"
+      }
+    },
+    "cta": {
+      "title": "Let’s talk about your need",
+      "lead": "A clear, no-commitment exchange to scope what would be useful for you."
+    }
+  },
+  "contact": {
+    "hero": {
+      "eyebrow": "Contact",
+      "title": "What need do you want to solve?",
+      "lead": "Tell me about your situation, even briefly. I’ll come back with a concrete first direction."
+    },
+    "form": {
+      "title": "Let’s talk about your project",
+      "name": "Your name",
+      "namePlaceholder": "First and last name",
+      "email": "Your email",
+      "emailPlaceholder": "you@example.com",
+      "company": "Company",
+      "companyPlaceholder": "Your company name (optional)",
+      "need": "What do you need?",
+      "needOptions": {
+        "leads": "Get more leads",
+        "site": "Build a website",
+        "seo": "Improve my SEO",
+        "automation": "Automate a task",
+        "app": "Build an application",
+        "tool": "Build an internal tool",
+        "other": "Other"
+      },
+      "stage": "Where are you now?",
+      "stageOptions": {
+        "idea": "Just an idea",
+        "defined": "Defined project",
+        "existing": "Existing site to improve",
+        "urgent": "Urgent need"
+      },
+      "budget": "Estimated budget",
+      "budgetOptions": {
+        "unsure": "Not sure yet",
+        "small": "Under €5,000",
+        "medium": "€5,000 to €15,000",
+        "large": "€15,000 to €50,000",
+        "xl": "Over €50,000"
+      },
+      "message": "Your message",
+      "messagePlaceholder": "Describe in a few words your need, your goal, and what is blocking you today.",
+      "submit": "Send my message",
+      "sending": "Sending…",
+      "success": "Thank you. Your message has been sent, I’ll come back to you shortly.",
+      "error": "Something went wrong. Please try again or email me directly.",
+      "required": "Required field"
+    },
+    "reassure": {
+      "title": "You don’t need to have everything defined",
+      "lead": "You can reach out even if your project is still vague. I’ll help you clarify what’s useful, prioritary and realistic."
+    },
+    "process": {
+      "eyebrow": "What happens next",
+      "title": "A simple, useful exchange",
+      "steps": {
+        "analyze": {
+          "title": "I analyse your request",
+          "description": "I read your message carefully to understand the context and what’s at stake."
+        },
+        "respond": {
+          "title": "I come back with a first direction",
+          "description": "Within 1 to 2 working days, you receive a clear answer, no jargon."
+        },
+        "exchange": {
+          "title": "We exchange if needed",
+          "description": "A short call or a few messages are usually enough to clarify the options."
+        },
+        "propose": {
+          "title": "I propose a clear solution",
+          "description": "Scope, budget, steps: everything is laid out so you can decide calmly."
+        }
+      }
+    },
+    "info": {
+      "title": "Prefer direct email?",
+      "lead": "You can also write to me directly at the address below.",
+      "email": "contact@example.com",
+      "responseTime": "Response within 1 to 2 working days"
+    },
+    "faq": {
+      "title": "Questions before reaching out",
+      "items": {
+        "ready": {
+          "question": "Do I need a brief to contact you?",
+          "answer": "No. A few sentences about your need are enough. Clarification is part of the work."
+        },
+        "smallProject": {
+          "question": "Do you take small projects?",
+          "answer": "Yes, as long as they have a clear goal. A useful page can be worth more than a big, blurry site."
+        },
+        "remote": {
+          "question": "Do you work remotely?",
+          "answer": "Yes, mostly remotely with regular check-ins. On request, I can travel for strategic projects."
+        },
+        "tech": {
+          "question": "What if I’m not technical?",
+          "answer": "Even better. My job is to translate your needs into concrete solutions, without flooding you with jargon."
+        }
+      }
+    }
+  },
+  "footer": {
+    "description": "Premium digital studio. I turn your needs into clear, performant and maintainable digital solutions.",
+    "navigation": "Navigation",
+    "solutions": "Solutions",
+    "contact": "Contact",
+    "languages": "Languages",
+    "rights": "All rights reserved.",
+    "legal": "Legal notice",
+    "solutionsList": {
+      "seoWeb": "SEO website",
+      "webApp": "Web application",
+      "mobileApp": "Mobile application",
+      "automation": "Automation",
+      "dashboard": "Internal dashboard",
+      "api": "API integrations",
+      "redesign": "Site redesign"
+    }
+  },
+  "forms": {
+    "optional": "(optional)",
+    "required": "(required)",
+    "select": "Choose an option"
+  },
+  "faq": {
+    "title": "Frequent questions"
+  }
+}

@@ -1,0 +1,615 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "switchLanguage": "Cambiar de idioma"
+  },
+  "seo": {
+    "home": {
+      "title": "Estudio digital premium — Sitios, aplicaciones y automatizaciones a medida",
+      "description": "Transformo tu necesidad, tu idea o tu problema de negocio en una solución digital clara, eficaz y útil: sitios web, aplicaciones, automatizaciones y herramientas internas."
+    },
+    "projects": {
+      "title": "Proyectos — Soluciones digitales pensadas para resolver necesidades reales",
+      "description": "Descubre proyectos reales: necesidad inicial, solución propuesta, resultados concretos. Sitios optimizados SEO, aplicaciones a medida y automatizaciones."
+    },
+    "about": {
+      "title": "Nosotros — Un enfoque centrado en tus objetivos de negocio",
+      "description": "Un partner de desarrollo que convierte tus necesidades en soluciones digitales claras, rápidas y mantenibles. Asesoría, ejecución limpia y acompañamiento."
+    },
+    "contact": {
+      "title": "Contacto — Hablemos de tu proyecto digital",
+      "description": "Cuéntame tu necesidad, aunque aún no esté del todo definida. Te ayudo a clarificar la mejor solución antes de hablar de técnica. Respuesta rápida, sin compromiso."
+    }
+  },
+  "buttons": {
+    "talkAboutProject": "Hablar de mi proyecto",
+    "discoverProjects": "Ver proyectos",
+    "discoverProject": "Ver proyecto",
+    "contactMe": "Contáctame",
+    "sendMessage": "Enviar mensaje",
+    "discoverHow": "Ver cómo",
+    "learnMore": "Saber más",
+    "backToProjects": "Volver a los proyectos",
+    "viewAllProjects": "Ver todos los proyectos",
+    "askForQuote": "Hablar de mi necesidad",
+    "exploreSolutions": "Explorar las soluciones"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Estudio digital premium",
+      "title": "Convierte tu necesidad digital en una solución concreta",
+      "lead": "¿Tienes un proyecto, una idea o un problema que resolver? Te ayudo a crear una solución digital clara, eficaz y pensada para tus objetivos.",
+      "subLead": "Sitio web, aplicación, automatización o herramienta interna: te acompaño desde la idea hasta la puesta en línea para crear algo útil, rápido y duradero.",
+      "ctaPrimary": "Hablar de mi proyecto",
+      "ctaSecondary": "Ver casos reales"
+    },
+    "problems": {
+      "eyebrow": "Tus retos",
+      "title": "¿Qué problemas quieres resolver?",
+      "lead": "Cada proyecto empieza con un problema concreto. ¿Te identificas con alguno de estos?",
+      "items": {
+        "leads": {
+          "title": "Mi sitio no genera suficientes solicitudes",
+          "description": "Muchas visitas, pocas oportunidades cualificadas. Tus páginas no convierten y no sabes por qué.",
+          "solution": "Un sitio diseñado para convertir, con un mensaje claro y rutas guiadas."
+        },
+        "time": {
+          "title": "Pierdo tiempo en tareas repetitivas",
+          "description": "Copias, pegas, envías los mismos correos y actualizas los mismos archivos cada semana.",
+          "solution": "Una automatización que se encarga del trabajo repetitivo y libera tu tiempo."
+        },
+        "tool": {
+          "title": "Necesito una herramienta a medida de mi actividad",
+          "description": "Las herramientas del mercado no encajan con tu forma de trabajar. Improvisas con hojas de cálculo y parches.",
+          "solution": "Una herramienta a medida que habla tu idioma y refleja tu manera de trabajar."
+        },
+        "idea": {
+          "title": "Quiero lanzar una idea o un producto digital",
+          "description": "Tienes una idea clara, pero no la visión técnica para llevarla en línea sin disparar el presupuesto.",
+          "solution": "Un MVP limpio, centrado en el valor, listo para crecer con tus primeros usuarios."
+        },
+        "performance": {
+          "title": "Mi sitio es lento, anticuado o mal posicionado",
+          "description": "Apariencia desfasada, carga lenta, invisible en Google. Te cuesta más de lo que aporta.",
+          "solution": "Un rediseño rápido y optimizado SEO sin perder tu posicionamiento actual."
+        },
+        "integration": {
+          "title": "Mis herramientas no se hablan entre sí",
+          "description": "Tus datos están repartidos entre CRM, correos, Excel y facturas. Pierdes tiempo y visibilidad.",
+          "solution": "Integraciones fiables que conectan tus herramientas y centralizan los datos útiles."
+        }
+      }
+    },
+    "value": {
+      "eyebrow": "Lo que ganas",
+      "title": "Lo que puedo aportarte",
+      "lead": "No es una lista de servicios, son resultados concretos para tu actividad.",
+      "items": {
+        "visibility": {
+          "title": "Más visibilidad",
+          "description": "Un sitio optimizado para Google y pensado para tus clientes objetivo desde el primer día."
+        },
+        "leads": {
+          "title": "Más solicitudes cualificadas",
+          "description": "Páginas que convierten visitas en oportunidades, con un mensaje claro y un llamado a la acción eficaz."
+        },
+        "time": {
+          "title": "Menos trabajo manual",
+          "description": "Tus procesos repetitivos se automatizan. Recuperas tiempo para lo que de verdad importa."
+        },
+        "experience": {
+          "title": "Mejor experiencia de usuario",
+          "description": "Una navegación fluida, rápida y clara en cualquier dispositivo. Tus visitantes entienden y avanzan."
+        },
+        "fit": {
+          "title": "Una herramienta adaptada a tu actividad",
+          "description": "Una solución que se ajusta a tu forma de trabajar, no al revés. Más simple, más eficaz."
+        },
+        "evolutive": {
+          "title": "Una solución evolutiva y mantenible",
+          "description": "Código limpio y documentado, capaz de evolucionar con tu actividad sin reconstruir todo."
+        }
+      }
+    },
+    "solutions": {
+      "eyebrow": "Posibles respuestas",
+      "title": "Las soluciones que puedo construir",
+      "lead": "A cada necesidad, una respuesta digital concreta. Esto es lo que puedo poner en marcha contigo.",
+      "items": {
+        "seoWeb": {
+          "title": "Sitio web optimizado SEO",
+          "need": "Quieres atraer más clientes desde Google.",
+          "solution": "Un sitio rápido, bien estructurado, que responde a las consultas reales de tus clientes.",
+          "benefit": "Más visibilidad, más tráfico cualificado, más solicitudes."
+        },
+        "webApp": {
+          "title": "Aplicación web a medida",
+          "need": "Tienes una necesidad de negocio que las herramientas estándar no cubren.",
+          "solution": "Una aplicación web pensada para tu proceso, accesible desde cualquier lugar y segura.",
+          "benefit": "Una herramienta que encaja con tu actividad y ahorra tiempo a tus equipos."
+        },
+        "mobileApp": {
+          "title": "Aplicación móvil",
+          "need": "Quieres ofrecer una experiencia móvil a tus clientes o equipos.",
+          "solution": "Una app móvil clara y eficaz, conectada con tus sistemas existentes.",
+          "benefit": "Una presencia móvil sólida y un uso simple en el día a día."
+        },
+        "automation": {
+          "title": "Automatización",
+          "need": "Pierdes horas en tareas repetitivas.",
+          "solution": "Scripts y workflows que se encargan de las acciones sin valor añadido.",
+          "benefit": "Recuperas tiempo y reduces los errores humanos."
+        },
+        "software": {
+          "title": "Software de negocio",
+          "need": "Necesitas un software adaptado a tu actividad.",
+          "solution": "Un software a medida pensado para tus usuarios, robusto y mantenible.",
+          "benefit": "Productividad real, sin parches ni atajos."
+        },
+        "dashboard": {
+          "title": "Dashboard / herramienta interna",
+          "need": "Tus datos están en todas partes, pero te falta una visión clara.",
+          "solution": "Un panel de control centralizado que reúne tus indicadores clave.",
+          "benefit": "Decisiones más rápidas basadas en datos reales."
+        },
+        "api": {
+          "title": "Integraciones API",
+          "need": "Tus herramientas no se comunican entre sí.",
+          "solution": "Integraciones fiables entre tus servicios (CRM, pagos, correo, etc.).",
+          "benefit": "Un ecosistema conectado, sin doble entrada ni errores."
+        },
+        "redesign": {
+          "title": "Rediseño y optimización",
+          "need": "Tu sitio actual es lento, está desfasado o rinde poco.",
+          "solution": "Un rediseño focalizado: mantenemos lo que funciona y mejoramos lo que frena.",
+          "benefit": "Imagen reforzada, rendimiento medible y mejor SEO."
+        }
+      }
+    },
+    "method": {
+      "eyebrow": "Un enfoque claro",
+      "title": "Un método pensado para avanzar con claridad",
+      "lead": "Sin jerga, sin promesas vagas. Un marco simple que te da visibilidad en cada etapa.",
+      "steps": {
+        "understand": {
+          "title": "Entender tu necesidad",
+          "description": "Partimos de tu situación, no de un brief cerrado. Aclaramos lo que realmente quieres conseguir."
+        },
+        "objectives": {
+          "title": "Identificar los objetivos reales",
+          "description": "Distinguimos lo útil, lo prioritario y lo que puede esperar. El proyecto sirve a tu negocio."
+        },
+        "propose": {
+          "title": "Proponer la solución adecuada",
+          "description": "Te propongo un enfoque concreto con un alcance claro, decisiones técnicas justificadas y un presupuesto realista."
+        },
+        "build": {
+          "title": "Construir limpio",
+          "description": "Desarrollo limpio, probado y eficaz, pensado para durar. Sin atajos que cuesten caro después."
+        },
+        "improve": {
+          "title": "Medir, mejorar, acompañar",
+          "description": "Una vez en línea, observamos, ajustamos y mejoramos. No te entrego y desaparezco."
+        }
+      }
+    },
+    "why": {
+      "eyebrow": "Por qué funciona",
+      "title": "Por qué este enfoque funciona",
+      "items": {
+        "objective": {
+          "title": "Partimos de tu objetivo, no de una tecnología",
+          "description": "La técnica está al servicio del resultado. La buena herramienta es la que mejor responde a tu necesidad."
+        },
+        "convert": {
+          "title": "Cada página está pensada para convertir",
+          "description": "Mensaje claro, recorrido guiado, llamado a la acción visible. Nada se deja al azar."
+        },
+        "seo": {
+          "title": "El SEO se integra desde el diseño",
+          "description": "Estructura, rendimiento y contenido: tu sitio está optimizado para Google desde el primer día."
+        },
+        "automation": {
+          "title": "Las automatizaciones te ahorran tiempo",
+          "description": "Cada proceso automatizable se trata como una inversión que se rentabiliza rápido."
+        },
+        "maintain": {
+          "title": "Una solución clara, rápida y mantenible",
+          "description": "Código limpio, buenas prácticas, documentación útil. Tú mandas, no quedas atado."
+        },
+        "vision": {
+          "title": "Mantienes una visión clara del proyecto",
+          "description": "Comunicación directa, etapas legibles, decisiones documentadas. Sin caja negra."
+        }
+      }
+    },
+    "projects": {
+      "eyebrow": "Casos reales",
+      "title": "Proyectos pensados para resolver necesidades reales",
+      "lead": "Aquí algunos proyectos construidos como respuesta a una necesidad concreta. En cada uno: un objetivo, una solución, un resultado.",
+      "viewAll": "Ver todos los proyectos"
+    },
+    "useCases": {
+      "eyebrow": "Para qué tipo de proyecto",
+      "title": "¿Para qué tipo de proyecto?",
+      "lead": "Algunas situaciones típicas en las que puedo ayudarte de verdad.",
+      "items": {
+        "leads": {
+          "title": "Crear un sitio para conseguir más clientes potenciales",
+          "description": "Un sitio claro, optimizado SEO, pensado para convertir visitas en solicitudes."
+        },
+        "redesign": {
+          "title": "Rediseñar un sitio que ya no convierte",
+          "description": "Un rediseño focalizado, sin perder tu SEO, con un mensaje más claro."
+        },
+        "clientApp": {
+          "title": "Crear una aplicación para tus clientes",
+          "description": "Una aplicación web o móvil que aporta valor real a tus usuarios."
+        },
+        "process": {
+          "title": "Automatizar un proceso interno",
+          "description": "Un workflow o herramienta que elimina tareas repetitivas y ahorra tiempo."
+        },
+        "data": {
+          "title": "Centralizar tus datos",
+          "description": "Un dashboard o herramienta que reúne tus indicadores y facilita tus decisiones."
+        },
+        "google": {
+          "title": "Mejorar tu presencia en Google",
+          "description": "Una estrategia SEO concreta integrada en un sitio rápido y bien estructurado."
+        }
+      }
+    },
+    "tech": {
+      "eyebrow": "Calidad técnica",
+      "title": "Una ejecución limpia, duradera y eficaz",
+      "lead": "Las decisiones técnicas siguen tu necesidad. La calidad, en cambio, no se negocia.",
+      "items": {
+        "modern": "Stack moderno y probado",
+        "performance": "Rendimiento y Core Web Vitals",
+        "accessibility": "Accesibilidad y buenas prácticas",
+        "security": "Seguridad desde el diseño",
+        "maintainable": "Código limpio y mantenible",
+        "evolutive": "Arquitectura escalable"
+      }
+    },
+    "faq": {
+      "eyebrow": "¿Aún dudas?",
+      "title": "Preguntas frecuentes antes de empezar",
+      "items": {
+        "unclear": {
+          "question": "No sé exactamente lo que necesito, ¿puedes ayudarme?",
+          "answer": "Sí. La primera etapa es justamente clarificar tu necesidad. Partimos de tu situación, identificamos los objetivos reales, y te propongo la solución más adecuada — aunque no sea la más compleja."
+        },
+        "seo": {
+          "question": "¿El SEO está incluido?",
+          "answer": "Sí. SEO técnico, rendimiento, estructura HTML, etiquetas y semántica se integran desde el diseño. Para un trabajo SEO editorial avanzado, podemos añadir una estrategia de contenido dedicada."
+        },
+        "price": {
+          "question": "¿Cuánto cuesta un proyecto?",
+          "answer": "Depende del alcance. Tras nuestra primera conversación, te propongo un presupuesto claro con opciones. El objetivo no es hacerlo todo, sino lo que más valor aporta."
+        },
+        "time": {
+          "question": "¿Cuánto tiempo se necesita?",
+          "answer": "Un sitio claro de presentación puede entregarse en pocas semanas. Una aplicación a medida lleva más tiempo. En todos los casos, divido el proyecto en etapas cortas para entregar valor rápido."
+        },
+        "existing": {
+          "question": "¿Puedes mejorar un sitio existente?",
+          "answer": "Sí. Puedo auditar un sitio existente, identificar lo que frena tus resultados y proponer un rediseño focalizado u optimizaciones puntuales sin reconstruir todo."
+        },
+        "small": {
+          "question": "¿Puedo empezar con una versión pequeña?",
+          "answer": "Sí, suele ser lo más recomendable. Una versión útil, entregada rápido y mejorada con feedback real, casi siempre es más eficaz que un proyecto enorme de una sola vez."
+        }
+      }
+    },
+    "finalCta": {
+      "eyebrow": "Hablamos",
+      "title": "¿Tienes una necesidad? Hablemos.",
+      "lead": "Cuéntame tu situación. Te ayudo a clarificar la mejor solución antes de hablar de técnica.",
+      "cta": "Hablar de mi proyecto"
+    }
+  },
+  "projects": {
+    "hero": {
+      "eyebrow": "Casos reales",
+      "title": "Proyectos diseñados para resolver necesidades concretas",
+      "lead": "Cada proyecto parte de una necesidad real, un objetivo de negocio y una limitación. Aquí ves cómo se resolvieron."
+    },
+    "filters": {
+      "title": "Filtrar por objetivo",
+      "all": "Todos",
+      "visibility": "Más visibilidad",
+      "conversion": "Más conversión",
+      "time": "Ahorro de tiempo",
+      "automation": "Automatización",
+      "tool": "Herramienta de negocio",
+      "launch": "Lanzamiento de producto"
+    },
+    "demonstrate": {
+      "eyebrow": "Lo que demuestran estos proyectos",
+      "title": "Lo que cada proyecto demuestra",
+      "items": {
+        "understand": "Entender la necesidad antes de todo",
+        "adapt": "Proponer una solución adecuada",
+        "experience": "Crear una experiencia clara",
+        "performance": "Optimizar rendimiento y SEO",
+        "maintain": "Entregar una base mantenible"
+      }
+    },
+    "cta": {
+      "title": "¿Tienes una necesidad parecida?",
+      "lead": "Si alguno de estos proyectos te suena, podemos explorar juntos la versión que encaja con tu actividad."
+    },
+    "card": {
+      "need": "Necesidad",
+      "solution": "Solución",
+      "result": "Resultado",
+      "stack": "Stack"
+    },
+    "empty": {
+      "title": "No hay proyecto para este filtro",
+      "description": "Prueba con otro objetivo o vuelve a la lista completa."
+    }
+  },
+  "project": {
+    "hero": {
+      "back": "Todos los proyectos"
+    },
+    "sections": {
+      "need": {
+        "title": "La necesidad del cliente",
+        "context": "Contexto",
+        "problem": "Problema",
+        "objective": "Objetivo"
+      },
+      "stakes": {
+        "title": "Lo que está en juego",
+        "items": {
+          "visibility": "Visibilidad",
+          "conversion": "Conversión",
+          "time": "Tiempo perdido",
+          "organization": "Organización",
+          "experience": "Experiencia de usuario"
+        }
+      },
+      "solution": {
+        "title": "La solución propuesta",
+        "what": "Qué se construyó",
+        "why": "Por qué esta elección",
+        "how": "Cómo responde a la necesidad"
+      },
+      "features": {
+        "title": "Funcionalidades clave"
+      },
+      "results": {
+        "title": "Resultados",
+        "items": {
+          "gains": "Ganancias",
+          "improvement": "Mejora",
+          "performance": "Rendimiento",
+          "seo": "SEO",
+          "experience": "Experiencia"
+        }
+      },
+      "stack": {
+        "title": "Stack técnico",
+        "lead": "Decisiones técnicas usadas en este proyecto."
+      },
+      "cta": {
+        "title": "¿Tienes una necesidad similar?",
+        "lead": "Hablemos de tu proyecto. Te ayudo a adaptar este enfoque a tu propio contexto."
+      }
+    },
+    "notFound": {
+      "title": "Proyecto no encontrado",
+      "description": "Este proyecto no existe o ya no está disponible.",
+      "back": "Volver a los proyectos"
+    }
+  },
+  "about": {
+    "hero": {
+      "eyebrow": "Nosotros",
+      "title": "Te ayudo a crear soluciones digitales útiles, no solo código",
+      "lead": "Mi rol es entender tus objetivos antes de proponer una tecnología. El buen proyecto es el que aporta valor real."
+    },
+    "vision": {
+      "eyebrow": "Mi visión",
+      "title": "Lo digital debe servir a tu negocio",
+      "lead": "Un buen proyecto digital debe responder a una necesidad real: conseguir más clientes, ahorrar tiempo, simplificar un proceso o mejorar la experiencia de usuario.",
+      "extra": "El código no es un fin en sí mismo. Es un medio — eficaz y medible — para alcanzar tus objetivos."
+    },
+    "value": {
+      "eyebrow": "Lo que aporto",
+      "title": "Lo que encuentras al trabajar conmigo",
+      "items": {
+        "clarity": {
+          "title": "Claridad",
+          "description": "Decisiones explicadas, alcance legible, seguimiento simple."
+        },
+        "advice": {
+          "title": "Asesoría",
+          "description": "Una mirada externa que te ayuda a evitar malas decisiones técnicas."
+        },
+        "tech": {
+          "title": "Visión técnica",
+          "description": "Decisiones sólidas y duraderas, que no te bloqueen dentro de dos años."
+        },
+        "business": {
+          "title": "Visión de negocio",
+          "description": "Cada decisión está conectada con tu actividad, no solo con el código."
+        },
+        "execution": {
+          "title": "Ejecución limpia",
+          "description": "Código claro, probado y eficaz. Sin parches escondidos."
+        },
+        "seo": {
+          "title": "SEO y rendimiento",
+          "description": "SEO, velocidad y accesibilidad integrados desde el principio."
+        },
+        "support": {
+          "title": "Acompañamiento",
+          "description": "Un partner antes, durante y después del proyecto."
+        }
+      }
+    },
+    "method": {
+      "eyebrow": "Cómo trabajo",
+      "title": "Un enfoque simple y eficaz",
+      "items": {
+        "understand": "Entender antes de desarrollar",
+        "simplify": "Simplificar antes de añadir",
+        "user": "Pensar en el usuario",
+        "performance": "Pensar en el rendimiento",
+        "maintain": "Entregar una solución mantenible"
+      }
+    },
+    "why": {
+      "eyebrow": "Por qué te importa",
+      "title": "Lo que ganas tú",
+      "items": {
+        "decisions": "Evitas malas decisiones técnicas",
+        "time": "Ahorras tiempo",
+        "fit": "Tienes una solución a medida",
+        "understand": "Entiendes lo que se hace",
+        "evolve": "Puedes hacer evolucionar el proyecto"
+      }
+    },
+    "cta": {
+      "title": "Hablemos de tu necesidad",
+      "lead": "Una conversación clara y sin compromiso para enmarcar lo que sería útil para ti."
+    }
+  },
+  "contact": {
+    "hero": {
+      "eyebrow": "Contacto",
+      "title": "¿Qué necesidad quieres resolver?",
+      "lead": "Cuéntame tu situación, aunque sea brevemente. Te respondo con una primera dirección concreta."
+    },
+    "form": {
+      "title": "Hablemos de tu proyecto",
+      "name": "Tu nombre",
+      "namePlaceholder": "Nombre y apellido",
+      "email": "Tu email",
+      "emailPlaceholder": "tu@ejemplo.com",
+      "company": "Empresa",
+      "companyPlaceholder": "Nombre de tu empresa (opcional)",
+      "need": "¿Cuál es tu necesidad?",
+      "needOptions": {
+        "leads": "Conseguir más solicitudes",
+        "site": "Crear un sitio web",
+        "seo": "Mejorar mi SEO",
+        "automation": "Automatizar una tarea",
+        "app": "Crear una aplicación",
+        "tool": "Crear una herramienta interna",
+        "other": "Otro"
+      },
+      "stage": "¿En qué punto estás?",
+      "stageOptions": {
+        "idea": "Solo una idea",
+        "defined": "Proyecto definido",
+        "existing": "Sitio existente a mejorar",
+        "urgent": "Necesidad urgente"
+      },
+      "budget": "Presupuesto estimado",
+      "budgetOptions": {
+        "unsure": "Aún no lo sé",
+        "small": "Menos de 5.000 €",
+        "medium": "Entre 5.000 € y 15.000 €",
+        "large": "Entre 15.000 € y 50.000 €",
+        "xl": "Más de 50.000 €"
+      },
+      "message": "Tu mensaje",
+      "messagePlaceholder": "Describe en pocas palabras tu necesidad, tu objetivo y lo que te bloquea hoy.",
+      "submit": "Enviar mi mensaje",
+      "sending": "Enviando…",
+      "success": "Gracias. Tu mensaje se ha enviado, te responderé pronto.",
+      "error": "Ha ocurrido un error. Puedes reintentar o escribirme directamente por email.",
+      "required": "Campo obligatorio"
+    },
+    "reassure": {
+      "title": "No hace falta tenerlo todo definido",
+      "lead": "Puedes contactarme aunque tu proyecto aún esté difuso. Te ayudo a clarificar lo útil, lo prioritario y lo realista."
+    },
+    "process": {
+      "eyebrow": "Lo que pasa después",
+      "title": "Un intercambio simple y útil",
+      "steps": {
+        "analyze": {
+          "title": "Analizo tu solicitud",
+          "description": "Leo con atención tu mensaje para entender el contexto y lo que está en juego."
+        },
+        "respond": {
+          "title": "Te respondo con una primera dirección",
+          "description": "En 1 o 2 días laborables recibes una respuesta clara, sin jerga."
+        },
+        "exchange": {
+          "title": "Hablamos si hace falta",
+          "description": "Una llamada corta o algunos mensajes suelen bastar para clarificar las opciones."
+        },
+        "propose": {
+          "title": "Te propongo una solución clara",
+          "description": "Alcance, presupuesto, etapas: todo está sobre la mesa para que decidas con calma."
+        }
+      }
+    },
+    "info": {
+      "title": "¿Prefieres email directo?",
+      "lead": "También puedes escribirme directamente a la dirección de abajo.",
+      "email": "contacto@ejemplo.com",
+      "responseTime": "Respuesta en 1 o 2 días laborables"
+    },
+    "faq": {
+      "title": "Preguntas antes de contactar",
+      "items": {
+        "ready": {
+          "question": "¿Necesito un brief para contactarte?",
+          "answer": "No. Unas frases sobre tu necesidad son suficientes. Clarificar es parte del trabajo."
+        },
+        "smallProject": {
+          "question": "¿Aceptas proyectos pequeños?",
+          "answer": "Sí, siempre que tengan un objetivo claro. Una página útil puede valer más que un sitio enorme y difuso."
+        },
+        "remote": {
+          "question": "¿Trabajas en remoto?",
+          "answer": "Sí, principalmente en remoto, con seguimiento regular. Bajo demanda, puedo desplazarme para proyectos estratégicos."
+        },
+        "tech": {
+          "question": "¿Y si no soy técnico?",
+          "answer": "Mejor todavía. Mi rol es traducir tus necesidades en soluciones concretas, sin saturarte de jerga."
+        }
+      }
+    }
+  },
+  "footer": {
+    "description": "Estudio digital premium. Convierto tus necesidades en soluciones digitales claras, eficaces y mantenibles.",
+    "navigation": "Navegación",
+    "solutions": "Soluciones",
+    "contact": "Contacto",
+    "languages": "Idiomas",
+    "rights": "Todos los derechos reservados.",
+    "legal": "Aviso legal",
+    "solutionsList": {
+      "seoWeb": "Sitio web SEO",
+      "webApp": "Aplicación web",
+      "mobileApp": "Aplicación móvil",
+      "automation": "Automatización",
+      "dashboard": "Dashboard interno",
+      "api": "Integraciones API",
+      "redesign": "Rediseño de sitio"
+    }
+  },
+  "forms": {
+    "optional": "(opcional)",
+    "required": "(obligatorio)",
+    "select": "Elige una opción"
+  },
+  "faq": {
+    "title": "Preguntas frecuentes"
+  }
+}
