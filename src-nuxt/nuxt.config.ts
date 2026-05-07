@@ -48,13 +48,107 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  modules: ['@pinia/nuxt', '@nuxtjs/sitemap', '@nuxtjs/google-fonts', '@nuxtjs/robots', 'nuxt-seo-utils'],
+  modules: [
+    '@pinia/nuxt',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/google-fonts',
+    '@nuxtjs/robots',
+    'nuxt-seo-utils',
+    '@nuxtjs/i18n',
+  ],
   pinia: {
     storesDirs: ['~/stores/**'],
   },
   googleFonts: {
     families: {
-      Poppins: [400, 500, 600, 700, 800],
+      Barlow: [400, 500, 600, 700],
+      'Roboto Mono': [500],
+      'Roboto Flex': [600],
+    },
+  },
+  i18n: {
+    baseUrl: process.env.NUXT_PUBLIC_SITE_URL,
+
+    // Meilleur choix SEO clair : toutes les langues ont leur préfixe.
+    strategy: 'prefix',
+
+    // La langue par défaut, utilisée quand aucune autre ne correspond.
+    defaultLocale: 'fr',
+
+    // Par défaut, Nuxt i18n cherche dans /i18n/locales
+    langDir: 'locales',
+
+    // Les langues disponibles, avec leur code, nom, langue HTML et fichier de traduction.
+    locales: [
+      {
+        code: 'fr',
+        name: 'Français',
+        language: 'fr-FR',
+        file: 'fr.json',
+      },
+      {
+        code: 'en',
+        name: 'English',
+        language: 'en-US',
+        file: 'en.json',
+      },
+      {
+        code: 'es',
+        name: 'Español',
+        language: 'es-ES',
+        file: 'es.json',
+      },
+    ],
+
+    // Traduction des segments d’URL statiques.
+    customRoutes: 'config',
+    pages: {
+      projects: {
+        fr: '/projets',
+        en: '/projects',
+        es: '/proyectos',
+      },
+
+      'projects-slug': {
+        fr: '/projets/[slug]',
+        en: '/projects/[slug]',
+        es: '/proyectos/[slug]',
+      },
+
+      contact: {
+        fr: '/contact',
+        en: '/contact',
+        es: '/contacto',
+      },
+      services: {
+        fr: '/mes-services',
+        en: '/services',
+        es: '/mis-servicios',
+      },
+      about: {
+        fr: '/a-propos',
+        en: '/about',
+        es: '/nosotros',
+      },
+
+      'dashboard/index': false,
+    },
+
+    // Détection auto, mais uniquement sur la racine.
+    // Important : ne pas rediriger les bots depuis /en/... vers /fr/...
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root',
+      fallbackLocale: 'fr',
+    },
+  },
+
+  routeRules: {
+    // Dashboard : pas SEO, pas besoin de pré-rendu public.
+    '/dashboard/**': {
+      ssr: false,
+      prerender: false,
     },
   },
 })
