@@ -20,7 +20,8 @@ const solutionLinks = computed(() => [
   { key: 'redesign', label: t('footer.solutionsList.redesign') },
 ])
 
-const availableLocales = computed(() => locales.value as Array<{ code: string; name: string }>)
+type LocaleCode = 'fr' | 'en' | 'es'
+const availableLocales = computed(() => locales.value as Array<{ code: LocaleCode; name: string }>)
 
 const year = new Date().getFullYear()
 </script>

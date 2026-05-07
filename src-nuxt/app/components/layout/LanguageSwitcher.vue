@@ -2,7 +2,8 @@
 const { locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
 
-const availableLocales = computed(() => locales.value as Array<{ code: string; name: string }>)
+type LocaleCode = 'fr' | 'en' | 'es'
+const availableLocales = computed(() => locales.value as Array<{ code: LocaleCode; name: string }>)
 
 const open = ref(false)
 const root = ref<HTMLElement | null>(null)

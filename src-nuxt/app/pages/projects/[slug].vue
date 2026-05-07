@@ -12,7 +12,7 @@ const { data: project } = await useAsyncData<Project | null>(
   () => `project-${locale.value}-${slug.value}`,
   async () => {
     try {
-      return await $fetch<Project>(`/api/projects/${locale.value}/${slug.value}`)
+      return await $fetch<Project>(`/api/projects/${locale.value}/${slug.value}` as never)
     } catch (error) {
       const status = (error as { statusCode?: number })?.statusCode
       if (status === 404) return null

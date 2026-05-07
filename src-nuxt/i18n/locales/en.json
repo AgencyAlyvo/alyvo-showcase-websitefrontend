@@ -496,7 +496,7 @@
       "name": "Your name",
       "namePlaceholder": "First and last name",
       "email": "Your email",
-      "emailPlaceholder": "you@example.com",
+      "emailPlaceholder": "you{'@'}example.com",
       "company": "Company",
       "companyPlaceholder": "Your company name (optional)",
       "need": "What do you need?",
@@ -561,7 +561,7 @@
     "info": {
       "title": "Prefer direct email?",
       "lead": "You can also write to me directly at the address below.",
-      "email": "contact@example.com",
+      "email": "contact{'@'}example.com",
       "responseTime": "Response within 1 to 2 working days"
     },
     "faq": {

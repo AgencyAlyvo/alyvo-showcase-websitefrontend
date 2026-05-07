@@ -39,7 +39,7 @@ async function onSubmit() {
   status.value = 'sending'
 
   try {
-    await $fetch('/api/contact', {
+    await $fetch('/api/contact' as never, {
       method: 'POST',
       body: { ...form, locale: locale.value },
     })
