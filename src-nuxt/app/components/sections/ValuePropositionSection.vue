@@ -21,7 +21,7 @@ const items = ['visibility', 'leads', 'time', 'experience', 'fit', 'evolutive'] 
         :key="key"
         class="flex flex-col gap-3 rounded-2xl bg-white p-6 ring-1 ring-slate-200"
       >
-        <span class="text-sm font-semibold text-slate-400">0{{ index + 1 }}</span>
+        <span class="text-sm font-semibold text-indigo-500">0{{ index + 1 }}</span>
         <h3 class="text-lg font-semibold text-slate-900">
           {{ t(`home.value.items.${key}.title`) }}
         </h3>

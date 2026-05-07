@@ -41,7 +41,7 @@ const items = ['seoWeb', 'webApp', 'mobileApp', 'automation', 'software', 'dashb
             <dt class="text-xs font-semibold tracking-wide text-slate-400 uppercase">
               {{ t('projects.card.result') }}
             </dt>
-            <dd class="mt-1 text-slate-900">{{ t(`home.solutions.items.${key}.benefit`) }}</dd>
+            <dd class="mt-1 font-medium text-indigo-700">{{ t(`home.solutions.items.${key}.benefit`) }}</dd>
           </div>
         </dl>
       </article>

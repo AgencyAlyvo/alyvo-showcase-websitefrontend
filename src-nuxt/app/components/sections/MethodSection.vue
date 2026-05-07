@@ -22,7 +22,7 @@ const steps = ['understand', 'objectives', 'propose', 'build', 'improve'] as con
         class="flex flex-col gap-3 rounded-2xl bg-white p-6 ring-1 ring-slate-200"
       >
         <span
-          class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-900 text-sm font-semibold text-white"
+          class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-indigo-600 text-sm font-semibold text-white"
         >
           {{ index + 1 }}
         </span>

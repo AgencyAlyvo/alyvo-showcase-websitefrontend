@@ -31,7 +31,7 @@ const mobileOpen = ref(false)
         <LayoutLanguageSwitcher class="hidden md:block" />
         <NuxtLinkLocale
           to="contact"
-          class="hidden rounded-full bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800 md:inline-flex"
+          class="hidden rounded-full bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-500 md:inline-flex"
         >
           {{ t('buttons.talkAboutProject') }}
         </NuxtLinkLocale>

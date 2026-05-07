@@ -22,7 +22,7 @@ const items = ['modern', 'performance', 'accessibility', 'security', 'maintainab
         class="flex items-center gap-3 rounded-2xl bg-slate-50 px-5 py-4 ring-1 ring-slate-200"
       >
         <span
-          class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 text-white"
+          class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-white"
           aria-hidden="true"
         >
           <svg width="14" height="14" viewBox="0 0 20 20" fill="none">

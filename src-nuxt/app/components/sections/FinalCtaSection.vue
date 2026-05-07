@@ -14,7 +14,7 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <BaseSection tone="dark" container-size="md">
+  <BaseSection tone="dark" container-size="md" class="bg-gradient-to-br from-slate-950 via-indigo-950/60 to-slate-950">
     <div class="text-center">
       <BaseBadge v-if="eyebrow" tone="dark">{{ eyebrow }}</BaseBadge>
       <h2 class="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">

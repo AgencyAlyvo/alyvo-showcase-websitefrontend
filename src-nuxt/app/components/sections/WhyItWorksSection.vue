@@ -13,7 +13,7 @@ const items = ['objective', 'convert', 'seo', 'automation', 'maintain', 'vision'
       </h2>
     </div>
     <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      <div v-for="key in items" :key="key" class="rounded-2xl bg-white/5 p-6 ring-1 ring-white/10 backdrop-blur">
+      <div v-for="key in items" :key="key" class="rounded-2xl border-l-2 border-indigo-500/50 bg-white/5 p-6 ring-1 ring-white/10 backdrop-blur">
         <h3 class="text-base font-semibold text-white">
           {{ t(`home.why.items.${key}.title`) }}
         </h3>

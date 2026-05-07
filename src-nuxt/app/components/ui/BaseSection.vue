@@ -19,7 +19,7 @@ const toneClass = {
   default: 'bg-white text-slate-900',
   muted: 'bg-slate-50 text-slate-900',
   dark: 'bg-slate-950 text-white',
-  gradient: 'bg-gradient-to-b from-white via-slate-50 to-white text-slate-900',
+  gradient: 'bg-gradient-to-b from-indigo-50 via-white to-white text-slate-900',
 }
 
 const spacingClass = {

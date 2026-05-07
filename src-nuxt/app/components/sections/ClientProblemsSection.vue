@@ -23,7 +23,7 @@ const items = ['leads', 'time', 'tool', 'idea', 'performance', 'integration'] as
         <p class="text-sm leading-relaxed text-slate-600">
           {{ t(`home.problems.items.${key}.description`) }}
         </p>
-        <p class="mt-auto rounded-xl bg-slate-900/[0.04] px-4 py-3 text-sm text-slate-700">
+        <p class="mt-auto rounded-xl bg-indigo-50 px-4 py-3 text-sm text-indigo-800">
           → {{ t(`home.problems.items.${key}.solution`) }}
         </p>
       </BaseCard>

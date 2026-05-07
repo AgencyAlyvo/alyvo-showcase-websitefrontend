@@ -9,10 +9,10 @@ withDefaults(
 )
 
 const toneClass = {
-  default: 'bg-slate-900/5 text-slate-700 ring-1 ring-slate-900/10',
+  default: 'bg-indigo-50 text-indigo-700 ring-1 ring-indigo-200',
   muted: 'bg-slate-100 text-slate-600 ring-1 ring-slate-200',
   success: 'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200',
-  dark: 'bg-white/10 text-white ring-1 ring-white/15',
+  dark: 'bg-indigo-500/15 text-indigo-300 ring-1 ring-indigo-400/20',
 }
 </script>
 
