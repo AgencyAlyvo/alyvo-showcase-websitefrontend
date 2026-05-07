@@ -6,10 +6,6 @@ usePageSeo({
   description: t('seo.home.description'),
 })
 
-const { data: projects } = await useProjects()
-
-const featuredProjects = computed(() => (projects.value ?? []).slice(0, 3))
-
 const faqItems = computed(() => {
   const keys = ['unclear', 'seo', 'price', 'time', 'existing', 'small'] as const
   return keys.map((key) => ({
