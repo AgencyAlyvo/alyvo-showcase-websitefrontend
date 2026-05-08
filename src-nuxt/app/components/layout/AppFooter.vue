@@ -6,18 +6,7 @@ const switchLocalePath = useSwitchLocalePath()
 const navLinks = computed(() => [
   { to: localePath('index'), label: t('nav.home') },
   { to: localePath('projects'), label: t('nav.projects') },
-  { to: localePath('about'), label: t('nav.about') },
   { to: localePath('contact'), label: t('nav.contact') },
-])
-
-const solutionLinks = computed(() => [
-  { key: 'seoWeb', label: t('footer.solutionsList.seoWeb') },
-  { key: 'webApp', label: t('footer.solutionsList.webApp') },
-  { key: 'mobileApp', label: t('footer.solutionsList.mobileApp') },
-  { key: 'automation', label: t('footer.solutionsList.automation') },
-  { key: 'dashboard', label: t('footer.solutionsList.dashboard') },
-  { key: 'api', label: t('footer.solutionsList.api') },
-  { key: 'redesign', label: t('footer.solutionsList.redesign') },
 ])
 
 type LocaleCode = 'fr' | 'en' | 'es'
@@ -29,13 +18,7 @@ const year = new Date().getFullYear()
 <template>
   <footer class="border-t border-slate-800 bg-slate-900 text-slate-200">
     <BaseContainer size="xl" class="py-16">
-      <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
-        <div class="space-y-4">
-          <NuxtLinkLocale to="index" class="text-base font-semibold tracking-tight text-white"> Studio </NuxtLinkLocale>
-          <p class="text-sm leading-relaxed text-slate-300">
-            {{ t('footer.description') }}
-          </p>
-        </div>
+      <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
         <div>
           <h3 class="text-sm font-semibold tracking-wide text-white uppercase">
             {{ t('footer.navigation') }}
@@ -45,18 +28,6 @@ const year = new Date().getFullYear()
               <NuxtLink :to="link.to" class="text-slate-300 hover:text-white">
                 {{ link.label }}
               </NuxtLink>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="text-sm font-semibold tracking-wide text-white uppercase">
-            {{ t('footer.solutions') }}
-          </h3>
-          <ul class="mt-4 space-y-2 text-sm">
-            <li v-for="link in solutionLinks" :key="link.key">
-              <NuxtLinkLocale to="contact" class="text-slate-300 hover:text-white">
-                {{ link.label }}
-              </NuxtLinkLocale>
             </li>
           </ul>
         </div>
@@ -98,7 +69,7 @@ const year = new Date().getFullYear()
         </div>
       </div>
       <div class="mt-16 border-t border-white/15 pt-6 text-xs text-slate-400">
-        (c) {{ year }} Studio | {{ t('footer.rights') }}
+        (c) {{ year }} Devtech X | {{ t('footer.rights') }}
       </div>
     </BaseContainer>
   </footer>

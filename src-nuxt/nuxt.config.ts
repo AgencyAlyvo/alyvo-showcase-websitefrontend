@@ -126,12 +126,6 @@ export default defineNuxtConfig({
         en: '/contact',
         es: '/contacto',
       },
-
-      about: {
-        fr: '/a-propos',
-        en: '/about',
-        es: '/nosotros',
-      },
     },
 
     detectBrowserLanguage: {

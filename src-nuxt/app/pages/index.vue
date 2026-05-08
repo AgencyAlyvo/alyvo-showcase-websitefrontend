@@ -25,7 +25,6 @@ const faqItems = computed(() => {
     <SectionsMethodSection />
     <SectionsWhyItWorksSection />
     <SectionsUseCasesSection />
-    <SectionsTechnologiesQualitySection />
     <SectionsFaqSection :eyebrow="t('home.faq.eyebrow')" :title="t('home.faq.title')" :items="faqItems" />
     <SectionsFinalCtaSection
       :eyebrow="t('home.finalCta.eyebrow')"

@@ -20,7 +20,7 @@ const items = ['leads', 'time', 'tool', 'idea', 'performance', 'integration'] as
         <h3 class="text-lg font-semibold text-slate-900">
           {{ t(`home.problems.items.${key}.title`) }}
         </h3>
-        <p class="text-sm leading-relaxed text-slate-600">
+        <p v-if="t(`home.problems.items.${key}.description`)" class="text-sm leading-relaxed text-slate-600">
           {{ t(`home.problems.items.${key}.description`) }}
         </p>
         <p class="mt-auto rounded-xl bg-indigo-50 px-4 py-3 text-sm text-indigo-800">

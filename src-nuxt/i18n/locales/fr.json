@@ -1,7 +1,7 @@
 {
   "nav": {
     "home": "Accueil",
-    "projects": "Projets",
+    "projects": "Mes projets",
     "about": "À propos",
     "contact": "Contact",
     "openMenu": "Ouvrir le menu",
@@ -14,7 +14,7 @@
       "description": "Je vous aide à transformer un besoin, une idée ou un problème métier en solution digitale claire, performante et utile : sites web, applications, automatisations et outils internes."
     },
     "projects": {
-      "title": "Projets — Des solutions digitales conçues pour résoudre de vrais besoins",
+      "title": "Mes projets — Des solutions digitales conçues pour résoudre de vrais besoins",
       "description": "Découvrez des projets clients réels : besoin initial, solution proposée, résultats concrets. Sites optimisés SEO, applications sur mesure, automatisations métier."
     },
     "about": {
@@ -41,12 +41,12 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "Studio digital premium",
-      "title": "Transformez votre besoin en solution concrète",
-      "lead": "Vous avez un projet, une idée ou un problème à résoudre ? Je vous aide à créer une solution digitale claire, performante et pensée pour vos objectifs.",
-      "subLead": "Site web, application, automatisation, API ou outil métier : je crée la solution digitale adaptée à votre objectif.",
+      "eyebrow": "",
+      "title": "Vous avez un projet ?",
+      "lead": "Je le developpe avec vous.",
+      "subLead": "",
       "ctaPrimary": "Parler de mon projet",
-      "ctaSecondary": "Voir des cas concrets"
+      "ctaSecondary": "Mes projets"
     },
     "problems": {
       "eyebrow": "Vos défis",
@@ -55,32 +55,32 @@
       "items": {
         "leads": {
           "title": "Mon site ne génère pas assez de demandes",
-          "description": "Trop de visiteurs, pas assez de prospects qualifiés. Vos pages ne convertissent pas et vous ne savez pas pourquoi.",
+          "description": "",
           "solution": "Un site pensé pour la conversion, avec un message clair et des parcours guidés."
         },
         "time": {
           "title": "Je perds du temps sur des tâches répétitives",
-          "description": "Vous copiez, collez, envoyez les mêmes emails, mettez à jour les mêmes fichiers chaque semaine.",
+          "description": "",
           "solution": "Une automatisation qui prend en charge le travail répétitif et libère vos journées."
         },
         "tool": {
           "title": "J’ai besoin d’un outil adapté à mon activité",
-          "description": "Les outils du marché ne couvrent pas vraiment votre métier. Vous bricolez avec des tableurs et des hacks.",
+          "description": "",
           "solution": "Un outil sur mesure qui parle votre langue et reflète votre façon de travailler."
         },
         "idea": {
           "title": "Je veux lancer une idée ou un produit digital",
-          "description": "Vous avez une idée claire, mais pas de vision technique pour la mettre en ligne sans casser votre budget.",
+          "description": "",
           "solution": "Un MVP propre, focalisé sur la valeur, prêt à évoluer avec vos premiers utilisateurs."
         },
         "performance": {
           "title": "Mon site est lent, dépassé ou mal référencé",
-          "description": "Visuellement vieillissant, lent à charger, invisible sur Google. Il vous coûte plus qu’il ne rapporte.",
+          "description": "",
           "solution": "Une refonte performante et optimisée SEO, sans perdre votre référencement existant."
         },
         "integration": {
           "title": "Mes outils ne communiquent pas entre eux",
-          "description": "Vos données sont éparpillées entre CRM, mails, Excel, factures. Vous perdez du temps et de la lisibilité.",
+          "description": "",
           "solution": "Des intégrations fiables qui connectent vos outils et centralisent vos données utiles."
         }
       }
@@ -496,7 +496,7 @@
       "name": "Votre nom",
       "namePlaceholder": "Prénom Nom",
       "email": "Votre email",
-      "emailPlaceholder": "vous{'@'}exemple.com",
+      "emailPlaceholder": "vous{\u0027@\u0027}exemple.com",
       "company": "Entreprise",
       "companyPlaceholder": "Nom de votre entreprise (optionnel)",
       "need": "Quel est votre besoin ?",
@@ -561,7 +561,7 @@
     "info": {
       "title": "Préférez l’email direct ?",
       "lead": "Vous pouvez aussi m’écrire directement à l’adresse ci-dessous.",
-      "email": "contact{'@'}exemple.com",
+      "email": "contact{\u0027@\u0027}exemple.com",
       "responseTime": "Réponse sous 1 à 2 jours ouvrés"
     },
     "faq": {

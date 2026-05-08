@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const { t } = useI18n()
 const localePath = useLocalePath()
+const heroEyebrow = computed(() => t('home.hero.eyebrow').trim())
 </script>
 
 <template>
@@ -15,7 +16,7 @@ const localePath = useLocalePath()
     />
     <BaseContainer size="xl" class="relative py-24 sm:py-36">
       <div class="mx-auto max-w-3xl text-center">
-        <BaseBadge tone="dark">{{ t('home.hero.eyebrow') }}</BaseBadge>
+        <BaseBadge v-if="heroEyebrow" tone="dark">{{ heroEyebrow }}</BaseBadge>
         <h1 class="mt-6 text-4xl font-semibold tracking-tight text-white sm:text-5xl md:text-6xl">
           {{ t('home.hero.title') }}
         </h1>
