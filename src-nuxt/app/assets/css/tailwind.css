@@ -1,1 +1,47 @@
-﻿@import 'tailwindcss';
+@import 'tailwindcss';
+
+@theme {
+  --color-slate-50: #f3f7fb;
+  --color-slate-100: #e8eef5;
+  --color-slate-200: #d6e0eb;
+  --color-slate-300: #bcc9d8;
+  --color-slate-400: #93a6bc;
+  --color-slate-500: #7087a1;
+  --color-slate-600: #556d87;
+  --color-slate-700: #3f556d;
+  --color-slate-800: #2c3f55;
+  --color-slate-900: #1e3146;
+  --color-slate-950: #142336;
+
+  --color-indigo-50: #ebfaff;
+  --color-indigo-100: #d2f2ff;
+  --color-indigo-200: #aae8ff;
+  --color-indigo-300: #72dbff;
+  --color-indigo-400: #2bc8ff;
+  --color-indigo-500: #00afea;
+  --color-indigo-600: #008fc2;
+  --color-indigo-700: #0a7299;
+  --color-indigo-800: #125b78;
+  --color-indigo-900: #154b62;
+  --color-indigo-950: #103447;
+}
+
+@layer base {
+  html,
+  body,
+  #__nuxt {
+    min-height: 100%;
+  }
+
+  body {
+    background:
+      radial-gradient(1200px 540px at 95% -10%, rgb(43 200 255 / 10%), transparent 60%),
+      radial-gradient(900px 480px at -5% 15%, rgb(0 175 234 / 6%), transparent 58%), var(--color-slate-50);
+    color: var(--color-slate-900);
+  }
+
+  ::selection {
+    background: rgb(0 175 234 / 20%);
+    color: var(--color-slate-950);
+  }
+}

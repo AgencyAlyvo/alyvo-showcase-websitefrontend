@@ -16,10 +16,10 @@ withDefaults(
 )
 
 const toneClass = {
-  default: 'bg-white text-slate-900',
-  muted: 'bg-slate-50 text-slate-900',
-  dark: 'bg-slate-950 text-white',
-  gradient: 'bg-gradient-to-b from-indigo-50 via-white to-white text-slate-900',
+  default: 'bg-slate-50 text-slate-900',
+  muted: 'bg-slate-100 text-slate-900',
+  dark: 'bg-slate-900 text-white',
+  gradient: 'bg-gradient-to-b from-indigo-50 via-slate-50 to-slate-50 text-slate-900',
 }
 
 const spacingClass = {

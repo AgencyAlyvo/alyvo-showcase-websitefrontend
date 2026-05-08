@@ -27,12 +27,12 @@ const year = new Date().getFullYear()
 </script>
 
 <template>
-  <footer class="border-t border-slate-100 bg-slate-950 text-slate-300">
+  <footer class="border-t border-slate-800 bg-slate-900 text-slate-200">
     <BaseContainer size="xl" class="py-16">
       <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
         <div class="space-y-4">
           <NuxtLinkLocale to="index" class="text-base font-semibold tracking-tight text-white"> Studio </NuxtLinkLocale>
-          <p class="text-sm leading-relaxed text-slate-400">
+          <p class="text-sm leading-relaxed text-slate-300">
             {{ t('footer.description') }}
           </p>
         </div>
@@ -42,7 +42,7 @@ const year = new Date().getFullYear()
           </h3>
           <ul class="mt-4 space-y-2 text-sm">
             <li v-for="link in navLinks" :key="link.to as string">
-              <NuxtLink :to="link.to" class="text-slate-400 hover:text-white">
+              <NuxtLink :to="link.to" class="text-slate-300 hover:text-white">
                 {{ link.label }}
               </NuxtLink>
             </li>
@@ -54,7 +54,7 @@ const year = new Date().getFullYear()
           </h3>
           <ul class="mt-4 space-y-2 text-sm">
             <li v-for="link in solutionLinks" :key="link.key">
-              <NuxtLinkLocale to="contact" class="text-slate-400 hover:text-white">
+              <NuxtLinkLocale to="contact" class="text-slate-300 hover:text-white">
                 {{ link.label }}
               </NuxtLinkLocale>
             </li>
@@ -65,12 +65,12 @@ const year = new Date().getFullYear()
             <h3 class="text-sm font-semibold tracking-wide text-white uppercase">
               {{ t('footer.contact') }}
             </h3>
-            <p class="mt-4 text-sm text-slate-400">
+            <p class="mt-4 text-sm text-slate-300">
               {{ t('contact.info.email') }}
             </p>
             <NuxtLinkLocale
               to="contact"
-              class="mt-3 inline-flex items-center rounded-full bg-indigo-500 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-400"
+              class="mt-3 inline-flex items-center rounded-full bg-indigo-500 px-4 py-2 text-xs font-medium text-white shadow-sm shadow-indigo-950/30 hover:bg-indigo-400"
             >
               {{ t('buttons.talkAboutProject') }}
             </NuxtLinkLocale>
@@ -87,7 +87,7 @@ const year = new Date().getFullYear()
                     'rounded-full px-3 py-1 ring-1',
                     loc.code === locale
                       ? 'bg-white text-slate-900 ring-white'
-                      : 'text-slate-400 ring-white/10 hover:text-white',
+                      : 'text-slate-300 ring-white/20 hover:text-white',
                   ]"
                 >
                   {{ loc.name }}
@@ -97,8 +97,8 @@ const year = new Date().getFullYear()
           </div>
         </div>
       </div>
-      <div class="mt-16 border-t border-white/10 pt-6 text-xs text-slate-500">
-        © {{ year }} Studio · {{ t('footer.rights') }}
+      <div class="mt-16 border-t border-white/15 pt-6 text-xs text-slate-400">
+        (c) {{ year }} Studio | {{ t('footer.rights') }}
       </div>
     </BaseContainer>
   </footer>

@@ -29,17 +29,17 @@ function toggle(key: string) {
         {{ title }}
       </h2>
     </div>
-    <div class="mt-10 divide-y divide-slate-200 rounded-2xl bg-white ring-1 ring-slate-200">
+    <div class="mt-10 divide-y divide-slate-200 rounded-2xl bg-slate-50/70 ring-1 ring-slate-200">
       <div v-for="item in items" :key="item.key">
         <button
           type="button"
-          class="flex w-full items-start justify-between gap-6 px-6 py-5 text-left"
+          class="flex w-full items-start justify-between gap-6 px-6 py-5 text-left hover:bg-slate-100/70"
           :aria-expanded="opened === item.key"
           @click="toggle(item.key)"
         >
           <span class="text-base font-medium text-slate-900">{{ item.question }}</span>
           <svg
-            :class="['mt-1 h-5 w-5 shrink-0 text-slate-500 transition', opened === item.key ? 'rotate-45' : '']"
+            :class="['mt-1 h-5 w-5 shrink-0 text-indigo-600 transition', opened === item.key ? 'rotate-45' : '']"
             viewBox="0 0 20 20"
             fill="none"
             aria-hidden="true"
