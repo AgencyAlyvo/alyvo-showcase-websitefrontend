@@ -1,28 +1,49 @@
+/**
+ *
+ */
 export type ProjectGoal = 'visibility' | 'conversion' | 'time' | 'automation' | 'tool' | 'launch'
 
+/**
+ *
+ */
 export type ProjectLocale = 'fr' | 'en' | 'es'
 
+/**
+ *
+ */
 export interface ProjectImage {
   src: string
   alt: string
 }
 
+/**
+ *
+ */
 export interface ProjectStake {
   key: string
   label: string
 }
 
+/**
+ *
+ */
 export interface ProjectFeature {
   title: string
   description: string
 }
 
+/**
+ *
+ */
 export interface ProjectResult {
   key: string
   label: string
   value?: string
 }
 
+/**
+ *
+ */
 export interface ProjectTranslation {
   slug: string
   title: string
@@ -44,6 +65,9 @@ export interface ProjectTranslation {
   seoDescription: string
 }
 
+/**
+ *
+ */
 export interface Project {
   id: string
   goals: ProjectGoal[]
@@ -54,6 +78,9 @@ export interface Project {
   translations: Record<ProjectLocale, ProjectTranslation>
 }
 
+/**
+ *
+ */
 export interface ProjectListItem {
   id: string
   cover: ProjectImage

@@ -1,3 +1,8 @@
+import type { H3Event } from 'h3'
+
+/**
+ * Charge utile attendue pour le formulaire de contact.
+ */
 interface ContactPayload {
   name: string
   email: string
@@ -9,16 +14,12 @@ interface ContactPayload {
   locale?: string
 }
 
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const emailPattern: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-export default defineEventHandler(async (event) => {
-  const body = await readBody<ContactPayload>(event)
+export default defineEventHandler(async (event: H3Event) => {
+  const body: ContactPayload = await readBody<ContactPayload>(event)
 
-  if (!body || typeof body !== 'object') {
-    throw createError({ statusCode: 400, statusMessage: 'Invalid payload' })
-  }
-
-  if (!body.name?.trim() || !body.email?.trim() || !body.message?.trim()) {
+  if (!body.name.trim() || !body.email.trim() || !body.message.trim()) {
     throw createError({ statusCode: 422, statusMessage: 'Missing required fields' })
   }
 

@@ -1,11 +1,12 @@
-<script setup lang="ts"></script>
-
 <template>
-  <div class="flex min-h-screen flex-col bg-white text-slate-900 antialiased">
+  <div>
     <LayoutAppHeader />
-    <main class="flex-1">
+    <LayoutScrollProgress />
+    <UMain>
       <slot />
-    </main>
+    </UMain>
     <LayoutAppFooter />
   </div>
 </template>
+
+<script setup lang="ts"></script>

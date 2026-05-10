@@ -1,51 +1,96 @@
-<script setup lang="ts">
-const { t } = useI18n()
-const localePath = useLocalePath()
-
-const links = computed(() => [
-  { to: localePath('index'), label: t('nav.home') },
-  { to: localePath('projects'), label: t('nav.projects') },
-  { to: localePath('contact'), label: t('nav.contact') },
-])
-
-const mobileOpen = ref(false)
-</script>
-
 <template>
-  <header class="sticky top-0 z-40 border-b border-slate-200/80 bg-slate-50/85 backdrop-blur">
-    <BaseContainer size="xl" class="flex h-16 items-center justify-between">
-      <NuxtLinkLocale to="index" class="text-base font-semibold tracking-tight text-slate-900"> Studio </NuxtLinkLocale>
-      <nav class="hidden items-center gap-1 md:flex" aria-label="Main">
-        <NuxtLink
-          v-for="link in links"
-          :key="link.to as string"
-          :to="link.to"
-          class="rounded-full px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900"
-          active-class="text-slate-900"
+  <UHeader>
+    <template #left>
+      <NuxtLink :to="localePath('index')" class="flex items-center gap-2" :aria-label="t('brand.name')">
+        <span
+          class="bg-primary text-inverted flex size-7 items-center justify-center rounded-lg text-sm font-bold"
+          aria-hidden="true"
         >
-          {{ link.label }}
-        </NuxtLink>
-      </nav>
-      <div class="flex items-center gap-2">
-        <LayoutLanguageSwitcher class="hidden md:block" />
-        <NuxtLinkLocale
-          to="contact"
-          class="hidden rounded-full bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm shadow-indigo-950/20 hover:bg-indigo-500 md:inline-flex"
-        >
-          {{ t('buttons.talkAboutProject') }}
-        </NuxtLinkLocale>
-        <button
-          type="button"
-          :aria-label="t('nav.openMenu')"
-          class="rounded-full p-2 text-slate-700 ring-1 ring-slate-300 md:hidden"
-          @click="mobileOpen = true"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-          </svg>
-        </button>
-      </div>
-    </BaseContainer>
-    <LayoutMobileMenu :open="mobileOpen" @close="mobileOpen = false" />
-  </header>
+          A
+        </span>
+        <span class="text-highlighted text-sm font-bold tracking-tight">{{ t('brand.name') }}</span>
+      </NuxtLink>
+
+      <UBadge
+        :label="t('brand.badge')"
+        color="primary"
+        variant="subtle"
+        size="sm"
+        class="-mb-[6px] hidden rounded-full font-semibold sm:inline-flex"
+      />
+    </template>
+
+    <UNavigationMenu :items="items" variant="link" />
+
+    <template #right>
+      <UColorModeButton />
+      <LayoutLanguageSwitcher class="hidden lg:block" />
+
+      <UButton
+        icon="i-lucide-send"
+        color="neutral"
+        variant="ghost"
+        :to="localePath('contact')"
+        :aria-label="t('buttons.talkAboutProject')"
+        class="lg:hidden"
+      />
+
+      <UButton
+        :label="t('buttons.talkAboutProject')"
+        color="neutral"
+        trailing-icon="i-lucide-arrow-right"
+        :to="localePath('contact')"
+        class="hidden lg:inline-flex"
+      />
+    </template>
+
+    <template #body>
+      <UNavigationMenu :items="items" orientation="vertical" class="-mx-2.5" />
+
+      <USeparator class="my-6" />
+
+      <LayoutLanguageSwitcher class="mb-3" />
+
+      <UButton
+        :label="t('buttons.talkAboutProject')"
+        color="neutral"
+        trailing-icon="i-lucide-arrow-right"
+        :to="localePath('contact')"
+        block
+      />
+    </template>
+  </UHeader>
 </template>
+
+<script setup lang="ts">
+import type { ComputedRef } from 'vue'
+
+/** Navigation item consumed by Nuxt UI's navigation menu. */
+type HeaderNavItem = {
+  label: string
+  to: string
+  active: boolean
+}
+
+const route: ReturnType<typeof useRoute> = useRoute()
+const { t } = useI18n()
+const localePath: ReturnType<typeof useLocalePath> = useLocalePath()
+
+const items: ComputedRef<HeaderNavItem[]> = computed((): HeaderNavItem[] => [
+  {
+    label: t('nav.home'),
+    to: localePath('index'),
+    active: route.path === localePath('index'),
+  },
+  {
+    label: t('nav.projects'),
+    to: localePath('projects'),
+    active: route.path.startsWith(localePath('projects')),
+  },
+  {
+    label: t('nav.contact'),
+    to: localePath('contact'),
+    active: route.path.startsWith(localePath('contact')),
+  },
+])
+</script>

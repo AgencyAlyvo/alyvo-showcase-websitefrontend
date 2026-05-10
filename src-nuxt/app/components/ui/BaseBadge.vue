@@ -1,28 +1,36 @@
-<script setup lang="ts">
-withDefaults(
-  defineProps<{
-    tone?: 'default' | 'muted' | 'success' | 'dark'
-  }>(),
-  {
-    tone: 'default',
-  },
-)
-
-const toneClass = {
-  default: 'bg-indigo-50 text-indigo-700 ring-1 ring-indigo-200',
-  muted: 'bg-slate-100 text-slate-700 ring-1 ring-slate-200',
-  success: 'bg-cyan-50 text-cyan-700 ring-1 ring-cyan-200',
-  dark: 'bg-slate-800/80 text-slate-100 ring-1 ring-slate-300/30',
-}
-</script>
-
 <template>
-  <span
-    :class="[
-      'inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium tracking-wide uppercase',
-      toneClass[tone],
-    ]"
-  >
+  <UBadge :color="badgeColor" variant="subtle" class="rounded-full font-semibold tracking-normal uppercase">
     <slot />
-  </span>
+  </UBadge>
 </template>
+
+<script setup lang="ts">
+import type { ComputedRef } from 'vue'
+
+/** Visual tones supported by the legacy badge API. */
+type BaseBadgeTone = 'default' | 'muted' | 'success' | 'dark'
+
+/** Props for the Nuxt UI badge compatibility wrapper. */
+type BaseBadgeProps = {
+  tone?: BaseBadgeTone
+}
+
+/** Badge color accepted by Nuxt UI. */
+type NuxtBadgeColor = 'primary' | 'neutral' | 'success'
+
+const props: BaseBadgeProps = withDefaults(defineProps<BaseBadgeProps>(), {
+  tone: 'default',
+})
+
+const badgeColor: ComputedRef<NuxtBadgeColor> = computed((): NuxtBadgeColor => {
+  if (props.tone === 'success') {
+    return 'success'
+  }
+
+  if (props.tone === 'muted' || props.tone === 'dark') {
+    return 'neutral'
+  }
+
+  return 'primary'
+})
+</script>

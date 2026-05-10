@@ -1,56 +1,79 @@
+<template>
+  <div>
+    <UPageHero :title="t('contact.hero.title')" :description="t('contact.hero.lead')" />
+
+    <div class="mx-auto max-w-4xl px-4 pb-8 sm:px-6 lg:px-8">
+      <UPageCard variant="subtle" class="p-5 sm:p-6">
+        <p class="text-default text-base leading-relaxed sm:text-lg">
+          {{ t('contact.hero.directLead', { email: contactEmail, phone: contactPhone }) }}
+        </p>
+        <div class="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <UButton
+            :href="`mailto:${contactEmail}`"
+            :label="t('contact.hero.directEmail')"
+            icon="i-lucide-mail"
+            color="primary"
+            variant="solid"
+          />
+          <UButton
+            :href="whatsappHref"
+            :label="t('contact.hero.directWhatsapp')"
+            icon="i-simple-icons-whatsapp"
+            color="neutral"
+            variant="outline"
+            target="_blank"
+            rel="noopener noreferrer"
+          />
+          <UButton
+            :href="`tel:${phoneHref}`"
+            :label="t('contact.hero.directCall')"
+            icon="i-lucide-phone"
+            color="neutral"
+            variant="outline"
+          />
+        </div>
+      </UPageCard>
+    </div>
+
+    <SectionsFaqSection :title="t('contact.faq.title')" :items="faqItems" />
+  </div>
+</template>
+
 <script setup lang="ts">
+import type { ComputedRef } from 'vue'
+
 const { t } = useI18n()
+
+const contactEmail: ComputedRef<string> = computed((): string => t('contact.info.email'))
+const contactPhone: ComputedRef<string> = computed((): string => t('contact.info.phone'))
+const phoneHref: ComputedRef<string> = computed((): string => contactPhone.value.replace(/[^+\d]/g, ''))
+const whatsappHref: ComputedRef<string> = computed((): string => {
+  const digits: string = contactPhone.value.replace(/\D/g, '')
+  const internationalDigits: string = digits.startsWith('0') ? `33${digits.slice(1)}` : digits
+  return `https://wa.me/${internationalDigits}`
+})
 
 usePageSeo({
   title: t('seo.contact.title'),
   description: t('seo.contact.description'),
 })
 
-const faqItems = computed(() => {
-  const keys = ['ready', 'smallProject', 'remote', 'tech'] as const
-  return keys.map((key) => ({
-    key,
-    question: t(`contact.faq.items.${key}.question`),
-    answer: t(`contact.faq.items.${key}.answer`),
-  }))
-})
+/** FAQ item passed to the shared FAQ section. */
+type ContactFaqItem = {
+  key: string
+  question: string
+  answer: string
+}
+
+const faqKeys: readonly string[] = ['ready', 'smallProject', 'remote', 'tech']
+
+const faqItems: ComputedRef<ContactFaqItem[]> = computed((): ContactFaqItem[] =>
+  faqKeys.map(
+    (key: string): ContactFaqItem => ({
+      key,
+      question: t(`contact.faq.items.${key}.question`),
+      answer: t(`contact.faq.items.${key}.answer`),
+    }),
+  ),
+)
 </script>
-
-<template>
-  <div>
-    <section class="bg-gradient-to-b from-white via-slate-50 to-white">
-      <BaseContainer size="xl" class="py-20 sm:py-28">
-        <div class="mx-auto max-w-3xl text-center">
-          <BaseBadge>{{ t('contact.hero.eyebrow') }}</BaseBadge>
-          <h1 class="mt-6 text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
-            {{ t('contact.hero.title') }}
-          </h1>
-          <p class="mt-6 text-lg leading-relaxed text-slate-600">
-            {{ t('contact.hero.lead') }}
-          </p>
-        </div>
-      </BaseContainer>
-    </section>
-
-    <BaseSection container-size="xl">
-      <div class="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-start">
-        <ContactContactForm />
-        <div class="space-y-8">
-          <div class="rounded-2xl bg-slate-900 p-6 text-white sm:p-8">
-            <h2 class="text-lg font-semibold">{{ t('contact.reassure.title') }}</h2>
-            <p class="mt-3 text-sm leading-relaxed text-slate-300">
-              {{ t('contact.reassure.lead') }}
-            </p>
-          </div>
-          <ContactContactInfo />
-        </div>
-      </div>
-    </BaseSection>
-
-    <BaseSection tone="muted" container-size="lg">
-      <ContactContactProcess />
-    </BaseSection>
-
-    <SectionsFaqSection :title="t('contact.faq.title')" :items="faqItems" />
-  </div>
-</template>

@@ -1,76 +1,108 @@
-<script setup lang="ts">
-const { t, locale, locales } = useI18n()
-const localePath = useLocalePath()
-const switchLocalePath = useSwitchLocalePath()
+<template>
+  <USeparator icon="i-lucide-sparkles" class="h-px" />
 
-const navLinks = computed(() => [
-  { to: localePath('index'), label: t('nav.home') },
-  { to: localePath('projects'), label: t('nav.projects') },
-  { to: localePath('contact'), label: t('nav.contact') },
+  <UFooter :ui="{ top: 'border-b border-default' }">
+    <template #top>
+      <UContainer>
+        <UFooterColumns :columns="columns">
+          <template #right>
+            <div class="max-w-sm">
+              <p v-if="t('footer.description')" class="text-highlighted text-sm font-medium">
+                {{ t('footer.description') }}
+              </p>
+              <div>
+                <p class="text-highlighted text-xs font-semibold">{{ t('footer.solutions') }}</p>
+                <div class="mt-2 flex flex-wrap gap-2">
+                  <span
+                    v-for="tag in solutionTags"
+                    :key="tag"
+                    class="text-muted ring-accented bg-elevated inline-flex rounded-md px-2 py-1 text-xs ring ring-inset"
+                  >
+                    {{ tag }}
+                  </span>
+                </div>
+              </div>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <UButton
+                  v-for="loc in availableLocales"
+                  :key="loc.code"
+                  :label="loc.name"
+                  :to="switchLocalePath(loc.code)"
+                  :color="loc.code === locale ? 'primary' : 'neutral'"
+                  :variant="loc.code === locale ? 'solid' : 'subtle'"
+                  size="xs"
+                />
+              </div>
+            </div>
+          </template>
+        </UFooterColumns>
+      </UContainer>
+    </template>
+
+    <template #left>
+      <p class="text-muted text-sm">{{ t('brand.name') }} • © {{ year }} • {{ t('footer.rights') }}</p>
+    </template>
+  </UFooter>
+</template>
+
+<script setup lang="ts">
+import type { ComputedRef } from 'vue'
+
+const { t, locale, locales } = useI18n()
+const localePath: ReturnType<typeof useLocalePath> = useLocalePath()
+const switchLocalePath: ReturnType<typeof useSwitchLocalePath> = useSwitchLocalePath()
+
+/** Locale currently exposed by the site navigation. */
+type LocaleCode = 'fr' | 'en' | 'es'
+
+/** Language switcher entry rendered in the footer. */
+type FooterLocale = {
+  code: LocaleCode
+  name: string
+}
+
+/** Link item rendered inside one footer column. */
+type FooterLink = {
+  label: string
+  to?: string
+}
+
+/** Footer column rendered by Nuxt UI's footer component. */
+type FooterColumn = {
+  label: string
+  children: FooterLink[]
+}
+
+const availableLocales: ComputedRef<FooterLocale[]> = computed((): FooterLocale[] => locales.value as FooterLocale[])
+
+const columns: ComputedRef<FooterColumn[]> = computed((): FooterColumn[] => [
+  {
+    label: t('footer.navigation'),
+    children: [
+      { label: t('nav.home'), to: localePath('index') },
+      { label: t('nav.projects'), to: localePath('projects') },
+      { label: t('nav.contact'), to: localePath('contact') },
+    ],
+  },
+  {
+    label: t('footer.contact'),
+    children: [
+      { label: t('contact.info.email'), to: `mailto:${t('contact.info.email')}` },
+      { label: t('contact.info.phone'), to: `tel:${contactPhoneHref.value}` },
+    ],
+  },
 ])
 
-type LocaleCode = 'fr' | 'en' | 'es'
-const availableLocales = computed(() => locales.value as Array<{ code: LocaleCode; name: string }>)
+const contactPhoneHref: ComputedRef<string> = computed((): string => t('contact.info.phone').replace(/[^+\d]/g, ''))
 
-const year = new Date().getFullYear()
+const solutionTags: ComputedRef<string[]> = computed((): string[] => [
+  t('footer.solutionsList.seoWeb'),
+  t('footer.solutionsList.webApp'),
+  t('footer.solutionsList.mobileApp'),
+  t('footer.solutionsList.automation'),
+  t('footer.solutionsList.dashboard'),
+  t('footer.solutionsList.api'),
+])
+
+const year: number = new Date().getFullYear()
 </script>
-
-<template>
-  <footer class="border-t border-slate-800 bg-slate-900 text-slate-200">
-    <BaseContainer size="xl" class="py-16">
-      <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
-        <div>
-          <h3 class="text-sm font-semibold tracking-wide text-white uppercase">
-            {{ t('footer.navigation') }}
-          </h3>
-          <ul class="mt-4 space-y-2 text-sm">
-            <li v-for="link in navLinks" :key="link.to as string">
-              <NuxtLink :to="link.to" class="text-slate-300 hover:text-white">
-                {{ link.label }}
-              </NuxtLink>
-            </li>
-          </ul>
-        </div>
-        <div class="space-y-6">
-          <div>
-            <h3 class="text-sm font-semibold tracking-wide text-white uppercase">
-              {{ t('footer.contact') }}
-            </h3>
-            <p class="mt-4 text-sm text-slate-300">
-              {{ t('contact.info.email') }}
-            </p>
-            <NuxtLinkLocale
-              to="contact"
-              class="mt-3 inline-flex items-center rounded-full bg-indigo-500 px-4 py-2 text-xs font-medium text-white shadow-sm shadow-indigo-950/30 hover:bg-indigo-400"
-            >
-              {{ t('buttons.talkAboutProject') }}
-            </NuxtLinkLocale>
-          </div>
-          <div>
-            <h3 class="text-sm font-semibold tracking-wide text-white uppercase">
-              {{ t('footer.languages') }}
-            </h3>
-            <ul class="mt-4 flex flex-wrap gap-2 text-sm">
-              <li v-for="loc in availableLocales" :key="loc.code">
-                <NuxtLink
-                  :to="switchLocalePath(loc.code)"
-                  :class="[
-                    'rounded-full px-3 py-1 ring-1',
-                    loc.code === locale
-                      ? 'bg-white text-slate-900 ring-white'
-                      : 'text-slate-300 ring-white/20 hover:text-white',
-                  ]"
-                >
-                  {{ loc.name }}
-                </NuxtLink>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="mt-16 border-t border-white/15 pt-6 text-xs text-slate-400">
-        (c) {{ year }} Devtech X | {{ t('footer.rights') }}
-      </div>
-    </BaseContainer>
-  </footer>
-</template>

@@ -1,35 +1,45 @@
-<script setup lang="ts">
-withDefaults(
-  defineProps<{
-    eyebrow?: string
-    title: string
-    lead?: string
-    cta?: string
-  }>(),
-  {},
-)
-
-const localePath = useLocalePath()
-const { t } = useI18n()
-</script>
-
 <template>
-  <BaseSection tone="dark" container-size="md" class="bg-gradient-to-br from-slate-950 via-indigo-950/60 to-slate-950">
-    <div class="text-center">
-      <BaseBadge v-if="eyebrow" tone="dark">{{ eyebrow }}</BaseBadge>
-      <h2 class="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-        {{ title }}
-      </h2>
-      <p v-if="lead" class="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-300">
-        {{ lead }}
-      </p>
-      <div class="mt-8 flex justify-center">
-        <NuxtLink :to="localePath('contact')">
-          <BaseButton variant="dark" size="lg">
-            {{ cta ?? t('buttons.talkAboutProject') }}
-          </BaseButton>
-        </NuxtLink>
-      </div>
-    </div>
-  </BaseSection>
+  <USeparator />
+
+  <UPageCTA
+    :headline="eyebrow"
+    :title="title"
+    :description="lead"
+    :links="ctaLinks"
+    variant="naked"
+    class="overflow-hidden"
+  >
+    <LazyStarsBg />
+  </UPageCTA>
 </template>
+
+<script setup lang="ts">
+import type { ComputedRef } from 'vue'
+
+/** Props for the shared final CTA section. */
+type FinalCtaProps = {
+  eyebrow?: string
+  title: string
+  lead?: string
+  cta?: string
+}
+
+/** Link item consumed by Nuxt UI page CTA. */
+type CtaLink = {
+  label: string
+  to: string
+  trailingIcon: string
+}
+
+const props: FinalCtaProps = defineProps<FinalCtaProps>()
+const localePath: ReturnType<typeof useLocalePath> = useLocalePath()
+const { t } = useI18n()
+
+const ctaLinks: ComputedRef<CtaLink[]> = computed((): CtaLink[] => [
+  {
+    label: props.cta ?? t('buttons.talkAboutProject'),
+    to: localePath('contact'),
+    trailingIcon: 'i-lucide-arrow-right',
+  },
+])
+</script>

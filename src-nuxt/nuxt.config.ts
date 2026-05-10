@@ -32,6 +32,16 @@ export default defineNuxtConfig({
   components: [{ path: '~/components/ui', pathPrefix: false }, '~/components'],
   runtimeConfig: {
     apiSecret: '',
+    dashboardPassword: process.env.DASHBOARD_PASSWORD || '',
+    dashboardSessionToken: process.env.DASHBOARD_SESSION_TOKEN || '',
+    psiApiKey: process.env.PSI_API_KEY || '',
+    indexingSiteUrl: process.env.INDEXING_SITE_URL || process.env.NUXT_PUBLIC_SITE_URL || '',
+    gscSiteUrl: process.env.GSC_SITE_URL || '',
+    gscServiceAccountJson: process.env.GSC_SERVICE_ACCOUNT_JSON || '',
+    gscQuotaProjectId: process.env.GSC_QUOTA_PROJECT_ID || '',
+    googleClientId: process.env.GOOGLE_CLIENT_ID || '',
+    googleClientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
+    gscRefreshToken: process.env.GSC_REFRESH_TOKEN || '',
     public: {
       apiBase: '',
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || '',
@@ -51,6 +61,7 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
   modules: [
+    '@nuxt/ui',
     '@pinia/nuxt',
     '@nuxtjs/sitemap',
     '@nuxtjs/google-fonts',
@@ -63,6 +74,7 @@ export default defineNuxtConfig({
   },
   googleFonts: {
     families: {
+      'Public Sans': [400, 500, 600, 700],
       Barlow: [400, 500, 600, 700],
       'Roboto Mono': [500],
       'Roboto Flex': [600],
@@ -70,19 +82,22 @@ export default defineNuxtConfig({
   },
   site: {
     url: process.env.NUXT_PUBLIC_SITE_URL,
-    name: 'Studio',
+    name: 'Alyvo',
+    description:
+      'Alyvo — sites web, applications, logiciels et automatisations sur mesure.',
+    defaultLocale: 'fr',
   },
   sitemap: {
     autoLastmod: true,
     sources: ['/api/__sitemap__/projects'],
   },
   robots: {
-    disallow: ['/api/'],
+    disallow: ['/api/', '/dashboard', '/en/dashboard', '/es/dashboard'],
   },
   i18n: {
     baseUrl: process.env.NUXT_PUBLIC_SITE_URL,
 
-    strategy: 'prefix',
+    strategy: 'prefix_except_default',
     defaultLocale: 'fr',
     langDir: 'locales',
 

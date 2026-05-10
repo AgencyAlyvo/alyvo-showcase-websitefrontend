@@ -1,67 +1,6 @@
-<script setup lang="ts">
-const { t, locale } = useI18n()
-
-const form = reactive({
-  name: '',
-  email: '',
-  company: '',
-  need: '',
-  stage: '',
-  budget: '',
-  message: '',
-})
-
-const status = ref<'idle' | 'sending' | 'success' | 'error'>('idle')
-
-const needOptions = computed(() =>
-  ['leads', 'site', 'seo', 'automation', 'app', 'tool', 'other'].map((value) => ({
-    value,
-    label: t(`contact.form.needOptions.${value}`),
-  })),
-)
-
-const stageOptions = computed(() =>
-  ['idea', 'defined', 'existing', 'urgent'].map((value) => ({
-    value,
-    label: t(`contact.form.stageOptions.${value}`),
-  })),
-)
-
-const budgetOptions = computed(() =>
-  ['unsure', 'small', 'medium', 'large', 'xl'].map((value) => ({
-    value,
-    label: t(`contact.form.budgetOptions.${value}`),
-  })),
-)
-
-async function onSubmit() {
-  if (status.value === 'sending') return
-  status.value = 'sending'
-
-  try {
-    await $fetch('/api/contact', {
-      method: 'POST',
-      body: { ...form, locale: locale.value },
-    })
-    status.value = 'success'
-    Object.assign(form, {
-      name: '',
-      email: '',
-      company: '',
-      need: '',
-      stage: '',
-      budget: '',
-      message: '',
-    })
-  } catch {
-    status.value = 'error'
-  }
-}
-</script>
-
 <template>
-  <form class="rounded-2xl bg-white p-6 ring-1 ring-slate-200 sm:p-8" novalidate @submit.prevent="onSubmit">
-    <h2 class="text-xl font-semibold text-slate-900">{{ t('contact.form.title') }}</h2>
+  <UPageCard as="form" variant="subtle" class="p-6 sm:p-8" novalidate @submit.prevent="onSubmit">
+    <h2 class="text-highlighted text-xl font-semibold">{{ t('contact.form.title') }}</h2>
 
     <div class="mt-6 grid gap-5 sm:grid-cols-2">
       <BaseInput
@@ -127,12 +66,113 @@ async function onSubmit() {
       <BaseButton type="submit" size="lg" :disabled="status === 'sending'">
         {{ status === 'sending' ? t('contact.form.sending') : t('contact.form.submit') }}
       </BaseButton>
-      <p v-if="status === 'success'" class="rounded-xl bg-emerald-50 px-4 py-2 text-sm text-emerald-700">
-        {{ t('contact.form.success') }}
-      </p>
-      <p v-if="status === 'error'" class="rounded-xl bg-rose-50 px-4 py-2 text-sm text-rose-700">
-        {{ t('contact.form.error') }}
-      </p>
+      <UAlert
+        v-if="status === 'success'"
+        color="success"
+        variant="subtle"
+        :description="t('contact.form.success')"
+        class="py-2 sm:max-w-sm"
+      />
+      <UAlert
+        v-if="status === 'error'"
+        color="error"
+        variant="subtle"
+        :description="t('contact.form.error')"
+        class="py-2 sm:max-w-sm"
+      />
     </div>
-  </form>
+  </UPageCard>
 </template>
+
+<script setup lang="ts">
+import type { ComputedRef, Ref } from 'vue'
+
+const { t, locale } = useI18n()
+
+/** Reactive state for the contact form. */
+type ContactFormState = {
+  name: string
+  email: string
+  company: string
+  need: string
+  stage: string
+  budget: string
+  message: string
+}
+
+/** Select option used by contact form fields. */
+type ContactFormOption = {
+  value: string
+  label: string
+}
+
+/** Submission state for the contact form. */
+type ContactFormStatus = 'idle' | 'sending' | 'success' | 'error'
+
+const form: ContactFormState = reactive({
+  name: '',
+  email: '',
+  company: '',
+  need: '',
+  stage: '',
+  budget: '',
+  message: '',
+})
+
+const status: Ref<ContactFormStatus> = ref('idle')
+
+const needOptions: ComputedRef<ContactFormOption[]> = computed((): ContactFormOption[] =>
+  ['leads', 'site', 'seo', 'automation', 'app', 'tool', 'other'].map(
+    (value: string): ContactFormOption => ({
+      value,
+      label: t(`contact.form.needOptions.${value}`),
+    }),
+  ),
+)
+
+const stageOptions: ComputedRef<ContactFormOption[]> = computed((): ContactFormOption[] =>
+  ['idea', 'defined', 'existing', 'urgent'].map(
+    (value: string): ContactFormOption => ({
+      value,
+      label: t(`contact.form.stageOptions.${value}`),
+    }),
+  ),
+)
+
+const budgetOptions: ComputedRef<ContactFormOption[]> = computed((): ContactFormOption[] =>
+  ['unsure', 'small', 'medium', 'large', 'xl'].map(
+    (value: string): ContactFormOption => ({
+      value,
+      label: t(`contact.form.budgetOptions.${value}`),
+    }),
+  ),
+)
+
+/**
+ * Sends the contact form payload to the local API endpoint.
+ * @returns {Promise<void>} Nothing.
+ */
+async function onSubmit(): Promise<void> {
+  if (status.value === 'sending') return
+  status.value = 'sending'
+
+  try {
+    await $fetch('/api/contact', {
+      method: 'POST',
+      body: { ...form, locale: locale.value },
+    })
+    status.value = 'success'
+    Object.assign(form, {
+      name: '',
+      email: '',
+      company: '',
+      need: '',
+      stage: '',
+      budget: '',
+      message: '',
+    })
+  } catch {
+    status.value = 'error'
+  }
+}
+</script>

@@ -1,31 +1,27 @@
-<script setup lang="ts">
-const { t } = useI18n()
-
-const steps = ['analyze', 'respond', 'exchange', 'propose'] as const
-</script>
-
 <template>
   <div>
     <BaseBadge>{{ t('contact.process.eyebrow') }}</BaseBadge>
-    <h2 class="mt-4 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
+    <h2 class="text-highlighted mt-4 text-2xl font-semibold tracking-tight sm:text-3xl">
       {{ t('contact.process.title') }}
     </h2>
     <ol class="mt-8 space-y-5">
-      <li v-for="(step, index) in steps" :key="step" class="flex gap-4 rounded-2xl bg-white p-5 ring-1 ring-slate-200">
-        <span
-          class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-slate-900 text-sm font-semibold text-white"
-        >
-          {{ index + 1 }}
-        </span>
+      <UPageCard v-for="(step, index) in steps" :key="step" as="li" variant="subtle" class="flex-row gap-4 p-5">
+        <UBadge color="neutral" variant="solid" :label="String(index + 1)" class="size-9 justify-center rounded-full" />
         <div>
-          <h3 class="text-base font-semibold text-slate-900">
+          <h3 class="text-highlighted text-base font-semibold">
             {{ t(`contact.process.steps.${step}.title`) }}
           </h3>
-          <p class="mt-1 text-sm leading-relaxed text-slate-600">
+          <p class="text-muted mt-1 text-sm leading-relaxed">
             {{ t(`contact.process.steps.${step}.description`) }}
           </p>
         </div>
-      </li>
+      </UPageCard>
     </ol>
   </div>
 </template>
+
+<script setup lang="ts">
+const { t } = useI18n()
+
+const steps: readonly string[] = ['analyze', 'respond', 'exchange', 'propose']
+</script>

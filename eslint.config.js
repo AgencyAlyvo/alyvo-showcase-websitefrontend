@@ -205,6 +205,9 @@ const ignoreConfig = {
     // Dépendances
     'node_modules/**',
 
+    // Worktrees Claude (copies isolées, ne pas linter)
+    '.claude/**',
+
     // Rapports de tests
     'tests/unit/test-reports/**',
     'tests/e2e/test-reports/**',

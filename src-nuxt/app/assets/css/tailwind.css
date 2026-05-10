@@ -1,6 +1,23 @@
 @import 'tailwindcss';
+@import '@nuxt/ui';
 
-@theme {
+@source '../**/*.{vue,ts}';
+
+@theme static {
+  --font-sans: 'Public Sans', sans-serif;
+
+  --color-green-50: #effdf5;
+  --color-green-100: #d9fbe8;
+  --color-green-200: #b3f5d1;
+  --color-green-300: #75edae;
+  --color-green-400: #00dc82;
+  --color-green-500: #00c16a;
+  --color-green-600: #00a155;
+  --color-green-700: #007f45;
+  --color-green-800: #016538;
+  --color-green-900: #0a5331;
+  --color-green-950: #052e16;
+
   --color-slate-50: #f3f7fb;
   --color-slate-100: #e8eef5;
   --color-slate-200: #d6e0eb;
@@ -40,8 +57,25 @@
     color: var(--color-slate-900);
   }
 
+  .dark body {
+    background: var(--ui-bg);
+    color: var(--ui-text);
+  }
+
   ::selection {
     background: rgb(0 175 234 / 20%);
     color: var(--color-slate-950);
   }
+
+  .dark ::selection {
+    background: color-mix(in oklab, var(--ui-primary) 30%, transparent);
+    color: var(--ui-text-highlighted);
+  }
+}
+
+.dark {
+  --ui-bg: var(--ui-color-neutral-950);
+  --ui-bg-muted: var(--ui-color-neutral-900);
+  --ui-bg-elevated: var(--ui-color-neutral-900);
+  --ui-bg-accented: var(--ui-color-neutral-800);
 }

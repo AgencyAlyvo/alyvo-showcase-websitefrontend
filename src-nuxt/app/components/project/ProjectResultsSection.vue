@@ -1,14 +1,3 @@
-<script setup lang="ts">
-import type { Project, ProjectLocale } from '#src-nuxt/shared/types/project'
-
-const props = defineProps<{
-  project: Project
-}>()
-
-const { locale, t } = useI18n()
-const translation = computed(() => props.project.translations[locale.value as ProjectLocale])
-</script>
-
 <template>
   <BaseSection tone="dark" container-size="lg">
     <h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
@@ -33,3 +22,17 @@ const translation = computed(() => props.project.translations[locale.value as Pr
     </p>
   </BaseSection>
 </template>
+
+<script setup lang="ts">
+import type { ComputedRef } from 'vue'
+import type { Project, ProjectLocale, ProjectTranslation } from '#src-nuxt/shared/types/project'
+
+const props: Readonly<{ project: Project }> = defineProps<{
+  project: Project
+}>()
+
+const { locale, t } = useI18n()
+const translation: ComputedRef<ProjectTranslation> = computed(
+  () => props.project.translations[locale.value as ProjectLocale],
+)
+</script>

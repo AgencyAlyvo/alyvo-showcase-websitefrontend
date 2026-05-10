@@ -1,41 +1,52 @@
-<script setup lang="ts">
-withDefaults(
-  defineProps<{
-    modelValue?: string
-    label?: string
-    placeholder?: string
-    required?: boolean
-    name?: string
-    id?: string
-    rows?: number
-  }>(),
-  {
-    required: false,
-    rows: 5,
-  },
-)
-
-defineEmits<{
-  (e: 'update:modelValue', value: string): void
-}>()
-
-const textareaId = computed(() => `textarea-${Math.random().toString(36).slice(2, 9)}`)
-</script>
-
 <template>
-  <div class="flex flex-col gap-2">
-    <label v-if="label" :for="id || textareaId" class="text-sm font-medium text-slate-800">
-      {{ label }}
-    </label>
-    <textarea
+  <UFormField :label="label" :required="required" :ui="{ label: 'text-highlighted' }">
+    <UTextarea
       :id="id || textareaId"
       :name="name"
       :rows="rows"
-      :value="modelValue"
+      :model-value="modelValue"
       :placeholder="placeholder"
       :required="required"
-      class="w-full resize-y rounded-xl border-0 bg-white px-4 py-3 text-sm text-slate-900 ring-1 ring-slate-200 placeholder:text-slate-400 focus:ring-2 focus:ring-slate-900 focus:outline-none"
-      @input="$emit('update:modelValue', ($event.target as HTMLTextAreaElement).value)"
+      color="neutral"
+      variant="outline"
+      size="xl"
+      autoresize
+      class="w-full"
+      @update:model-value="updateValue"
     />
-  </div>
+  </UFormField>
 </template>
+
+<script setup lang="ts">
+/** Props for the Nuxt UI textarea compatibility wrapper. */
+type BaseTextareaProps = {
+  modelValue?: string
+  label?: string
+  placeholder?: string
+  required?: boolean
+  name?: string
+  id?: string
+  rows?: number
+}
+
+/** Emits supported by the textarea wrapper. */
+type BaseTextareaEmits = {
+  (event: 'update:modelValue', value: string): void
+}
+
+withDefaults(defineProps<BaseTextareaProps>(), {
+  required: false,
+  rows: 5,
+})
+
+const emit: BaseTextareaEmits = defineEmits<BaseTextareaEmits>()
+const textareaId: string = useId()
+
+/**
+ * Normalizes Nuxt UI's model value before forwarding it.
+ * @param {unknown} value - Raw value emitted by UTextarea.
+ */
+function updateValue(value: unknown): void {
+  emit('update:modelValue', value === undefined || value === null ? '' : String(value))
+}
+</script>
