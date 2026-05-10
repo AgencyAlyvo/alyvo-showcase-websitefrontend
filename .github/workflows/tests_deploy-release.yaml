@@ -9,6 +9,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  issues: write
 
 jobs:
   tests_deploy-release:
@@ -38,4 +39,4 @@ jobs:
           release-type: node
           target-branch: main
           config-file: 'release-please-config.json'
-          token: ${{ secrets.PAT_TOKEN }}
+          token: ${{ secrets.PAT_ALYVO }}
