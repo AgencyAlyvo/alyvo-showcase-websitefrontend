@@ -46,13 +46,13 @@ jobs:
 
       - name: Check Nuxt output exists
         run: |
-          test -d .output
-          test -f .output/server/index.mjs
+          test -d src-nuxt/.output
+          test -f src-nuxt/.output/server/index.mjs
 
       - name: Create deployment artifact
         run: |
           mkdir -p .deploy
-          tar -czf .deploy/output.tar.gz .output
+          tar -czf .deploy/output.tar.gz -C src-nuxt .output
 
       - name: Install Ansible and tools
         run: |
