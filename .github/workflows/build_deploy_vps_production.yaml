@@ -1,0 +1,106 @@
+name: build_deploy_vps_production
+
+on:
+  release:
+    types:
+      - published
+  workflow_dispatch:
+
+env:
+  # VPS
+  VPS_HOST: ${{ secrets.VPS_HOST }}
+  VPS_USER: ${{ secrets.VPS_USER }}
+  VPS_PASSWORD: ${{ secrets.VPS_PASSWORD }}
+
+  # Domain / SSL
+  DOMAIN_NAME: alyvo.fr
+  CERTBOT_EMAIL: ${{ secrets.CERTBOT_EMAIL }}
+
+  # App
+  APP_NAME: alyvo
+  APP_DIR: /var/www/alyvo
+  APP_PORT: "3000"
+
+  # Node
+  NODE_VERSION: "24.15.0"
+
+jobs:
+  build_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
+
+      - name: Build Nuxt app for production SSR Server
+        run: npm run web:build:server:prod:ssr
+
+      - name: Check Nuxt output exists
+        run: |
+          test -d .output
+          test -f .output/server/index.mjs
+
+      - name: Create deployment artifact
+        run: |
+          mkdir -p .deploy
+          tar -czf .deploy/output.tar.gz .output
+
+      - name: Install Ansible and tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ansible sshpass jq
+
+      - name: Add VPS to known hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H "$VPS_HOST" >> ~/.ssh/known_hosts
+
+      - name: Create Ansible variables
+        run: |
+          NODE_MAJOR_VERSION="$(echo "$NODE_VERSION" | cut -d. -f1)"
+
+          jq -n \
+            --arg ansible_password "$VPS_PASSWORD" \
+            --arg ansible_become_password "$VPS_PASSWORD" \
+            --arg domain_name "$DOMAIN_NAME" \
+            --arg certbot_email "$CERTBOT_EMAIL" \
+            --arg app_name "$APP_NAME" \
+            --arg app_user "$VPS_USER" \
+            --arg app_dir "$APP_DIR" \
+            --arg app_port "$APP_PORT" \
+            --arg node_major_version "$NODE_MAJOR_VERSION" \
+            --arg local_artifact_path "$GITHUB_WORKSPACE/.deploy/output.tar.gz" \
+            '{
+              ansible_password: $ansible_password,
+              ansible_become_password: $ansible_become_password,
+              domain_name: $domain_name,
+              certbot_email: $certbot_email,
+              app_name: $app_name,
+              app_user: $app_user,
+              app_dir: $app_dir,
+              app_port: ($app_port | tonumber),
+              node_major_version: ($node_major_version | tonumber),
+              local_artifact_path: $local_artifact_path
+            }' > ansible/extra-vars.json
+
+      - name: Run Ansible deployment
+        run: |
+          ansible-playbook \
+            -i "$VPS_HOST," \
+            -u "$VPS_USER" \
+            --extra-vars "@ansible/extra-vars.json" \
+            ansible/playbook.yml
