@@ -7,7 +7,13 @@ export default defineNuxtConfig({
   app: {
     head: {
       meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }, { charset: 'utf-8' }],
-      script: [],
+      script: [
+        {
+          src: 'https://umami.alyvo.fr/script.js',
+          defer: true,
+          'data-website-id': '958a1d2c-b36e-4c9d-89ab-0a5289038694',
+        },
+      ],
       link: [],
       style: [],
       noscript: [],
