@@ -8,6 +8,10 @@ module.exports = {
       script: './.output/server/index.mjs',
       env: {
         NODE_ENV: 'production',
+        PORT: '{{ app_port }}',
+        NITRO_PORT: '{{ app_port }}',
+        HOST: '127.0.0.1',
+        NITRO_HOST: '127.0.0.1',
       },
     },
   ],
