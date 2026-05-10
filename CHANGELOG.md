@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/AgencyAlyvo/alyvo-showcase-websitefrontend/compare/v1.0.6...v1.1.0) (2026-05-10)
+
+
+### Features
+
+* add umami in app ([8152821](https://github.com/AgencyAlyvo/alyvo-showcase-websitefrontend/commit/8152821147994031e8ff7e76236897bcbaf773f9))
+
 ## [1.0.6](https://github.com/AgencyAlyvo/alyvo-showcase-websitefrontend/compare/v1.0.5...v1.0.6) (2026-05-10)
 
 
