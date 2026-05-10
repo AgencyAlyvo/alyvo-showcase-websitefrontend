@@ -3,20 +3,20 @@
   become: true
 
   vars:
-    app_user: ""
+    app_user: ''
 
-    app_name: ""
-    app_dir: ""
-    app_current_dir: "{{ app_dir }}/current"
+    app_name: ''
+    app_dir: ''
+    app_current_dir: '{{ app_dir }}/current'
     app_port: 0
 
-    domain_name: ""
-    certbot_email: ""
+    domain_name: ''
+    certbot_email: ''
 
     node_major_version: 24
 
-    local_artifact_path: ""
-    remote_artifact_path: "/tmp/{{ app_name }}-output.tar.gz"
+    local_artifact_path: ''
+    remote_artifact_path: '/tmp/{{ app_name }}-output.tar.gz'
 
   tasks:
     - name: Check required variables
@@ -29,7 +29,7 @@
           - app_port | int > 0
           - local_artifact_path | length > 0
           - app_user | length > 0
-        fail_msg: "Missing required variables from GitHub Actions."
+        fail_msg: 'Missing required variables from GitHub Actions.'
 
     - name: Update apt cache
       ansible.builtin.apt:
@@ -55,7 +55,7 @@
         state: directory
         owner: root
         group: root
-        mode: "0755"
+        mode: '0755'
 
     - name: Install NodeSource GPG key
       ansible.builtin.shell: |
@@ -66,7 +66,7 @@
 
     - name: Add NodeSource repository
       ansible.builtin.apt_repository:
-        repo: "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_{{ node_major_version }}.x nodistro main"
+        repo: 'deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_{{ node_major_version }}.x nodistro main'
         filename: nodesource
         state: present
         update_cache: true
@@ -85,101 +85,101 @@
     - name: Install PM2 globally
       ansible.builtin.command: npm install -g pm2
       when: pm2_check.rc != 0
-      
+
     - name: Create app root directory
       ansible.builtin.file:
-        path: "{{ app_dir }}"
+        path: '{{ app_dir }}'
         state: directory
-        owner: "{{ app_user }}"
-        group: "{{ app_user }}"
-        mode: "0755"
+        owner: '{{ app_user }}'
+        group: '{{ app_user }}'
+        mode: '0755'
 
     - name: Create app current directory
       ansible.builtin.file:
-        path: "{{ app_current_dir }}"
+        path: '{{ app_current_dir }}'
         state: directory
-        owner: "{{ app_user }}"
-        group: "{{ app_user }}"
-        mode: "0755"
+        owner: '{{ app_user }}'
+        group: '{{ app_user }}'
+        mode: '0755'
 
     - name: Create logs directory
       ansible.builtin.file:
-        path: "{{ app_dir }}/logs"
+        path: '{{ app_dir }}/logs'
         state: directory
         owner: www-data
         group: www-data
-        mode: "0755"
+        mode: '0755'
 
     - name: Copy Nuxt artifact to VPS
       ansible.builtin.copy:
-        src: "{{ local_artifact_path }}"
-        dest: "{{ remote_artifact_path }}"
+        src: '{{ local_artifact_path }}'
+        dest: '{{ remote_artifact_path }}'
         owner: root
         group: root
-        mode: "0644"
+        mode: '0644'
 
     - name: Remove previous Nuxt output
       ansible.builtin.file:
-        path: "{{ app_current_dir }}/.output"
+        path: '{{ app_current_dir }}/.output'
         state: absent
 
     - name: Extract Nuxt output
       ansible.builtin.unarchive:
-        src: "{{ remote_artifact_path }}"
-        dest: "{{ app_current_dir }}"
+        src: '{{ remote_artifact_path }}'
+        dest: '{{ app_current_dir }}'
         remote_src: true
-        owner: "{{ app_user }}"
-        group: "{{ app_user }}"
+        owner: '{{ app_user }}'
+        group: '{{ app_user }}'
 
     - name: Create PM2 ecosystem config
       ansible.builtin.template:
         src: templates/ecosystem.config.cjs.j2
-        dest: "{{ app_current_dir }}/ecosystem.config.cjs"
-        owner: "{{ app_user }}"
-        group: "{{ app_user }}"
-        mode: "0644"
+        dest: '{{ app_current_dir }}/ecosystem.config.cjs'
+        owner: '{{ app_user }}'
+        group: '{{ app_user }}'
+        mode: '0644'
 
     - name: Start or reload Nuxt app with PM2
       ansible.builtin.shell: |
         pm2 startOrReload ecosystem.config.cjs --update-env
         pm2 save
       args:
-        chdir: "{{ app_current_dir }}"
-      become_user: "{{ app_user }}"
+        chdir: '{{ app_current_dir }}'
+      become_user: '{{ app_user }}'
       environment:
-        PM2_HOME: "/home/{{ app_user }}/.pm2"
+        PM2_HOME: '/home/{{ app_user }}/.pm2'
 
     - name: Configure PM2 startup service
-      ansible.builtin.command: "pm2 startup systemd -u {{ app_user }} --hp /home/{{ app_user }}"
+      ansible.builtin.command: 'pm2 startup systemd -u {{ app_user }} --hp /home/{{ app_user }}'
       args:
-        creates: "/etc/systemd/system/pm2-{{ app_user }}.service"
+        creates: '/etc/systemd/system/pm2-{{ app_user }}.service'
 
     - name: Enable PM2 service
       ansible.builtin.systemd:
-        name: "pm2-{{ app_user }}"
+        name: 'pm2-{{ app_user }}'
         enabled: true
         state: started
         daemon_reload: true
 
     - name: Check if SSL certificate already exists
       ansible.builtin.stat:
-        path: "/etc/letsencrypt/live/{{ domain_name }}/fullchain.pem"
+        path: '/etc/letsencrypt/live/{{ domain_name }}/fullchain.pem'
       register: ssl_cert
 
     - name: Create initial Nginx config
       ansible.builtin.template:
         src: templates/nginx.conf.j2
-        dest: "/etc/nginx/sites-available/{{ app_name }}"
+        dest: '/etc/nginx/sites-available/{{ app_name }}'
         owner: root
         group: root
-        mode: "0644"
+        mode: '0644'
       vars:
-        ssl_enabled: "{{ ssl_cert.stat.exists }}"
+        ssl_enabled: '{{ ssl_cert.stat.exists }}'
 
     - name: Enable Nginx site
       ansible.builtin.file:
-        src: "/etc/nginx/sites-available/{{ app_name }}"
-        dest: "/etc/nginx/sites-enabled/{{ app_name }}"
+        src: '/etc/nginx/sites-available/{{ app_name }}'
+        dest: '/etc/nginx/sites-enabled/{{ app_name }}'
         state: link
         force: true
 
@@ -212,15 +212,15 @@
         --agree-tos
         --email {{ certbot_email }}
       args:
-        creates: "/etc/letsencrypt/live/{{ domain_name }}/fullchain.pem"
+        creates: '/etc/letsencrypt/live/{{ domain_name }}/fullchain.pem'
 
     - name: Create final HTTPS Nginx config
       ansible.builtin.template:
         src: templates/nginx.conf.j2
-        dest: "/etc/nginx/sites-available/{{ app_name }}"
+        dest: '/etc/nginx/sites-available/{{ app_name }}'
         owner: root
         group: root
-        mode: "0644"
+        mode: '0644'
       vars:
         ssl_enabled: true
 
@@ -234,8 +234,8 @@
       ansible.builtin.cron:
         name: certbot renew
         user: root
-        minute: "0"
-        hour: "*/12"
+        minute: '0'
+        hour: '*/12'
         job: "/usr/bin/certbot renew --quiet --deploy-hook '/usr/sbin/nginx -t && /bin/systemctl reload nginx'"
 
     - name: Final Nginx test

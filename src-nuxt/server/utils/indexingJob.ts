@@ -4,10 +4,15 @@ import { inspectUrl } from '~~/server/utils/gscInspect'
 import { getIndexingRows, getRefreshState, setIndexingRows, setRefreshState } from '~~/server/utils/indexingStorage'
 import { getIndexingSources } from '~~/server/utils/indexingSources'
 
-const DELAY_BETWEEN_REQUESTS_MS = 1500
+const DELAY_BETWEEN_REQUESTS_MS: number = 1500
 
+/**
+ * Attend un dÃ©lai non-bloquant.
+ * @param {number} ms - DurÃ©e d'attente en millisecondes.
+ * @returns {Promise<void>} RÃ©solu une fois le dÃ©lai terminÃ©.
+ */
 function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms))
+  return new Promise((resolve: () => void) => setTimeout(resolve, ms))
 }
 
 /**
@@ -15,9 +20,9 @@ function sleep(ms: number): Promise<void> {
  * À lancer sans await depuis POST /api/indexing-status/refresh.
  */
 export async function runIndexingRefreshJob(): Promise<void> {
-  const config = useRuntimeConfig()
-  const siteBaseUrl: string = String(config.indexingSiteUrl ?? '').replace(/\/$/, '')
-  const gscSiteUrl: string = String(config.gscSiteUrl ?? siteBaseUrl)
+  const config: ReturnType<typeof useRuntimeConfig> = useRuntimeConfig()
+  const siteBaseUrl: string = String(config.indexingSiteUrl).replace(/\/$/, '')
+  const gscSiteUrl: string = String(config.gscSiteUrl)
 
   let accessToken: string
   try {
@@ -32,7 +37,7 @@ export async function runIndexingRefreshJob(): Promise<void> {
     return
   }
 
-  const quotaProjectId: string = String(config.gscQuotaProjectId ?? '').trim()
+  const quotaProjectId: string = String(config.gscQuotaProjectId).trim()
   const sources: IndexingStatusRow[] = await getIndexingSources(siteBaseUrl)
   const rows: Record<string, IndexingStatusRow> = await getIndexingRows()
 
@@ -67,7 +72,12 @@ export async function runIndexingRefreshJob(): Promise<void> {
       type: source.type,
     }
     try {
-      const result = await inspectUrl(source.url, accessToken, quotaProjectId, gscSiteUrl)
+      const result: Awaited<ReturnType<typeof inspectUrl>> = await inspectUrl(
+        source.url,
+        accessToken,
+        quotaProjectId,
+        gscSiteUrl,
+      )
       row.verdict = result.verdict
       row.coverageState = result.coverageState
       row.lastCrawlTime = result.lastCrawlTime

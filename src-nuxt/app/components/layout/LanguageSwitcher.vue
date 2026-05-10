@@ -52,6 +52,9 @@ const languageItems: ComputedRef<LanguageMenuItem[]> = computed((): LanguageMenu
   availableLocales.value.map(
     (item: LocaleOption): LanguageMenuItem => ({
       label: item.name,
+      /**
+       *
+       */
       onSelect: async (): Promise<void> => {
         await setLocale(item.code)
       },

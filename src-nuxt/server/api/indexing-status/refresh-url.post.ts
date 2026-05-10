@@ -20,16 +20,16 @@ export default defineEventHandler(async (event: H3Event) => {
     throw createError({ statusCode: 400, statusMessage: 'Body must contain url.' })
   }
 
-  const config = useRuntimeConfig(event)
-  const siteBaseUrl: string = String(config.indexingSiteUrl ?? '').replace(/\/$/, '')
-  const gscSiteUrl: string = String(config.gscSiteUrl ?? siteBaseUrl)
+  const config: ReturnType<typeof useRuntimeConfig> = useRuntimeConfig(event)
+  const siteBaseUrl: string = String(config.indexingSiteUrl).replace(/\/$/, '')
+  const gscSiteUrl: string = String(config.gscSiteUrl)
 
   if (!url.startsWith(`${siteBaseUrl}/`) && url !== siteBaseUrl) {
     throw createError({ statusCode: 400, statusMessage: 'URL must be on the configured site.' })
   }
 
   const sources: IndexingStatusRow[] = await getIndexingSources(siteBaseUrl)
-  const source = sources.find((s) => s.url === url)
+  const source: IndexingStatusRow | undefined = sources.find((s: IndexingStatusRow): boolean => s.url === url)
   if (!source) {
     throw createError({ statusCode: 404, statusMessage: 'URL not in indexing sources.' })
   }
@@ -43,7 +43,7 @@ export default defineEventHandler(async (event: H3Event) => {
       gscRefreshToken: config.gscRefreshToken as string,
     })
   } catch (e) {
-    const msg = e instanceof Error ? e.message : 'GSC not configured or token invalid.'
+    const msg: string = e instanceof Error ? e.message : 'GSC not configured or token invalid.'
     console.error('[refresh-url] GSC auth error:', msg)
     throw createError({
       statusCode: 503,
@@ -51,12 +51,12 @@ export default defineEventHandler(async (event: H3Event) => {
     })
   }
 
-  const quotaProjectId: string = String(config.gscQuotaProjectId ?? '').trim()
-  let result
+  const quotaProjectId: string = String(config.gscQuotaProjectId).trim()
+  let result: Awaited<ReturnType<typeof inspectUrl>>
   try {
     result = await inspectUrl(url, accessToken, quotaProjectId, gscSiteUrl)
   } catch (e) {
-    const msg = e instanceof Error ? e.message : "Erreur lors de l'inspection de l'URL."
+    const msg: string = e instanceof Error ? e.message : "Erreur lors de l'inspection de l'URL."
     console.error('[refresh-url] Inspect error:', msg)
     throw createError({
       statusCode: 500,
@@ -64,7 +64,7 @@ export default defineEventHandler(async (event: H3Event) => {
     })
   }
 
-  const rows = await getIndexingRows()
+  const rows: Record<string, IndexingStatusRow> = await getIndexingRows()
   const existing: IndexingStatusRow | undefined = rows[url]
   const row: IndexingStatusRow = {
     ...source,

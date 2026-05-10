@@ -83,8 +83,7 @@ export default defineNuxtConfig({
   site: {
     url: process.env.NUXT_PUBLIC_SITE_URL,
     name: 'Alyvo',
-    description:
-      'Alyvo — sites web, applications, logiciels et automatisations sur mesure.',
+    description: 'Alyvo — sites web, applications, logiciels et automatisations sur mesure.',
     defaultLocale: 'fr',
   },
   sitemap: {

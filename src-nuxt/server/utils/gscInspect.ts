@@ -1,6 +1,9 @@
-const GSC_INSPECT_URL = 'https://searchconsole.googleapis.com/v1/urlInspection/index:inspect'
-const REQUEST_TIMEOUT_MS = 12_000
+const GSC_INSPECT_URL: string = 'https://searchconsole.googleapis.com/v1/urlInspection/index:inspect'
+const REQUEST_TIMEOUT_MS: number = 12_000
 
+/**
+ *
+ */
 export type GscInspectResult = {
   verdict?: string
   coverageState?: string
@@ -11,7 +14,11 @@ export type GscInspectResult = {
 
 /**
  * Une seule inspection d'URL (1 requête). À appeler dans un job avec rate limit.
- * @param siteUrl - L'identifiant du site dans GSC (ex. "sc-domain:alyvo.fr" ou "https://alyvo.fr/").
+ * @param {string} inspectionUrl - URL Ã  inspecter.
+ * @param {string} accessToken - Bearer token Google Search Console.
+ * @param {string} quotaProjectId - Projet de quota GCP optionnel.
+ * @param {string} siteUrl - Identifiant de site GSC (sc-domain:... ou https://.../).
+ * @returns {Promise<GscInspectResult>} RÃ©sultat normalisÃ© de l'inspection.
  */
 export async function inspectUrl(
   inspectionUrl: string,
@@ -19,8 +26,8 @@ export async function inspectUrl(
   quotaProjectId: string,
   siteUrl: string,
 ): Promise<GscInspectResult> {
-  const controller = new AbortController()
-  const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS)
+  const controller: AbortController = new AbortController()
+  const timeoutId: ReturnType<typeof setTimeout> = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS)
   try {
     const headers: Record<string, string> = {
       Authorization: `Bearer ${accessToken}`,
@@ -29,7 +36,7 @@ export async function inspectUrl(
     if (quotaProjectId) {
       headers['x-goog-user-project'] = quotaProjectId
     }
-    const res = await fetch(GSC_INSPECT_URL, {
+    const res: Response = await fetch(GSC_INSPECT_URL, {
       method: 'POST',
       headers,
       body: JSON.stringify({
@@ -41,10 +48,20 @@ export async function inspectUrl(
     })
     clearTimeout(timeoutId)
     if (!res.ok) {
-      const err = await res.text()
+      const err: string = await res.text()
       throw new Error(`GSC inspect ${res.status}: ${err.slice(0, 300)}`)
     }
-    const data = (await res.json()) as {
+    const data: {
+      inspectionResult?: {
+        indexStatusResult?: {
+          verdict?: string
+          coverageState?: string
+          lastCrawlTime?: string
+          googleCanonical?: string
+        }
+        inspectionResultLink?: string
+      }
+    } = (await res.json()) as {
       inspectionResult?: {
         indexStatusResult?: {
           verdict?: string
@@ -55,7 +72,14 @@ export async function inspectUrl(
         inspectionResultLink?: string
       }
     }
-    const indexStatus = data.inspectionResult?.indexStatusResult
+    const indexStatus:
+      | {
+          verdict?: string
+          coverageState?: string
+          lastCrawlTime?: string
+          googleCanonical?: string
+        }
+      | undefined = data.inspectionResult?.indexStatusResult
     return {
       verdict: indexStatus?.verdict,
       coverageState: indexStatus?.coverageState,

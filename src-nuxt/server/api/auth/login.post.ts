@@ -2,8 +2,11 @@ import type { H3Event } from 'h3'
 import { createError, setCookie, readBody } from 'h3'
 import { DASHBOARD_SESSION_COOKIE_NAME } from '~~/server/utils/dashboardAuth'
 
-const SESSION_MAX_AGE_SECONDS = 60 * 60 * 24 * 7 // 7 days
+const SESSION_MAX_AGE_SECONDS: number = 60 * 60 * 24 * 7 // 7 days
 
+/**
+ *
+ */
 type LoginRequestBody = {
   password: string
 }
@@ -13,9 +16,9 @@ type LoginRequestBody = {
  * Compare le mot de passe fourni avec DASHBOARD_PASSWORD et pose un cookie de session.
  */
 export default defineEventHandler(async (event: H3Event): Promise<{ ok: true }> => {
-  const config = useRuntimeConfig(event)
-  const expectedPassword: string = String(config.dashboardPassword ?? '')
-  const sessionToken: string = String(config.dashboardSessionToken ?? '')
+  const config: ReturnType<typeof useRuntimeConfig> = useRuntimeConfig(event)
+  const expectedPassword: string = String(config.dashboardPassword)
+  const sessionToken: string = String(config.dashboardSessionToken)
 
   if (!expectedPassword || !sessionToken) {
     throw createError({
@@ -24,9 +27,9 @@ export default defineEventHandler(async (event: H3Event): Promise<{ ok: true }> 
     })
   }
 
-  const body = await readBody<LoginRequestBody>(event)
+  const body: LoginRequestBody = await readBody<LoginRequestBody>(event)
 
-  if (!body || typeof body.password !== 'string' || body.password.trim() === '') {
+  if (typeof body.password !== 'string' || body.password.trim() === '') {
     throw createError({
       statusCode: 400,
       statusMessage: 'Password is required.',

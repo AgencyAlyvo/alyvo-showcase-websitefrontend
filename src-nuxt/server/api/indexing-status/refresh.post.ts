@@ -21,7 +21,7 @@ export default defineEventHandler(async (event: H3Event) => {
     cancelled: undefined,
   })
 
-  runIndexingRefreshJob().catch((err) => {
+  runIndexingRefreshJob().catch((err: unknown) => {
     console.error('[indexing-status] refresh job error', err)
     setRefreshState({ status: 'idle' }).catch(() => {})
   })

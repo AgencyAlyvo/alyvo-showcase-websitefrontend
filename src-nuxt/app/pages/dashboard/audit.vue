@@ -26,11 +26,7 @@
             />
           </div>
           <BaseButton class="w-full sm:w-auto" :disabled="loading" @click="fetchPages(true)">
-            <UIcon
-              v-if="loading"
-              name="i-lucide-loader-2"
-              class="mr-2 inline-block size-4 animate-spin"
-            />
+            <UIcon v-if="loading" name="i-lucide-loader-2" class="mr-2 inline-block size-4 animate-spin" />
             {{ loading ? 'Chargement…' : 'Actualiser la liste' }}
           </BaseButton>
         </div>
@@ -258,17 +254,21 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue'
-import type { Ref } from 'vue'
-import type { LighthouseReportResponse, LighthouseStrategyReport, LighthouseCategoryId } from '~~/server/types/lighthouse'
+import type { ComputedRef, Ref } from 'vue'
+import type {
+  LighthouseReportResponse,
+  LighthouseStrategyReport,
+  LighthouseCategoryId,
+} from '~~/server/types/lighthouse'
 
 definePageMeta({
   layout: 'dashboard',
 })
 
-const route = useRoute()
+const route: ReturnType<typeof useRoute> = useRoute()
 
-const reportUrlParam = computed((): string | null => {
-  const url: unknown = route.query?.url
+const reportUrlParam: ComputedRef<string | null> = computed((): string | null => {
+  const url: unknown = route.query.url
   return typeof url === 'string' && url.trim().length > 0 ? url.trim() : null
 })
 
@@ -279,12 +279,18 @@ useHead({
   meta: [{ name: 'robots', content: 'noindex, nofollow' }],
 })
 
+/**
+ *
+ */
 type SitemapPageItem = {
   url: string
   title: string
   type: string
 }
 
+/**
+ *
+ */
 type SitemapPagesResponse = {
   items: SitemapPageItem[]
 }
@@ -298,20 +304,22 @@ const reportLoading: Ref<boolean> = ref(false)
 const reportError: Ref<string> = ref('')
 const auditTab: Ref<'mobile' | 'desktop'> = ref('mobile')
 
-const currentStrategyReport = computed((): LighthouseStrategyReport | null => {
-  const r: LighthouseReportResponse | null = report.value
-  if (r === null) return null
-  return auditTab.value === 'mobile' ? r.mobile : r.desktop
-})
+const currentStrategyReport: ComputedRef<LighthouseStrategyReport | null> = computed(
+  (): LighthouseStrategyReport | null => {
+    const r: LighthouseReportResponse | null = report.value
+    if (r === null) return null
+    return auditTab.value === 'mobile' ? r.mobile : r.desktop
+  },
+)
 
-const currentPageSpeedReportUrl = computed((): string => {
+const currentPageSpeedReportUrl: ComputedRef<string> = computed((): string => {
   if (report.value === null) return 'https://pagespeed.web.dev/'
   const url: string = encodeURIComponent(report.value.finalUrl)
   const formFactor: string = auditTab.value === 'mobile' ? 'mobile' : 'desktop'
   return `https://pagespeed.web.dev/analysis?url=${url}&form_factor=${formFactor}`
 })
 
-const filteredItems = computed((): SitemapPageItem[] => {
+const filteredItems: ComputedRef<SitemapPageItem[]> = computed((): SitemapPageItem[] => {
   const q: string = searchText.value.trim().toLowerCase()
   if (q.length === 0) return items.value
   return items.value.filter(
@@ -319,6 +327,11 @@ const filteredItems = computed((): SitemapPageItem[] => {
   )
 })
 
+/**
+ * Construit la route de détail d'audit pour une URL.
+ * @param {string} pageUrl - URL de la page à auditer.
+ * @returns {{ path: string; query: { url: string } }} Route Nuxt avec query.
+ */
 function listItemToQuery(pageUrl: string): { path: string; query: { url: string } } {
   return {
     path: '/dashboard/audit',
@@ -326,6 +339,11 @@ function listItemToQuery(pageUrl: string): { path: string; query: { url: string 
   }
 }
 
+/**
+ * Traduit un identifiant de catégorie Lighthouse en libellé UI.
+ * @param {LighthouseCategoryId} id - Identifiant de catégorie Lighthouse.
+ * @returns {string} Libellé affichable.
+ */
 function categoryLabel(id: LighthouseCategoryId): string {
   const labels: Record<LighthouseCategoryId, string> = {
     performance: 'Performance',
@@ -333,14 +351,24 @@ function categoryLabel(id: LighthouseCategoryId): string {
     'best-practices': 'Bonnes pratiques',
     seo: 'SEO',
   }
-  return labels[id] ?? id
+  return labels[id]
 }
 
+/**
+ * Formate un score Lighthouse en pourcentage texte.
+ * @param {number | null} score - Score entre 0 et 1, ou null.
+ * @returns {string} Score affichable.
+ */
 function scoreLabel(score: number | null): string {
   if (score === null) return '—'
   return String(Math.round(score * 100))
 }
 
+/**
+ * Détermine la classe visuelle du cercle de score.
+ * @param {number | null} score - Score entre 0 et 1, ou null.
+ * @returns {string} Classes Tailwind à appliquer.
+ */
 function scoreRingClass(score: number | null): string {
   if (score === null) return 'bg-muted text-default'
   const pct: number = score * 100
@@ -349,6 +377,11 @@ function scoreRingClass(score: number | null): string {
   return 'bg-red-500/15 text-red-600 dark:text-red-400 ring-4 ring-red-500/30'
 }
 
+/**
+ * Retourne le libellé qualité d'un audit unitaire.
+ * @param {number | null} score - Score entre 0 et 1, ou null.
+ * @returns {string} Libellé de statut.
+ */
 function auditScoreLabel(score: number | null): string {
   if (score === null) return 'N/A'
   if (score >= 0.9) return 'OK'
@@ -356,6 +389,11 @@ function auditScoreLabel(score: number | null): string {
   return 'Échec'
 }
 
+/**
+ * Retourne la classe de badge pour un score d'audit.
+ * @param {number | null} score - Score entre 0 et 1, ou null.
+ * @returns {string} Classes Tailwind à appliquer.
+ */
 function auditScoreClass(score: number | null): string {
   if (score === null) return 'bg-muted text-default'
   if (score >= 0.9) return 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400'
@@ -363,6 +401,11 @@ function auditScoreClass(score: number | null): string {
   return 'bg-red-500/15 text-red-600 dark:text-red-400'
 }
 
+/**
+ * Formate une date ISO en date/heure locale FR.
+ * @param {string} iso - Date ISO à afficher.
+ * @returns {string} Date formatée, ou valeur brute en fallback.
+ */
 function formatFetchTime(iso: string): string {
   try {
     const d: Date = new Date(iso)
@@ -378,6 +421,11 @@ function formatFetchTime(iso: string): string {
   }
 }
 
+/**
+ * Récupère la liste des pages auditables depuis l'API sitemap.
+ * @param {boolean} force - Ignore le cache local quand true.
+ * @returns {Promise<void>} Promise résolue quand l'état local est à jour.
+ */
 async function fetchPages(force: boolean = false): Promise<void> {
   const cacheKey: string = 'dashboard-audit-sitemap-pages'
   const cached: Ref<SitemapPagesResponse | null> = useState<SitemapPagesResponse | null>(cacheKey)
@@ -391,7 +439,7 @@ async function fetchPages(force: boolean = false): Promise<void> {
   error.value = ''
   try {
     const data: SitemapPagesResponse = await $fetch<SitemapPagesResponse>('/api/dashboard/sitemap-pages')
-    items.value = data.items ?? []
+    items.value = data.items
     cached.value = data
   } catch (e: unknown) {
     error.value = e instanceof Error ? e.message : 'Erreur lors du chargement.'
@@ -401,6 +449,11 @@ async function fetchPages(force: boolean = false): Promise<void> {
   }
 }
 
+/**
+ * Déclenche l'analyse Lighthouse pour l'URL demandée.
+ * @param {string} url - URL de page à analyser.
+ * @returns {Promise<void>} Promise résolue quand l'état de rapport est mis à jour.
+ */
 async function fetchReport(url: string): Promise<void> {
   reportLoading.value = true
   reportError.value = ''

@@ -3,12 +3,18 @@ import { requireDashboardAuth } from '~~/server/utils/dashboardAuth'
 import { getIndexingSources } from '~~/server/utils/indexingSources'
 import type { IndexingStatusRow } from '~~/server/types/indexing'
 
+/**
+ *
+ */
 export type SitemapPageItem = {
   url: string
   title: string
   type: IndexingStatusRow['type']
 }
 
+/**
+ *
+ */
 type SitemapPagesResponse = {
   items: SitemapPageItem[]
 }
@@ -19,8 +25,8 @@ type SitemapPagesResponse = {
  */
 export default defineEventHandler(async (event: H3Event): Promise<SitemapPagesResponse> => {
   requireDashboardAuth(event)
-  const config = useRuntimeConfig(event)
-  const siteBaseUrl: string = String(config.indexingSiteUrl ?? '').replace(/\/$/, '')
+  const config: ReturnType<typeof useRuntimeConfig> = useRuntimeConfig(event)
+  const siteBaseUrl: string = String(config.indexingSiteUrl).replace(/\/$/, '')
 
   const sources: IndexingStatusRow[] = await getIndexingSources(siteBaseUrl)
   const items: SitemapPageItem[] = sources.map((row: IndexingStatusRow) => ({

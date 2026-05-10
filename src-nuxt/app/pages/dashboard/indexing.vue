@@ -3,8 +3,8 @@
     <div class="min-w-0">
       <h1 class="text-highlighted text-2xl font-semibold">Indexation Google</h1>
       <p class="text-default mt-1">
-        Liste des pages du site et statut d'indexation dans Google Search Console.
-        Les données sont lues depuis le cache ; utilise « Actualiser » pour mettre à jour.
+        Liste des pages du site et statut d'indexation dans Google Search Console. Les données sont lues depuis le cache
+        ; utilise « Actualiser » pour mettre à jour.
       </p>
     </div>
 
@@ -36,11 +36,7 @@
       </div>
       <div class="flex w-full flex-wrap items-center justify-end gap-3 sm:justify-start">
         <BaseButton :disabled="loading || refreshStatus === 'running'" @click="startRefresh">
-          <UIcon
-            v-if="refreshStatus === 'running'"
-            name="i-lucide-loader-2"
-            class="mr-2 size-4 animate-spin"
-          />
+          <UIcon v-if="refreshStatus === 'running'" name="i-lucide-loader-2" class="mr-2 size-4 animate-spin" />
           {{
             refreshStatus === 'running' && refreshCurrentIndex != null && refreshTotalCount != null
               ? `Mise à jour ${refreshCurrentIndex}/${refreshTotalCount}`
@@ -102,10 +98,7 @@
               >
                 NEUTRAL
               </span>
-              <span
-                class="shrink-0 rounded px-2 py-0.5 text-xs font-medium"
-                :class="getSignalBadgeClass(item)"
-              >
+              <span class="shrink-0 rounded px-2 py-0.5 text-xs font-medium" :class="getSignalBadgeClass(item)">
                 {{ getSignalLabel(item) }}
               </span>
             </div>
@@ -122,7 +115,7 @@
                 :href="item.url"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-primary min-w-0 break-all text-sm hover:underline"
+                class="text-primary min-w-0 text-sm break-all hover:underline"
               >
                 {{ item.url }}
               </a>
@@ -136,9 +129,7 @@
                 <template v-if="item.coverageState">
                   {{ item.coverageState }}
                   <span
-                    v-if="
-                      item.googleCanonical && item.coverageState?.toLowerCase().includes('redirection')
-                    "
+                    v-if="item.googleCanonical && item.coverageState?.toLowerCase().includes('redirection')"
                     class="text-muted mt-1 block text-xs"
                   >
                     Redirige vers {{ item.googleCanonical }}
@@ -160,11 +151,7 @@
               :disabled="isItemRefreshing(item.url)"
               @click="refreshUrl(item.url)"
             >
-              <UIcon
-                v-if="isItemRefreshing(item.url)"
-                name="i-lucide-loader-2"
-                class="mr-1.5 size-3.5 animate-spin"
-              />
+              <UIcon v-if="isItemRefreshing(item.url)" name="i-lucide-loader-2" class="mr-1.5 size-3.5 animate-spin" />
               {{ isItemRefreshing(item.url) ? 'Actualisation…' : 'Actualiser' }}
             </BaseButton>
             <BaseButton
@@ -175,10 +162,7 @@
             >
               Search Console
             </BaseButton>
-            <span
-              v-if="!gscConnected && !item.inspectionResultLink"
-              class="text-muted text-sm"
-            >
+            <span v-if="!gscConnected && !item.inspectionResultLink" class="text-muted text-sm">
               GSC non connecté
             </span>
           </div>
@@ -190,8 +174,8 @@
       <p class="text-sm text-amber-700 dark:text-amber-200">
         Configure Google Search Console pour afficher le statut. Ajoute
         <code class="bg-muted rounded px-1">GSC_SERVICE_ACCOUNT_JSON</code> dans ton fichier
-        <code class="bg-muted rounded px-1">.env</code> avec la clé JSON d'un Service Account, puis ajoute
-        l'email du SA comme <strong>Owner</strong> dans Search Console.
+        <code class="bg-muted rounded px-1">.env</code> avec la clé JSON d'un Service Account, puis ajoute l'email du SA
+        comme <strong>Owner</strong> dans Search Console.
       </p>
     </div>
   </div>
@@ -199,7 +183,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
-import type { Ref } from 'vue'
+import type { ComputedRef, Ref } from 'vue'
 
 definePageMeta({
   layout: 'dashboard',
@@ -210,6 +194,9 @@ useHead({
   meta: [{ name: 'robots', content: 'noindex, nofollow' }],
 })
 
+/**
+ *
+ */
 type IndexingItem = {
   url: string
   title: string
@@ -222,6 +209,9 @@ type IndexingItem = {
   checkedAt?: string
 }
 
+/**
+ *
+ */
 type IndexingApiResponse = {
   items: IndexingItem[]
   refresh: {
@@ -250,6 +240,9 @@ const searchText: Ref<string> = ref('')
 const refreshingUrls: Ref<string[]> = ref([])
 const copiedUrl: Ref<string | null> = ref(null)
 
+/**
+ *
+ */
 type SelectOption = { label: string; value: string }
 
 const verdictOptions: SelectOption[] = [
@@ -269,14 +262,18 @@ const typeOptions: SelectOption[] = [
 const selectedVerdict: Ref<string> = ref('')
 const selectedType: Ref<string> = ref('')
 
-/** Normalise l'URL GSC pour utiliser le chemin u/1. */
+/**
+ * Normalise l'URL GSC pour utiliser le chemin u/1.
+ * @param {string} link - URL brute issue de l'API GSC.
+ * @returns {string} URL normalisée vers l'interface `u/1`.
+ */
 function gscConsoleUrl(link: string): string {
   if (!link) return 'https://search.google.com/u/1/search-console'
   if (link.includes('search.google.com/u/1/')) return link
   return link.replace(/search\.google\.com\/(?!u\/1)/, 'search.google.com/u/1/')
 }
 
-const filteredItems = computed((): IndexingItem[] => {
+const filteredItems: ComputedRef<IndexingItem[]> = computed((): IndexingItem[] => {
   let list: IndexingItem[] = items.value
   const v: string = selectedVerdict.value
   if (v) list = list.filter((row: IndexingItem) => row.verdict === v)
@@ -291,13 +288,20 @@ const filteredItems = computed((): IndexingItem[] => {
   return list
 })
 
+/**
+ * Indique si une URL est en cours d'actualisation.
+ * @param {string} url - URL à vérifier.
+ * @returns {boolean} True si un refresh global ou local cible cette URL.
+ */
 function isItemRefreshing(url: string): boolean {
-  return (
-    refreshingUrls.value.includes(url) ||
-    (refreshStatus.value === 'running' && refreshAllCurrentUrl.value === url)
-  )
+  return refreshingUrls.value.includes(url) || (refreshStatus.value === 'running' && refreshAllCurrentUrl.value === url)
 }
 
+/**
+ * Formate la date de dernier crawl en format FR.
+ * @param {string | undefined} iso - Horodatage ISO brut.
+ * @returns {string} Date formatée, ou tiret si absente.
+ */
 function formatLastCrawl(iso?: string): string {
   if (!iso) return '—'
   try {
@@ -314,8 +318,13 @@ function formatLastCrawl(iso?: string): string {
   }
 }
 
-const ONE_DAY_MS = 24 * 60 * 60 * 1000
+const ONE_DAY_MS: number = 24 * 60 * 60 * 1000
 
+/**
+ * Déduit un libellé métier à partir des données d'indexation.
+ * @param {IndexingItem} item - Ligne d'indexation à interpréter.
+ * @returns {string} Libellé de signal utilisateur.
+ */
 function getSignalLabel(item: IndexingItem): string {
   if (item.verdict === 'PASS') return 'Indexée'
   if (item.coverageState === 'Explorée, actuellement non indexée') return 'Crawl OK, indexation pas encore faite'
@@ -330,8 +339,13 @@ function getSignalLabel(item: IndexingItem): string {
   return item.coverageState?.trim() || 'À vérifier'
 }
 
+/**
+ * Retourne la classe visuelle du badge de signal.
+ * @param {IndexingItem} item - Ligne d'indexation à styliser.
+ * @returns {string} Classes Tailwind du badge.
+ */
 function getSignalBadgeClass(item: IndexingItem): string {
-  const label = getSignalLabel(item)
+  const label: string = getSignalLabel(item)
   if (label === 'Indexée') return 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300'
   if (label === 'Crawl OK, indexation pas encore faite') return 'bg-amber-500/20 text-amber-800 dark:text-amber-200'
   if (label === 'Non découverte (pas crawlé)') return 'bg-red-500/15 text-red-700 dark:text-red-300'
@@ -339,10 +353,20 @@ function getSignalBadgeClass(item: IndexingItem): string {
   return 'bg-purple-500/15 text-purple-700 dark:text-purple-200'
 }
 
+/**
+ * Ouvre une URL dans un nouvel onglet navigateur.
+ * @param {string} url - URL absolue à ouvrir.
+ * @returns {void} Aucun retour.
+ */
 function openInNewTab(url: string): void {
   if (import.meta.client) window.open(url, '_blank', 'noopener,noreferrer')
 }
 
+/**
+ * Copie une valeur texte dans le presse-papiers.
+ * @param {string} value - Texte à copier.
+ * @returns {Promise<void>} Promise résolue après tentative de copie.
+ */
 async function copyToClipboard(value: string): Promise<void> {
   if (!import.meta.client) return
   try {
@@ -356,15 +380,20 @@ async function copyToClipboard(value: string): Promise<void> {
   }
 }
 
+/**
+ * Charge l'état d'indexation depuis le cache ou l'API.
+ * @param {boolean} force - Force un appel API même si le cache existe.
+ * @returns {Promise<void>} Promise résolue quand l'état local est synchronisé.
+ */
 async function fetchFromApi(force: boolean = false): Promise<void> {
   const cache: Ref<IndexingApiResponse | null> = useState<IndexingApiResponse | null>(CACHE_KEY)
   if (!force && cache.value) {
-    items.value = cache.value.items ?? []
-    gscConnected.value = cache.value.gscConnected ?? false
-    refreshStatus.value = cache.value.refresh?.status ?? 'idle'
-    refreshAllCurrentUrl.value = cache.value.refresh?.currentUrl ?? null
-    refreshCurrentIndex.value = cache.value.refresh?.currentIndex ?? null
-    refreshTotalCount.value = cache.value.refresh?.totalCount ?? null
+    items.value = cache.value.items
+    gscConnected.value = cache.value.gscConnected
+    refreshStatus.value = cache.value.refresh.status
+    refreshAllCurrentUrl.value = cache.value.refresh.currentUrl ?? null
+    refreshCurrentIndex.value = cache.value.refresh.currentIndex ?? null
+    refreshTotalCount.value = cache.value.refresh.totalCount ?? null
     loading.value = false
     return
   }
@@ -372,12 +401,12 @@ async function fetchFromApi(force: boolean = false): Promise<void> {
   error.value = ''
   try {
     const data: IndexingApiResponse = await $fetch<IndexingApiResponse>('/api/indexing-status')
-    items.value = data.items ?? []
-    gscConnected.value = data.gscConnected ?? false
-    refreshStatus.value = data.refresh?.status ?? 'idle'
-    refreshAllCurrentUrl.value = data.refresh?.currentUrl ?? null
-    refreshCurrentIndex.value = data.refresh?.currentIndex ?? null
-    refreshTotalCount.value = data.refresh?.totalCount ?? null
+    items.value = data.items
+    gscConnected.value = data.gscConnected
+    refreshStatus.value = data.refresh.status
+    refreshAllCurrentUrl.value = data.refresh.currentUrl ?? null
+    refreshCurrentIndex.value = data.refresh.currentIndex ?? null
+    refreshTotalCount.value = data.refresh.totalCount ?? null
     cache.value = data
   } catch (e: unknown) {
     error.value = e instanceof Error ? e.message : 'Erreur lors du chargement.'
@@ -390,6 +419,10 @@ async function fetchFromApi(force: boolean = false): Promise<void> {
 let pollIntervalId: ReturnType<typeof setInterval> | null = null
 let pollTimeoutId: ReturnType<typeof setTimeout> | null = null
 
+/**
+ * Arrête le polling en cours et nettoie les timers.
+ * @returns {void} Aucun retour.
+ */
 function stopPolling(): void {
   if (pollIntervalId) {
     clearInterval(pollIntervalId)
@@ -401,24 +434,32 @@ function stopPolling(): void {
   }
 }
 
+/**
+ * Démarre le polling de progression du refresh global.
+ * @returns {void} Aucun retour.
+ */
 function startPolling(): void {
   stopPolling()
 
-  pollIntervalId = setInterval(async (): Promise<void> => {
-    const data: IndexingApiResponse = await $fetch<IndexingApiResponse>('/api/indexing-status')
-    refreshStatus.value = data.refresh?.status ?? 'idle'
-    refreshAllCurrentUrl.value = data.refresh?.currentUrl ?? null
-    refreshCurrentIndex.value = data.refresh?.currentIndex ?? null
-    refreshTotalCount.value = data.refresh?.totalCount ?? null
-    items.value = data.items ?? []
-    useState(CACHE_KEY).value = data
+  pollIntervalId = setInterval((): void => {
+    void (async (): Promise<void> => {
+      const data: IndexingApiResponse = await $fetch<IndexingApiResponse>('/api/indexing-status')
+      refreshStatus.value = data.refresh.status
+      refreshAllCurrentUrl.value = data.refresh.currentUrl ?? null
+      refreshCurrentIndex.value = data.refresh.currentIndex ?? null
+      refreshTotalCount.value = data.refresh.totalCount ?? null
+      items.value = data.items
+      useState(CACHE_KEY).value = data
 
-    if (data.refresh?.status !== 'running') {
-      refreshAllCurrentUrl.value = null
-      refreshCurrentIndex.value = null
-      refreshTotalCount.value = null
-      stopPolling()
-    }
+      if (data.refresh.status !== 'running') {
+        refreshAllCurrentUrl.value = null
+        refreshCurrentIndex.value = null
+        refreshTotalCount.value = null
+        stopPolling()
+      }
+    })().catch((e: unknown) => {
+      error.value = e instanceof Error ? e.message : 'Erreur lors du polling.'
+    })
   }, POLL_INTERVAL_MS)
 
   pollTimeoutId = setTimeout(() => {
@@ -430,6 +471,10 @@ function startPolling(): void {
   }, 600_000)
 }
 
+/**
+ * Déclenche l'actualisation globale de l'indexation.
+ * @returns {Promise<void>} Promise résolue après déclenchement.
+ */
 async function startRefresh(): Promise<void> {
   try {
     await $fetch('/api/indexing-status/refresh', { method: 'POST' })
@@ -440,6 +485,10 @@ async function startRefresh(): Promise<void> {
   }
 }
 
+/**
+ * Annule l'actualisation globale côté serveur et UI.
+ * @returns {Promise<void>} Promise résolue après annulation.
+ */
 async function cancelRefresh(): Promise<void> {
   try {
     await $fetch('/api/indexing-status/refresh-cancel', { method: 'POST' })
@@ -454,7 +503,7 @@ async function cancelRefresh(): Promise<void> {
         ...cache.value,
         refresh: {
           status: 'idle',
-          startedAt: cache.value.refresh?.startedAt,
+          startedAt: cache.value.refresh.startedAt,
           finishedAt: new Date().toISOString(),
         },
       }
@@ -464,6 +513,11 @@ async function cancelRefresh(): Promise<void> {
   }
 }
 
+/**
+ * Actualise une seule URL via l'API d'inspection.
+ * @param {string} url - URL à rafraîchir.
+ * @returns {Promise<void>} Promise résolue une fois la ligne mise à jour.
+ */
 async function refreshUrl(url: string): Promise<void> {
   refreshingUrls.value = [...refreshingUrls.value, url]
   error.value = ''
@@ -476,7 +530,7 @@ async function refreshUrl(url: string): Promise<void> {
       },
     )
     const idx: number = items.value.findIndex((r: IndexingItem) => r.url === url)
-    if (idx !== -1 && data.item) items.value[idx] = data.item
+    if (idx !== -1) items.value[idx] = data.item
     const cache: Ref<IndexingApiResponse | null> = useState<IndexingApiResponse | null>(CACHE_KEY)
     if (cache.value) cache.value = { ...cache.value, items: [...items.value] }
   } catch (e: unknown) {
@@ -489,26 +543,26 @@ async function refreshUrl(url: string): Promise<void> {
 onMounted(async (): Promise<void> => {
   const cache: Ref<IndexingApiResponse | null> = useState<IndexingApiResponse | null>(CACHE_KEY)
   if (cache.value) {
-    items.value = cache.value.items ?? []
-    gscConnected.value = cache.value.gscConnected ?? false
-    refreshStatus.value = cache.value.refresh?.status ?? 'idle'
-    refreshAllCurrentUrl.value = cache.value.refresh?.currentUrl ?? null
-    refreshCurrentIndex.value = cache.value.refresh?.currentIndex ?? null
-    refreshTotalCount.value = cache.value.refresh?.totalCount ?? null
+    items.value = cache.value.items
+    gscConnected.value = cache.value.gscConnected
+    refreshStatus.value = cache.value.refresh.status
+    refreshAllCurrentUrl.value = cache.value.refresh.currentUrl ?? null
+    refreshCurrentIndex.value = cache.value.refresh.currentIndex ?? null
+    refreshTotalCount.value = cache.value.refresh.totalCount ?? null
     loading.value = false
 
-    if (cache.value.refresh?.status === 'running') {
+    if (cache.value.refresh.status === 'running') {
       try {
         const data: IndexingApiResponse = await $fetch<IndexingApiResponse>('/api/indexing-status')
-        items.value = data.items ?? []
-        gscConnected.value = data.gscConnected ?? false
-        refreshStatus.value = data.refresh?.status ?? 'idle'
-        refreshAllCurrentUrl.value = data.refresh?.currentUrl ?? null
-        refreshCurrentIndex.value = data.refresh?.currentIndex ?? null
-        refreshTotalCount.value = data.refresh?.totalCount ?? null
+        items.value = data.items
+        gscConnected.value = data.gscConnected
+        refreshStatus.value = data.refresh.status
+        refreshAllCurrentUrl.value = data.refresh.currentUrl ?? null
+        refreshCurrentIndex.value = data.refresh.currentIndex ?? null
+        refreshTotalCount.value = data.refresh.totalCount ?? null
         cache.value = data
 
-        if (data.refresh?.status === 'running') {
+        if (data.refresh.status === 'running') {
           startPolling()
         }
       } catch {

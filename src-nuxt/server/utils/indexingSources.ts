@@ -4,6 +4,8 @@ const SITEMAP_INDEX_PATH: string = '/sitemap.xml'
 
 /**
  * Récupère le type d'indexation à partir de l'URL.
+ * @param {string} url - URL absolue Ã  classifier.
+ * @returns {IndexingUrlType} Type fonctionnel de la page.
  */
 function inferTypeFromUrl(url: string): IndexingUrlType {
   const pathname: string = new URL(url).pathname
@@ -18,6 +20,8 @@ function inferTypeFromUrl(url: string): IndexingUrlType {
 
 /**
  * Génère un titre lisible à partir du slug (dernier segment du path).
+ * @param {string} slug - Segment final de chemin d'URL.
+ * @returns {string} Titre lisible pour l'interface.
  */
 function slugToTitle(slug: string): string {
   const formatted: string = slug.replace(/-/g, ' ').replace(/\b\w/g, (c: string): string => c.toUpperCase())
@@ -26,6 +30,8 @@ function slugToTitle(slug: string): string {
 
 /**
  * Extrait le titre affichable pour une URL donnée.
+ * @param {string} url - URL absolue de la page.
+ * @returns {string} Titre prÃ©sentable en UI.
  */
 function urlToTitle(url: string): string {
   const pathname: string = new URL(url).pathname
@@ -37,19 +43,27 @@ function urlToTitle(url: string): string {
 
 /**
  * Parse un sitemap XML et extrait les URLs <loc>.
+ * @param {string} xmlText - Contenu XML brut du sitemap.
+ * @returns {string[]} Liste des URLs trouvÃ©es dans les balises <loc>.
  */
 function parseSitemapUrls(xmlText: string): string[] {
   const urls: string[] = []
   const locRegex: RegExp = /<loc[^>]*>([^<]+)<\/loc>/gi
   let match: RegExpExecArray | null = locRegex.exec(xmlText)
   while (match !== null) {
-    const loc: string = match[1]?.trim() ?? ''
+    const rawLoc: string | undefined = match[1]
+    const loc: string = typeof rawLoc === 'string' ? rawLoc.trim() : ''
     if (loc.length > 0) urls.push(loc)
     match = locRegex.exec(xmlText)
   }
   return urls
 }
 
+/**
+ *
+ * @param {string} url - URL de la ressource Ã  tÃ©lÃ©charger.
+ * @returns {Promise<string>} Corps de la rÃ©ponse en texte.
+ */
 async function fetchText(url: string): Promise<string> {
   const res: Response = await fetch(url, {
     headers: { Accept: 'application/xml, text/xml, */*' },
@@ -63,6 +77,8 @@ async function fetchText(url: string): Promise<string> {
 /**
  * Récupère toutes les URLs depuis le sitemap du site.
  * Gère un sitemap simple (liste d'URLs) ET un sitemap index (liste de sitemaps).
+ * @param {string} siteBaseUrl - URL de base du site Ã  auditer.
+ * @returns {Promise<IndexingStatusRow[]>} Lignes de statut initiales dÃ©duites du sitemap.
  */
 export async function getIndexingSources(siteBaseUrl: string): Promise<IndexingStatusRow[]> {
   const rows: IndexingStatusRow[] = []

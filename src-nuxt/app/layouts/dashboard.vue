@@ -23,9 +23,7 @@
     </header>
 
     <!-- Desktop sidebar -->
-    <aside
-      class="bg-elevated border-default fixed top-0 left-0 z-40 hidden h-full w-64 flex-col border-r md:flex"
-    >
+    <aside class="bg-elevated border-default fixed top-0 left-0 z-40 hidden h-full w-64 flex-col border-r md:flex">
       <div class="border-default flex h-[64px] items-center border-b px-4">
         <NuxtLink to="/dashboard" class="flex items-center gap-2">
           <span
@@ -44,9 +42,7 @@
           :to="link.to"
           class="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors"
           :class="
-            isActive(link.to)
-              ? 'bg-primary/10 text-primary'
-              : 'text-default hover:bg-accented hover:text-highlighted'
+            isActive(link.to) ? 'bg-primary/10 text-primary' : 'text-default hover:bg-accented hover:text-highlighted'
           "
         >
           <UIcon :name="link.icon" class="size-4 shrink-0" />
@@ -129,15 +125,19 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
+import type { Ref } from 'vue'
 
+/**
+ *
+ */
 type NavLink = {
   to: string
   label: string
   icon: string
 }
 
-const route = useRoute()
-const mobileMenuOpen = ref<boolean>(false)
+const route: ReturnType<typeof useRoute> = useRoute()
+const mobileMenuOpen: Ref<boolean> = ref<boolean>(false)
 
 const navLinks: NavLink[] = [
   { to: '/dashboard/audit', label: 'Audit SEO', icon: 'i-lucide-gauge' },
@@ -148,6 +148,11 @@ useHead({
   meta: [{ name: 'robots', content: 'noindex, nofollow' }],
 })
 
+/**
+ * Retourne true si le chemin courant correspond au lien ou Ã  un sous-chemin.
+ * @param {string} path - Chemin de navigation cible.
+ * @returns {boolean} True quand le lien doit Ãªtre marquÃ© comme actif.
+ */
 function isActive(path: string): boolean {
   return route.path === path || route.path.startsWith(`${path}/`)
 }
@@ -158,6 +163,9 @@ watch(mobileMenuOpen, (open: boolean): void => {
   }
 })
 
+/**
+ *
+ */
 async function onLogout(): Promise<void> {
   try {
     await $fetch('/api/auth/logout', { method: 'POST' })
@@ -170,6 +178,9 @@ async function onLogout(): Promise<void> {
   }
 }
 
+/**
+ *
+ */
 async function onLogoutThenClose(): Promise<void> {
   mobileMenuOpen.value = false
   await onLogout()

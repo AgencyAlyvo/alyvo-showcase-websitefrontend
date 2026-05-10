@@ -35,8 +35,8 @@
           <h2 class="group-hover:text-primary text-highlighted text-lg font-semibold">Indexation Google</h2>
         </div>
         <p class="text-default mt-2 flex-1 text-sm">
-          Liste des pages du site et statut d'indexation dans Google Search Console. Actualiser les données et
-          inspecter les URLs.
+          Liste des pages du site et statut d'indexation dans Google Search Console. Actualiser les données et inspecter
+          les URLs.
         </p>
         <span class="text-primary mt-4 inline-flex items-center text-sm font-medium">
           Ouvrir

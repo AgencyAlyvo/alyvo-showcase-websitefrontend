@@ -16,8 +16,14 @@ const CATEGORY_IDS: LighthouseCategoryId[] = ['performance', 'accessibility', 'b
 /** Valeurs attendues par l'API PageSpeed pour le paramètre category. */
 const CATEGORY_API_VALUES: string[] = ['PERFORMANCE', 'ACCESSIBILITY', 'BEST_PRACTICES', 'SEO']
 
+/**
+ *
+ */
 type PagespeedAuditRef = { id?: string }
 
+/**
+ *
+ */
 type PagespeedCategory = {
   id?: string
   title?: string
@@ -25,6 +31,9 @@ type PagespeedCategory = {
   auditRefs?: PagespeedAuditRef[]
 }
 
+/**
+ *
+ */
 type PagespeedAudit = {
   id?: string
   title?: string
@@ -33,11 +42,17 @@ type PagespeedAudit = {
   displayValue?: string
 }
 
+/**
+ *
+ */
 type PagespeedScreenshotDetails = {
   type?: string
   data?: string
 }
 
+/**
+ *
+ */
 type PagespeedLighthouseResult = {
   requestedUrl?: string
   finalUrl?: string
@@ -47,11 +62,18 @@ type PagespeedLighthouseResult = {
   runtimeError?: { message?: string } | null
 }
 
+/**
+ *
+ */
 type PagespeedApiResponse = {
   lighthouseResult?: PagespeedLighthouseResult
 }
 
-/** Normalise le score (0–1, 0–100 ou chaîne) en number 0–1 ou null. */
+/**
+ * Normalise le score (0–1, 0–100 ou chaîne) en number 0–1 ou null.
+ * @param {unknown} v - Valeur brute renvoyée par PageSpeed.
+ * @returns {number | null} Score normalisé dans [0, 1] ou null.
+ */
 function parseScore(v: unknown): number | null {
   if (typeof v === 'number' && !Number.isNaN(v) && v >= 0) {
     if (v <= 1) return v
@@ -66,17 +88,25 @@ function parseScore(v: unknown): number | null {
 
 /**
  * Vérifie que l'URL analysée appartient au site (même origine que indexingSiteUrl).
+ * @param {string} url - URL demandée pour l'audit.
+ * @param {string} siteBaseUrl - URL de base autorisée.
+ * @returns {boolean} True si les deux URLs partagent la même origine.
  */
 function isUrlAllowed(url: string, siteBaseUrl: string): boolean {
   try {
-    const parsed = new URL(url)
-    const base = new URL(siteBaseUrl)
+    const parsed: URL = new URL(url)
+    const base: URL = new URL(siteBaseUrl)
     return parsed.origin === base.origin
   } catch {
     return false
   }
 }
 
+/**
+ *
+ * @param {PagespeedLighthouseResult} lh - Payload Lighthouse brut.
+ * @returns {LighthouseStrategyReport} Rapport formaté pour l'UI.
+ */
 function buildStrategyReport(lh: PagespeedLighthouseResult): LighthouseStrategyReport {
   const runtimeError: string | null = lh.runtimeError?.message ?? null
 
@@ -102,7 +132,8 @@ function buildStrategyReport(lh: PagespeedLighthouseResult): LighthouseStrategyR
   }
   const auditIds: string[] = Array.from(auditIdSet)
 
-  const auditsMap: Record<string, PagespeedAudit> = (lh.audits as Record<string, PagespeedAudit>) ?? {}
+  const auditsMap: Record<string, PagespeedAudit> =
+    lh.audits !== undefined ? (lh.audits as Record<string, PagespeedAudit>) : {}
   const audits: LighthouseAuditItem[] = auditIds
     .filter((id: string): boolean => id in auditsMap)
     .map((id: string): LighthouseAuditItem => {
@@ -116,9 +147,9 @@ function buildStrategyReport(lh: PagespeedLighthouseResult): LighthouseStrategyR
       }
     })
 
-  const finalScreenshotAudit = lh.audits?.['final-screenshot'] as
-    | (PagespeedAudit & { details?: PagespeedScreenshotDetails })
-    | undefined
+  const finalScreenshotAudit: (PagespeedAudit & { details?: PagespeedScreenshotDetails }) | undefined = lh.audits?.[
+    'final-screenshot'
+  ] as (PagespeedAudit & { details?: PagespeedScreenshotDetails }) | undefined
   const screenshotDataUrl: string | null =
     typeof finalScreenshotAudit?.details?.data === 'string' ? finalScreenshotAudit.details.data : null
 
@@ -137,9 +168,9 @@ function buildStrategyReport(lh: PagespeedLighthouseResult): LighthouseStrategyR
  */
 export default defineEventHandler(async (event: H3Event): Promise<LighthouseReportResponse> => {
   requireDashboardAuth(event)
-  const config = useRuntimeConfig(event)
-  const siteBaseUrl: string = String(config.indexingSiteUrl ?? '').replace(/\/$/, '')
-  const query = getQuery(event)
+  const config: ReturnType<typeof useRuntimeConfig> = useRuntimeConfig(event)
+  const siteBaseUrl: string = String(config.indexingSiteUrl).replace(/\/$/, '')
+  const query: { url?: string } = getQuery(event) as { url?: string }
   const rawUrl: string | undefined = typeof query.url === 'string' ? query.url.trim() : undefined
 
   if (!rawUrl) {
@@ -166,9 +197,16 @@ export default defineEventHandler(async (event: H3Event): Promise<LighthouseRepo
     })
   }
 
-  const apiKey: string = String(config.psiApiKey ?? '').trim()
+  const apiKey: string = String(config.psiApiKey).trim()
 
-  const runStrategy = async (strategy: 'mobile' | 'desktop'): Promise<LighthouseStrategyReport> => {
+  /**
+   *
+   * @param {'mobile' | 'desktop'} strategy - Appareil cible pour l'analyse.
+   * @returns {Promise<LighthouseStrategyReport>} Rapport consolidé pour la stratégie demandée.
+   */
+  const runStrategy: (strategy: 'mobile' | 'desktop') => Promise<LighthouseStrategyReport> = async (
+    strategy: 'mobile' | 'desktop',
+  ): Promise<LighthouseStrategyReport> => {
     const params: string[] = [`url=${encodeURIComponent(requestedUrl)}`, `strategy=${strategy}`]
     for (const cat of CATEGORY_API_VALUES) {
       params.push(`category=${cat}`)
@@ -181,19 +219,19 @@ export default defineEventHandler(async (event: H3Event): Promise<LighthouseRepo
       const text: string = await res.text()
       return {
         fetchTime: new Date().toISOString(),
-        categories: CATEGORY_IDS.map((id) => ({ id, title: id, score: null as number | null })),
+        categories: CATEGORY_IDS.map((id: LighthouseCategoryId) => ({ id, title: id, score: null as number | null })),
         audits: [],
         screenshotDataUrl: null,
         runtimeError: `PageSpeed API ${res.status}: ${text.slice(0, 150)}`,
       }
     }
 
-    const data = (await res.json()) as PagespeedApiResponse
+    const data: PagespeedApiResponse = (await res.json()) as PagespeedApiResponse
     const lh: PagespeedLighthouseResult | undefined = data.lighthouseResult
     if (!lh) {
       return {
         fetchTime: new Date().toISOString(),
-        categories: CATEGORY_IDS.map((id) => ({ id, title: id, score: null as number | null })),
+        categories: CATEGORY_IDS.map((id: LighthouseCategoryId) => ({ id, title: id, score: null as number | null })),
         audits: [],
         screenshotDataUrl: null,
         runtimeError: 'PageSpeed API did not return lighthouseResult',

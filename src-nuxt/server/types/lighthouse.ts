@@ -2,14 +2,23 @@
  * Types pour la réponse simplifiée du rapport Lighthouse (PageSpeed Insights API v5).
  */
 
+/**
+ *
+ */
 export type LighthouseCategoryId = 'performance' | 'accessibility' | 'best-practices' | 'seo'
 
+/**
+ *
+ */
 export type LighthouseCategoryScore = {
   id: LighthouseCategoryId
   title: string
   score: number | null
 }
 
+/**
+ *
+ */
 export type LighthouseAuditItem = {
   id: string
   title: string
@@ -27,6 +36,9 @@ export type LighthouseStrategyReport = {
   runtimeError: string | null
 }
 
+/**
+ *
+ */
 export type LighthouseReportResponse = {
   requestedUrl: string
   finalUrl: string

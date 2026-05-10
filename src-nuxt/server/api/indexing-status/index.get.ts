@@ -4,6 +4,9 @@ import { getIndexingRows, getRefreshState } from '~~/server/utils/indexingStorag
 import { getIndexingSources } from '~~/server/utils/indexingSources'
 import type { IndexingRefreshState, IndexingStatusRow } from '~~/server/types/indexing'
 
+/**
+ *
+ */
 type IndexingStatusResponse = {
   items: IndexingStatusRow[]
   refresh: IndexingRefreshState
@@ -16,8 +19,8 @@ type IndexingStatusResponse = {
  */
 export default defineEventHandler(async (event: H3Event): Promise<IndexingStatusResponse> => {
   requireDashboardAuth(event)
-  const config = useRuntimeConfig(event)
-  const siteBaseUrl: string = String(config.indexingSiteUrl ?? '').replace(/\/$/, '')
+  const config: ReturnType<typeof useRuntimeConfig> = useRuntimeConfig(event)
+  const siteBaseUrl: string = String(config.indexingSiteUrl).replace(/\/$/, '')
 
   const [sources, rows, refresh]: [IndexingStatusRow[], Record<string, IndexingStatusRow>, IndexingRefreshState] =
     await Promise.all([getIndexingSources(siteBaseUrl), getIndexingRows(), getRefreshState()])

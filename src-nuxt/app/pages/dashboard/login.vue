@@ -45,6 +45,9 @@ const password: Ref<string> = ref('')
 const errorMessage: Ref<string | null> = ref(null)
 const isSubmitting: Ref<boolean> = ref(false)
 
+/**
+ *
+ */
 async function onSubmit(): Promise<void> {
   if (!password.value.trim()) {
     errorMessage.value = 'Le mot de passe est requis.'
