@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.4](https://github.com/AgencyAlyvo/alyvo-showcase-websitefrontend/compare/v1.0.3...v1.0.4) (2026-05-10)
+
+
+### Bug Fixes
+
+* testt ([795f5de](https://github.com/AgencyAlyvo/alyvo-showcase-websitefrontend/commit/795f5dee7714d0a82961c9fd72d48026f232ba91))
+* testt ([2106f30](https://github.com/AgencyAlyvo/alyvo-showcase-websitefrontend/commit/2106f307a1fb9188ea15d144597ec95fbf3c0cc2))
+* testt ([e064d13](https://github.com/AgencyAlyvo/alyvo-showcase-websitefrontend/commit/e064d133e29c3daaee6c41b2dbe371095ad3b8fd))
+
 ## [1.0.3](https://github.com/AgencyAlyvo/alyvo-showcase-websitefrontend/compare/v1.0.2...v1.0.3) (2026-05-10)
 
 
