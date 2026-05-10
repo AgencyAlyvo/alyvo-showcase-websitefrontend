@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/AgencyAlyvo/alyvo-showcase-websitefrontend/compare/v1.0.0...v1.0.1) (2026-05-10)
+
+
+### Bug Fixes
+
+* fixed ci steps ([dedc406](https://github.com/AgencyAlyvo/alyvo-showcase-websitefrontend/commit/dedc406ec2b7cd59b159e984875e591c9599abaa))
+
 ## 1.0.0 (2026-05-10)
 
 
