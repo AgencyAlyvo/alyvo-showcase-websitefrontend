@@ -31,9 +31,22 @@
           {{ project.details.tagline }}
         </p>
 
-        <div class="project-hero-media border-default mt-10 overflow-hidden rounded-2xl border">
+        <div
+          v-if="project.details.cover"
+          class="project-hero-media border-default mt-10 overflow-hidden rounded-2xl border"
+        >
+          <video
+            v-if="isVideoCover"
+            :src="project.details.cover"
+            class="aspect-video w-full object-cover"
+            autoplay
+            loop
+            muted
+            playsinline
+          />
           <img
-            :src="project.image"
+            v-else
+            :src="project.details.cover"
             :alt="project.title"
             class="aspect-video w-full object-cover"
           />
@@ -225,6 +238,7 @@ type ProjectSolution = {
 /** Full set of fields for the project detail page. */
 type ProjectDetails = {
   tagline: string
+  cover?: string
   need: ProjectNeed
   solution: ProjectSolution
   stakes: string[]
@@ -300,6 +314,11 @@ const solutionBlocks: ComputedRef<{ label: string; value: string }[]> = computed
     { label: t('project.sections.solution.why'), value: why },
     { label: t('project.sections.solution.how'), value: how },
   ]
+})
+
+const isVideoCover: ComputedRef<boolean> = computed((): boolean => {
+  const src: string | undefined = project.value?.details.cover
+  return Boolean(src && /\.(mp4|webm|ogg)$/i.test(src))
 })
 
 const needAccents: readonly string[] = ['14 165 233', '244 63 94', '16 185 129']

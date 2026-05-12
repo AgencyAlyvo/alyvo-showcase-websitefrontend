@@ -30,12 +30,12 @@
           class="project-card border-default bg-default group relative flex flex-col overflow-hidden rounded-2xl border"
           :style="{ '--project-card-delay': `${260 + index * 95}ms` }"
         >
-          <div class="project-card-media bg-muted relative overflow-hidden">
+          <div class="project-card-media bg-muted relative flex aspect-[4/3] items-center justify-center overflow-hidden p-6">
             <img
               :src="card.image"
               :alt="card.title"
               loading="lazy"
-              class="project-card-image aspect-[4/3] w-full object-cover"
+              class="project-card-image max-h-full max-w-full object-contain"
             />
             <div class="project-card-image-overlay" aria-hidden="true" />
           </div>
