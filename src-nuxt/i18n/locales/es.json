@@ -207,6 +207,11 @@
     }
   },
   "projects": {
+    "heading": {
+      "title": "Proyectos",
+      "accent": "Aplicaciones, DevOps e IA",
+      "lead": "Proyectos que combinan desarrollo, infraestructura, automatización e inteligencia artificial para crear soluciones sólidas."
+    },
     "card": {
       "need": "Necesidad",
       "solution": "Solución",
@@ -262,6 +267,7 @@
     "hero": {
       "eyebrow": "Contacto",
       "title": "¿Qué necesidad quieres resolver?",
+      "accent": "Transformémosla en una solución concreta.",
       "lead": "Cuéntame tu situación, aunque sea brevemente. Te respondo con una primera dirección concreta.",
       "directLead": "Puedes enviarme un email a {email}, escribirme por WhatsApp o llamarme al {phone}.",
       "directEmail": "Enviarme un email",

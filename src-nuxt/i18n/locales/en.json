@@ -207,6 +207,11 @@
     }
   },
   "projects": {
+    "heading": {
+      "title": "Projects",
+      "accent": "Apps, DevOps & AI",
+      "lead": "Projects combining development, infrastructure, automation and artificial intelligence to build robust digital solutions."
+    },
     "card": {
       "need": "Need",
       "solution": "Solution",
@@ -262,6 +267,7 @@
     "hero": {
       "eyebrow": "Contact",
       "title": "What need do you want to solve?",
+      "accent": "Let’s turn it into a concrete solution.",
       "lead": "Tell me about your situation, even briefly. I’ll come back with a concrete first direction.",
       "directLead": "You can email me at {email}, send me a WhatsApp message or call me at {phone}.",
       "directEmail": "Send me an email",

@@ -10,12 +10,15 @@
 
 <script setup lang="ts">
 import type { ComputedRef } from 'vue'
+import { useSchemaOrg as useLocalSchemaOrg } from './composables/useSchemaOrg'
 
 const colorMode: ReturnType<typeof useColorMode> = useColorMode()
+const config: ReturnType<typeof useRuntimeConfig> = useRuntimeConfig()
 const route: ReturnType<typeof useRoute> = useRoute()
 const i18nHead: ReturnType<typeof useLocaleHead> = useLocaleHead({
   seo: true,
 })
+const siteUrl: string = ((config.public.siteUrl as string) || '').replace(/\/$/, '')
 
 const themeColor: ComputedRef<string> = computed((): string => (colorMode.value === 'dark' ? '#020618' : 'white'))
 
@@ -35,4 +38,24 @@ useHead(() => ({
   ],
   meta: [...i18nHead.value.meta, { key: 'theme-color', name: 'theme-color', content: themeColor.value }],
 }))
+
+if (siteUrl) {
+  useLocalSchemaOrg([
+    {
+      type: 'Organization',
+      data: {
+        name: 'Alyvo',
+        url: siteUrl,
+        logo: `${siteUrl}/favicon.ico`,
+      },
+    },
+    {
+      type: 'WebSite',
+      data: {
+        name: 'Alyvo',
+        url: siteUrl,
+      },
+    },
+  ])
+}
 </script>

@@ -93,7 +93,7 @@ export default defineNuxtConfig({
   },
   sitemap: {
     autoLastmod: true,
-    sources: ['/api/__sitemap__/pages', '/api/__sitemap__/projects'],
+    sources: ['/api/__sitemap__/pages'],
   },
   robots: {
     disallow: ['/api/', '/dashboard', '/en/dashboard', '/es/dashboard'],
@@ -132,12 +132,6 @@ export default defineNuxtConfig({
         fr: '/projets',
         en: '/projects',
         es: '/proyectos',
-      },
-
-      'projects-slug': {
-        fr: '/projets/[slug]',
-        en: '/projects/[slug]',
-        es: '/proyectos/[slug]',
       },
 
       contact: {
