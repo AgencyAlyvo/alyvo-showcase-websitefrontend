@@ -4,7 +4,14 @@
   <UFooter :ui="{ top: 'border-b border-default' }">
     <template #top>
       <UContainer>
-        <UFooterColumns :columns="columns">
+        <UFooterColumns
+          :columns="columns"
+          :ui="{
+            root: 'md:grid md:grid-cols-3 md:gap-10',
+            center: 'flex flex-col sm:grid grid-flow-col auto-cols-fr gap-8 md:col-span-2',
+            right: 'mt-10 md:mt-0',
+          }"
+        >
           <template #right>
             <div class="max-w-sm">
               <p v-if="t('footer.description')" class="text-highlighted text-sm font-medium">

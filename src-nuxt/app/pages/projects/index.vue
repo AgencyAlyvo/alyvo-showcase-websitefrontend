@@ -1,47 +1,51 @@
 <template>
-  <BaseSection spacing="lg" container-size="xl">
-    <div class="page-copy-reveal mx-auto max-w-5xl text-center">
-      <h1 class="text-highlighted text-5xl font-bold tracking-tight text-balance sm:text-7xl">
-        <span>{{ t('projects.heading.title') }}</span>
-        <span class="text-primary block whitespace-normal lg:whitespace-nowrap">
-          {{ t('projects.heading.accent') }}
-        </span>
-      </h1>
-      <p class="text-muted mt-6 text-lg text-balance sm:text-xl/8">
-        {{ t('projects.heading.lead') }}
-      </p>
-      <div class="mt-8 flex justify-center">
-        <UButton
-          :label="t('home.hero.ctaPrimary')"
-          :to="localePath('contact')"
-          trailing-icon="i-lucide-arrow-right"
-          size="xl"
-        />
-      </div>
-    </div>
-
-    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      <article
-        v-for="(card, index) in cards"
-        :key="card.title"
-        class="project-card border-default bg-default group overflow-hidden rounded-lg border"
-        :style="{ '--project-card-delay': `${260 + index * 95}ms` }"
-      >
-        <div class="bg-muted overflow-hidden">
-          <img
-            :src="card.image"
-            :alt="card.title"
-            class="aspect-[4/3] w-full object-cover transition duration-500 ease-out group-hover:scale-105"
+  <div>
+    <BaseSection spacing="lg" container-size="xl" class="section-tone-tinted">
+      <div class="page-copy-reveal mx-auto max-w-5xl text-center">
+        <h1 class="text-highlighted text-5xl font-bold tracking-tight text-balance sm:text-7xl">
+          <span>{{ t('projects.heading.title') }}</span>
+          <span class="text-primary block whitespace-normal lg:whitespace-nowrap">
+            {{ t('projects.heading.accent') }}
+          </span>
+        </h1>
+        <p class="text-muted mt-6 text-lg text-balance sm:text-xl/8">
+          {{ t('projects.heading.lead') }}
+        </p>
+        <div class="mt-8 flex justify-center">
+          <UButton
+            :label="t('home.hero.ctaPrimary')"
+            :to="localePath('contact')"
+            trailing-icon="i-lucide-arrow-right"
+            size="xl"
           />
         </div>
-        <div class="p-5">
-          <h2 class="text-highlighted text-xl font-semibold tracking-tight">
-            {{ card.title }}
-          </h2>
-        </div>
-      </article>
-    </div>
-  </BaseSection>
+      </div>
+    </BaseSection>
+
+    <BaseSection spacing="md" container-size="xl" class="section-tone-soft">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <article
+          v-for="(card, index) in cards"
+          :key="card.title"
+          class="project-card border-default bg-default group overflow-hidden rounded-lg border"
+          :style="{ '--project-card-delay': `${260 + index * 95}ms` }"
+        >
+          <div class="bg-muted overflow-hidden">
+            <img
+              :src="card.image"
+              :alt="card.title"
+              class="aspect-[4/3] w-full object-cover transition duration-500 ease-out group-hover:scale-105"
+            />
+          </div>
+          <div class="p-5">
+            <h2 class="text-highlighted text-xl font-semibold tracking-tight">
+              {{ card.title }}
+            </h2>
+          </div>
+        </article>
+      </div>
+    </BaseSection>
+  </div>
 </template>
 
 <script setup lang="ts">

@@ -10,43 +10,45 @@
       </template>
     </UPageHero>
 
-    <div class="mx-auto max-w-4xl px-4 pt-2 pb-8 sm:px-6 sm:pt-0 lg:px-8">
-      <UPageCard variant="subtle" class="contact-card-reveal p-5 sm:p-6">
-        <p class="contact-card-copy text-default text-base leading-relaxed sm:text-lg">
-          {{ t('contact.hero.directLead', { email: contactEmail, phone: contactPhone }) }}
-        </p>
-        <div class="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-          <UButton
-            class="contact-card-action"
-            :href="`mailto:${contactEmail}`"
-            :label="t('contact.hero.directEmail')"
-            icon="i-lucide-mail"
-            color="primary"
-            variant="solid"
-          />
-          <UButton
-            class="contact-card-action"
-            :href="whatsappHref"
-            :label="t('contact.hero.directWhatsapp')"
-            icon="i-simple-icons-whatsapp"
-            color="neutral"
-            variant="outline"
-            target="_blank"
-            rel="noopener noreferrer"
-          />
-          <UButton
-            class="contact-card-action"
-            :href="`tel:${phoneHref}`"
-            :label="t('contact.hero.directCall')"
-            icon="i-lucide-phone"
-            color="neutral"
-            variant="outline"
-          />
-        </div>
-      </UPageCard>
-    </div>
+    <section class="section-tone-tinted py-10 sm:py-14">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <UPageCard variant="subtle" class="contact-card-reveal p-5 sm:p-6">
+          <p class="contact-card-copy text-default text-base leading-relaxed sm:text-lg">
+            {{ t('contact.hero.directLead', { email: contactEmail, phone: contactPhone }) }}
+          </p>
+          <div class="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <UButton
+              class="contact-card-action"
+              :href="`mailto:${contactEmail}`"
+              :label="t('contact.hero.directEmail')"
+              icon="i-lucide-mail"
+              color="primary"
+              variant="solid"
+            />
+            <UButton
+              class="contact-card-action"
+              :href="whatsappHref"
+              :label="t('contact.hero.directWhatsapp')"
+              icon="i-simple-icons-whatsapp"
+              color="neutral"
+              variant="outline"
+              target="_blank"
+              rel="noopener noreferrer"
+            />
+            <UButton
+              class="contact-card-action"
+              :href="`tel:${phoneHref}`"
+              :label="t('contact.hero.directCall')"
+              icon="i-lucide-phone"
+              color="neutral"
+              variant="outline"
+            />
+          </div>
+        </UPageCard>
+      </div>
+    </section>
 
-    <SectionsFaqSection :title="t('contact.faq.title')" :items="faqItems" />
+    <SectionsFaqSection class="section-tone-violet" :title="t('contact.faq.title')" :items="faqItems" />
   </div>
 </template>
 
