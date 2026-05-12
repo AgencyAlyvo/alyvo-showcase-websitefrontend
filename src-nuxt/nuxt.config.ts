@@ -77,6 +77,10 @@ export default defineNuxtConfig({
   pinia: {
     storesDirs: ['~/stores/**'],
   },
+  colorMode: {
+    preference: 'system',
+    fallback: 'dark',
+  },
   googleFonts: {
     families: {
       'Public Sans': [400, 500, 600, 700],
