@@ -44,65 +44,40 @@ export async function getAccessTokenFromRefreshToken(
 }
 
 /**
- *
+ * Build the Google OAuth 2.0 authorization URL for Search Console readonly.
+ * @param {string} clientId - Identifiant OAuth Google.
+ * @param {string} redirectUri - URI de redirection autorisee dans Google Cloud.
+ * @returns {string} URL d'autorisation Google.
  */
-type ServiceAccountKey = {
-  client_email?: string
-  private_key?: string
-}
-
-/**
- * Access token via Service Account (JWT). Priorité si GSC_SERVICE_ACCOUNT_JSON est défini.
- * @param {string} serviceAccountJson - JSON brut du Service Account Google.
- * @returns {Promise<string>} Access token signÃ© via JWT.
- */
-export async function getAccessTokenFromServiceAccount(serviceAccountJson: string): Promise<string> {
-  let key: ServiceAccountKey
-  try {
-    key = JSON.parse(serviceAccountJson) as ServiceAccountKey
-  } catch {
-    throw new Error('GSC_SERVICE_ACCOUNT_JSON is invalid JSON')
-  }
-  if (!key.client_email || !key.private_key) {
-    throw new Error('GSC_SERVICE_ACCOUNT_JSON must contain client_email and private_key')
-  }
-  const { JWT } = await import('google-auth-library')
-  const client: InstanceType<typeof JWT> = new JWT({
-    email: key.client_email,
-    key: key.private_key,
-    scopes: [GSC_SCOPE],
+export function getGoogleAuthUrl(clientId: string, redirectUri: string): string {
+  const params: URLSearchParams = new URLSearchParams({
+    client_id: clientId,
+    redirect_uri: redirectUri,
+    response_type: 'code',
+    scope: GSC_SCOPE,
+    access_type: 'offline',
+    prompt: 'consent',
   })
-  const credentials: { access_token?: string | null } = await client.authorize()
-  if (!credentials.access_token) {
-    throw new Error('Service account authorization did not return access_token')
-  }
-  return credentials.access_token
+  return `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`
 }
 
 /**
  *
  */
 type GscAuthConfig = {
-  gscServiceAccountJson?: string
   googleClientId?: string
   googleClientSecret?: string
   gscRefreshToken?: string
 }
 
 /**
- * Retourne un access token pour l'API Search Console.
- * Priorité : Service Account puis refresh token (OAuth).
- * @param {GscAuthConfig} config - ParamÃ¨tres de connexion GSC.
+ * Retourne un access token pour l'API Search Console via OAuth proprietaire.
+ * @param {GscAuthConfig} config - Parametres de connexion GSC.
  * @returns {Promise<string>} Access token pour les appels Search Console.
  */
 export async function getGscAccessToken(config: GscAuthConfig): Promise<string> {
-  if (config.gscServiceAccountJson?.trim()) {
-    return getAccessTokenFromServiceAccount(config.gscServiceAccountJson.trim())
-  }
   if (config.gscRefreshToken && config.googleClientId && config.googleClientSecret) {
     return getAccessTokenFromRefreshToken(config.googleClientId, config.googleClientSecret, config.gscRefreshToken)
   }
-  throw new Error(
-    'Configure either GSC_SERVICE_ACCOUNT_JSON (Service Account) or GSC_REFRESH_TOKEN + GOOGLE_CLIENT_ID + GOOGLE_CLIENT_SECRET',
-  )
+  throw new Error('Configure GSC_REFRESH_TOKEN + GOOGLE_CLIENT_ID + GOOGLE_CLIENT_SECRET')
 }

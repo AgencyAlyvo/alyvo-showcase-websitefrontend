@@ -37,7 +37,6 @@ export default defineEventHandler(async (event: H3Event) => {
   let accessToken: string
   try {
     accessToken = await getGscAccessToken({
-      gscServiceAccountJson: config.gscServiceAccountJson as string,
       googleClientId: config.googleClientId as string,
       googleClientSecret: config.googleClientSecret as string,
       gscRefreshToken: config.gscRefreshToken as string,

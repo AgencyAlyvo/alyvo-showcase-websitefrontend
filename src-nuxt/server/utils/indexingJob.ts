@@ -27,7 +27,6 @@ export async function runIndexingRefreshJob(): Promise<void> {
   let accessToken: string
   try {
     accessToken = await getGscAccessToken({
-      gscServiceAccountJson: config.gscServiceAccountJson as string,
       googleClientId: config.googleClientId as string,
       googleClientSecret: config.googleClientSecret as string,
       gscRefreshToken: config.gscRefreshToken as string,
