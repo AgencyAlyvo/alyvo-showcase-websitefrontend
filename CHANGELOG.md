@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.2.0](https://github.com/AgencyAlyvo/alyvo-showcase-websitefrontend/compare/v1.1.1...v1.2.0) (2026-05-12)
+
+
+### Features
+
+* add ([e6b0f19](https://github.com/AgencyAlyvo/alyvo-showcase-websitefrontend/commit/e6b0f19e761698b973988fabfa35c32df527e5cc))
+* add animations ([877c0a4](https://github.com/AgencyAlyvo/alyvo-showcase-websitefrontend/commit/877c0a404cc8c3590d285e90d05f72ad54d88302))
+
+
+### Bug Fixes
+
+* fixed lint ([604a935](https://github.com/AgencyAlyvo/alyvo-showcase-websitefrontend/commit/604a9353acd08ff4e389902e5ce80073dd690156))
+
 ## [1.1.1](https://github.com/AgencyAlyvo/alyvo-showcase-websitefrontend/compare/v1.1.0...v1.1.1) (2026-05-12)
 
 
