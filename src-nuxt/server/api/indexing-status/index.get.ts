@@ -40,7 +40,6 @@ export default defineEventHandler(async (event: H3Event): Promise<IndexingStatus
   try {
     const { getGscAccessToken } = await import('~~/server/utils/gscAuth')
     await getGscAccessToken({
-      gscServiceAccountJson: config.gscServiceAccountJson as string,
       googleClientId: config.googleClientId as string,
       googleClientSecret: config.googleClientSecret as string,
       gscRefreshToken: config.gscRefreshToken as string,

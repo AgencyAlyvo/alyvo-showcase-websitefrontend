@@ -43,7 +43,6 @@ export default defineNuxtConfig({
     psiApiKey: process.env.PSI_API_KEY || '',
     indexingSiteUrl: process.env.INDEXING_SITE_URL || process.env.NUXT_PUBLIC_SITE_URL || '',
     gscSiteUrl: process.env.GSC_SITE_URL || '',
-    gscServiceAccountJson: process.env.GSC_SERVICE_ACCOUNT_JSON || '',
     gscQuotaProjectId: process.env.GSC_QUOTA_PROJECT_ID || '',
     googleClientId: process.env.GOOGLE_CLIENT_ID || '',
     googleClientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
@@ -94,7 +93,7 @@ export default defineNuxtConfig({
   },
   sitemap: {
     autoLastmod: true,
-    sources: ['/api/__sitemap__/projects'],
+    sources: ['/api/__sitemap__/pages', '/api/__sitemap__/projects'],
   },
   robots: {
     disallow: ['/api/', '/dashboard', '/en/dashboard', '/es/dashboard'],

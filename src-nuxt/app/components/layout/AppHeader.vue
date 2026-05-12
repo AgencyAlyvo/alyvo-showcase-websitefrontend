@@ -20,7 +20,24 @@
       />
     </template>
 
-    <UNavigationMenu :items="items" variant="link" />
+    <nav class="hidden items-center gap-1 md:flex" :aria-label="t('footer.navigation')">
+      <NuxtLink
+        v-for="item in items"
+        :key="`desktop-${item.to}`"
+        :to="item.to"
+        custom
+        v-slot="{ href, navigate, isActive, isExactActive }"
+      >
+        <a
+          :href="href"
+          class="rounded-md px-3 py-2 text-sm font-medium transition-colors"
+          :class="isNavItemActive(item, isActive, isExactActive) ? activeLinkClass : inactiveLinkClass"
+          @click="navigate"
+        >
+          {{ item.label }}
+        </a>
+      </NuxtLink>
+    </nav>
 
     <template #right>
       <UColorModeButton />
@@ -45,7 +62,24 @@
     </template>
 
     <template #body>
-      <UNavigationMenu :items="items" orientation="vertical" class="-mx-2.5" />
+      <nav class="-mx-2.5 flex flex-col gap-1" :aria-label="t('footer.navigation')">
+        <NuxtLink
+          v-for="item in items"
+          :key="`mobile-${item.to}`"
+          :to="item.to"
+          custom
+          v-slot="{ href, navigate, isActive, isExactActive }"
+        >
+          <a
+            :href="href"
+            class="rounded-md px-3 py-2 text-sm font-medium transition-colors"
+            :class="isNavItemActive(item, isActive, isExactActive) ? activeLinkClass : inactiveLinkClass"
+            @click="navigate"
+          >
+            {{ item.label }}
+          </a>
+        </NuxtLink>
+      </nav>
 
       <USeparator class="my-6" />
 
@@ -69,28 +103,41 @@ import type { ComputedRef } from 'vue'
 type HeaderNavItem = {
   label: string
   to: string
-  active: boolean
+  exact?: boolean
 }
 
-const route: ReturnType<typeof useRoute> = useRoute()
 const { t } = useI18n()
 const localePath: ReturnType<typeof useLocalePath> = useLocalePath()
+
+const activeLinkClass: string = 'text-primary underline underline-offset-4'
+const inactiveLinkClass: string = 'text-muted hover:text-highlighted'
+
+/**
+ * Selects exact matching for the home link and regular matching for section links.
+ * @param {HeaderNavItem} item - Navigation item configuration.
+ * @param {boolean} isActive - Router state for regular active matching.
+ * @param {boolean} isExactActive - Router state for exact active matching.
+ * @returns {boolean} Whether the item should receive active navigation styles.
+ */
+const isNavItemActive: (item: HeaderNavItem, isActive: boolean, isExactActive: boolean) => boolean = (
+  item: HeaderNavItem,
+  isActive: boolean,
+  isExactActive: boolean,
+): boolean => (item.exact === true ? isExactActive : isActive)
 
 const items: ComputedRef<HeaderNavItem[]> = computed((): HeaderNavItem[] => [
   {
     label: t('nav.home'),
     to: localePath('index'),
-    active: route.path === localePath('index'),
+    exact: true,
   },
   {
     label: t('nav.projects'),
     to: localePath('projects'),
-    active: route.path.startsWith(localePath('projects')),
   },
   {
     label: t('nav.contact'),
     to: localePath('contact'),
-    active: route.path.startsWith(localePath('contact')),
   },
 ])
 </script>
