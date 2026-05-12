@@ -265,7 +265,7 @@ const cardsByLocale: Record<string, ProjectEntry[]> = {
 
 const project: ComputedRef<ProjectEntry | undefined> = computed((): ProjectEntry | undefined => {
   const rawSlug: string | string[] = route.params.slug as string | string[]
-  const slug: string = Array.isArray(rawSlug) ? (rawSlug.length > 0 ? rawSlug[0] : '') : rawSlug
+  const slug: string = Array.isArray(rawSlug) ? (rawSlug[0] ?? '') : rawSlug
 
   if (!slug) {
     return undefined
