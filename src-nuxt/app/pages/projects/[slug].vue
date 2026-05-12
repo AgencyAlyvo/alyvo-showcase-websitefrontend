@@ -44,12 +44,7 @@
             muted
             playsinline
           />
-          <img
-            v-else
-            :src="project.details.cover"
-            :alt="project.title"
-            class="aspect-video w-full object-cover"
-          />
+          <img v-else :src="project.details.cover" :alt="project.title" class="aspect-video w-full object-cover" />
         </div>
       </div>
     </BaseSection>
@@ -66,7 +61,7 @@
             class="need-card border-default bg-default rounded-xl border p-5"
             :style="{ '--card-accent': needAccents[index] }"
           >
-            <p class="accent-label text-xs font-semibold uppercase tracking-normal">
+            <p class="accent-label text-xs font-semibold tracking-normal uppercase">
               {{ item.label }}
             </p>
             <p class="text-default mt-3 text-sm leading-6">{{ item.value }}</p>
@@ -86,7 +81,9 @@
             :key="stake"
             class="stake-card border-default bg-default flex items-start gap-3 rounded-xl border p-5"
           >
-            <span class="text-primary bg-primary/10 mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full">
+            <span
+              class="text-primary bg-primary/10 mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full"
+            >
               <UIcon name="i-lucide-target" class="size-4" />
             </span>
             <p class="text-default text-sm leading-6">{{ stake }}</p>
@@ -109,7 +106,7 @@
           >
             <div class="accent-bar h-1 w-full" />
             <div class="p-6">
-              <p class="accent-label text-xs font-semibold uppercase tracking-normal">
+              <p class="accent-label text-xs font-semibold tracking-normal uppercase">
                 {{ item.label }}
               </p>
               <p class="text-default mt-3 text-sm leading-6">{{ item.value }}</p>
@@ -120,17 +117,13 @@
     </BaseSection>
 
     <BaseSection spacing="md" container-size="xl" class="section-tone-deep">
-      <div class="mx-auto max-w-5xl grid gap-10 lg:grid-cols-2">
+      <div class="mx-auto grid max-w-5xl gap-10 lg:grid-cols-2">
         <div>
           <h2 class="text-highlighted text-3xl font-semibold tracking-tight">
             {{ t('project.sections.features.title') }}
           </h2>
           <ul class="mt-6 space-y-3">
-            <li
-              v-for="feature in project.details.features"
-              :key="feature"
-              class="flex items-start gap-3"
-            >
+            <li v-for="feature in project.details.features" :key="feature" class="flex items-start gap-3">
               <span class="text-primary mt-1">
                 <UIcon name="i-lucide-check-circle-2" class="size-5" />
               </span>
@@ -148,7 +141,9 @@
               :key="result"
               class="result-card border-default bg-default flex items-start gap-3 rounded-lg border p-4"
             >
-              <span class="text-primary bg-primary/10 mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full">
+              <span
+                class="text-primary bg-primary/10 mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full"
+              >
                 <UIcon name="i-lucide-trending-up" class="size-4" />
               </span>
               <p class="text-default text-sm leading-6">{{ result }}</p>
@@ -258,7 +253,7 @@ interface ProjectEntry {
   details: ProjectDetails
 }
 
-const route = useRoute()
+const route: ReturnType<typeof useRoute> = useRoute()
 const { locale, t } = useI18n()
 const localePath: ReturnType<typeof useLocalePath> = useLocalePath()
 
@@ -269,26 +264,28 @@ const cardsByLocale: Record<string, ProjectEntry[]> = {
 }
 
 const project: ComputedRef<ProjectEntry | undefined> = computed((): ProjectEntry | undefined => {
-  const rawSlug: string | string[] | undefined = route.params.slug
-  const slug: string = Array.isArray(rawSlug) ? (rawSlug[0] ?? '') : String(rawSlug ?? '')
+  const rawSlug: string | string[] = route.params.slug as string | string[]
+  const slug: string = Array.isArray(rawSlug) ? (rawSlug.length > 0 ? rawSlug[0] : '') : rawSlug
+
   if (!slug) {
     return undefined
   }
+
   const primary: ProjectEntry[] = cardsByLocale[locale.value] ?? (frCards as ProjectEntry[])
-  const match: ProjectEntry | undefined = primary.find(
-    (entry: ProjectEntry): boolean => entry.slug === slug,
-  )
+  const match: ProjectEntry | undefined = primary.find((entry: ProjectEntry): boolean => entry.slug === slug)
+
   if (match) {
     return match
   }
+
   for (const list of Object.values(cardsByLocale)) {
-    const found: ProjectEntry | undefined = list.find(
-      (entry: ProjectEntry): boolean => entry.slug === slug,
-    )
+    const found: ProjectEntry | undefined = list.find((entry: ProjectEntry): boolean => entry.slug === slug)
+
     if (found) {
       return found
     }
   }
+
   return undefined
 })
 
@@ -347,9 +344,7 @@ function categoryAccent(key: string): string {
 }
 
 usePageSeo({
-  title: project.value
-    ? `${project.value.title} — ${t('projects.heading.title')}`
-    : t('project.notFound.title'),
+  title: project.value ? `${project.value.title} — ${t('projects.heading.title')}` : t('project.notFound.title'),
   description: project.value?.summary ?? t('project.notFound.description'),
 })
 </script>
