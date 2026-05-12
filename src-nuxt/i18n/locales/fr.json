@@ -209,13 +209,25 @@
   "projects": {
     "heading": {
       "title": "Mes projets",
-      "accent": "Applications, DevOps & IA",
+      "accent": "Applications, DevOps, IA & Automatisation",
       "lead": "Des projets qui mêlent développement, infrastructure, automatisation et intelligence artificielle pour créer des solutions solides."
     },
     "card": {
       "need": "Besoin",
       "solution": "Solution",
-      "result": "Résultat"
+      "result": "Résultat",
+      "learnMore": "En savoir plus"
+    },
+    "categories": {
+      "web": "Site web",
+      "software": "Logiciel",
+      "mobile": "Application mobile",
+      "ai": "IA",
+      "devops": "Infrastructure & DevOps",
+      "automation": "Automatisation",
+      "api": "API",
+      "saas": "SaaS",
+      "data": "Données"
     },
     "empty": {
       "title": "Aucun projet pour ce filtre",

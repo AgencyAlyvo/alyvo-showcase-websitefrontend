@@ -1,24 +1,115 @@
+import frProjects from '~/data/projects/fr.json'
+import enProjects from '~/data/projects/en.json'
+import esProjects from '~/data/projects/es.json'
+
 /**
- * Lien hreflang pour une page statique du sitemap.
+ * Locale code supported by the sitemap output.
  */
-interface SitemapLink {
-  lang: string
-  url: string
+type LocaleCode = 'fr' | 'en' | 'es'
+
+/**
+ * Per-locale URL templates for the static pages.
+ */
+type LocalePaths = {
+  prefix: string
+  home: string
+  projects: string
+  contact: string
 }
 
-const homeLinks: SitemapLink[] = [
-  { lang: 'fr', url: '/' },
-  { lang: 'en', url: '/en' },
-  { lang: 'es', url: '/es' },
-]
+const localePathConfig: Record<LocaleCode, LocalePaths> = {
+  fr: { prefix: '', home: '/', projects: '/projets', contact: '/contact' },
+  en: { prefix: '/en', home: '/en', projects: '/projects', contact: '/contact' },
+  es: { prefix: '/es', home: '/es', projects: '/proyectos', contact: '/contacto' },
+}
+
+const projectsByLocale: Record<LocaleCode, { slug: string }[]> = {
+  fr: frProjects as { slug: string }[],
+  en: enProjects as { slug: string }[],
+  es: esProjects as { slug: string }[],
+}
+
+const localeCodes: LocaleCode[] = ['fr', 'en', 'es']
+
+/**
+ * Build the localised path for the home page.
+ * @param {LocaleCode} locale - Target locale code.
+ * @returns {string} Absolute path on the public site.
+ */
+function homeUrl(locale: LocaleCode): string {
+  return localePathConfig[locale].home
+}
+
+/**
+ * Build the localised path for the projects index.
+ * @param {LocaleCode} locale - Target locale code.
+ * @returns {string} Absolute path on the public site.
+ */
+function projectsIndexUrl(locale: LocaleCode): string {
+  const config: LocalePaths = localePathConfig[locale]
+  return `${config.prefix}${config.projects}`
+}
+
+/**
+ * Build the localised path for the contact page.
+ * @param {LocaleCode} locale - Target locale code.
+ * @returns {string} Absolute path on the public site.
+ */
+function contactUrl(locale: LocaleCode): string {
+  const config: LocalePaths = localePathConfig[locale]
+  return `${config.prefix}${config.contact}`
+}
+
+/**
+ * Build the localised path for a project detail page.
+ * @param {LocaleCode} locale - Target locale code.
+ * @param {string} slug - Project slug.
+ * @returns {string} Absolute path on the public site.
+ */
+function projectDetailUrl(locale: LocaleCode, slug: string): string {
+  return `${projectsIndexUrl(locale)}/${slug}`
+}
+
+/**
+ * Build the hreflang alternatives list using the same builder for every locale.
+ * @param {(locale: LocaleCode) => string} builder - Function returning the URL per locale.
+ * @returns {{ hreflang: string; href: string }[]} List of hreflang alternatives.
+ */
+function alternatives(
+  builder: (locale: LocaleCode) => string,
+): { hreflang: string; href: string }[] {
+  return localeCodes.map((locale: LocaleCode) => ({
+    hreflang: locale,
+    href: builder(locale),
+  }))
+}
 
 export default defineEventHandler(() => {
-  return homeLinks.map((link: SitemapLink) => ({
-    loc: link.url,
-    _i18nTransform: false,
-    alternatives: homeLinks.map((alt: SitemapLink) => ({
-      hreflang: alt.lang,
-      href: alt.url,
-    })),
-  }))
+  const entries = localeCodes.flatMap((locale: LocaleCode) => {
+    const projects = projectsByLocale[locale]
+    return [
+      {
+        loc: homeUrl(locale),
+        _i18nTransform: false,
+        alternatives: alternatives(homeUrl),
+      },
+      {
+        loc: projectsIndexUrl(locale),
+        _i18nTransform: false,
+        alternatives: alternatives(projectsIndexUrl),
+      },
+      {
+        loc: contactUrl(locale),
+        _i18nTransform: false,
+        alternatives: alternatives(contactUrl),
+      },
+      ...projects.map((project: { slug: string }) => ({
+        loc: projectDetailUrl(locale, project.slug),
+        _i18nTransform: false,
+        alternatives: alternatives((alt: LocaleCode) => projectDetailUrl(alt, project.slug)),
+      })),
+    ]
+  })
+
+  return entries
 })

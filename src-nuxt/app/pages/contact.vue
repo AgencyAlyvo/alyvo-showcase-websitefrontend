@@ -10,7 +10,7 @@
       </template>
     </UPageHero>
 
-    <section class="section-tone-tinted py-10 sm:py-14">
+    <section class="section-tone-tinted py-20 sm:py-32">
       <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <UPageCard variant="subtle" class="contact-card-reveal p-5 sm:p-6">
           <p class="contact-card-copy text-default text-base leading-relaxed sm:text-lg">

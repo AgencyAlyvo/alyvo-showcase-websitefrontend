@@ -34,7 +34,6 @@ useHead(() => ({
     { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/icons/icon-16.png' },
     { rel: 'apple-touch-icon', sizes: '180x180', href: '/icons/apple-touch-icon.png' },
     { rel: 'mask-icon', href: '/favicon.svg', color: '#000000' },
-    { rel: 'manifest', href: '/site.webmanifest' },
   ],
   meta: [...i18nHead.value.meta, { key: 'theme-color', name: 'theme-color', content: themeColor.value }],
 }))

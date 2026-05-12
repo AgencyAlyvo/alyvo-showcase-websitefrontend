@@ -77,6 +77,10 @@ export default defineNuxtConfig({
   pinia: {
     storesDirs: ['~/stores/**'],
   },
+  colorMode: {
+    preference: 'system',
+    fallback: 'dark',
+  },
   googleFonts: {
     families: {
       'Public Sans': [400, 500, 600, 700],
@@ -94,6 +98,7 @@ export default defineNuxtConfig({
   sitemap: {
     autoLastmod: true,
     sources: ['/api/__sitemap__/pages'],
+    excludeAppSources: true,
   },
   robots: {
     disallow: ['/api/', '/dashboard', '/en/dashboard', '/es/dashboard'],
@@ -132,6 +137,12 @@ export default defineNuxtConfig({
         fr: '/projets',
         en: '/projects',
         es: '/proyectos',
+      },
+
+      'projects/[slug]': {
+        fr: '/projets/[slug]',
+        en: '/projects/[slug]',
+        es: '/proyectos/[slug]',
       },
 
       contact: {

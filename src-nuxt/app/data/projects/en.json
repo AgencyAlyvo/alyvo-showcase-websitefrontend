@@ -1,14 +1,735 @@
 [
   {
-    "title": "Custom website",
-    "image": "/videos/presentation-poster.jpg"
+    "slug": "biosency-boraconnect-web",
+    "title": "Biosency BoraConnect — Medical web platform",
+    "descriptor": "Doctor / patient platform for remote monitoring",
+    "summary": "Medical telemonitoring web platform connecting doctors and patients, with real-time alerts and serverless architecture.",
+    "image": "/logo/logo-biosency.png",
+    "categories": [
+      "web",
+      "saas",
+      "api"
+    ],
+    "details": {
+      "tagline": "A medical platform that turns patient signals into clinical decisions.",
+      "need": {
+        "context": "Biosency, a MedTech specialised in home monitoring, needed a single platform to serve both doctors and patients.",
+        "problem": "No tool was able to centralise patient alerts, scale with the user base, and meet healthcare data constraints.",
+        "objective": "Build a reliable, secure and scalable platform with a dual doctor / patient focus."
+      },
+      "stakes": [
+        "Guarantee the reliability of medical alerts",
+        "Scale without infrastructure cost overruns",
+        "Meet healthcare data constraints"
+      ],
+      "solution": {
+        "what": "An Angular web application backed by a serverless API Gateway + Lambda architecture on AWS.",
+        "why": "Serverless allows pay-per-use pricing and absorbs alert spikes without pre-provisioning infrastructure.",
+        "how": "Split into Lambda micro-functions, exposed securely through API Gateway and an Angular front-end built around the medical workflow."
+      },
+      "features": [
+        "Doctor dashboard with real-time alerts",
+        "Patient area for home monitoring",
+        "Push notifications and threshold alerts",
+        "Serverless API that scales on demand",
+        "Role-based access and data confidentiality"
+      ],
+      "results": [
+        "Live platform used by healthcare professionals",
+        "Architecture able to absorb spikes without intervention",
+        "Infrastructure costs aligned with real usage"
+      ],
+      "stack": [
+        "Angular",
+        "TypeScript",
+        "AWS API Gateway",
+        "AWS Lambda",
+        "Node.js"
+      ]
+    }
   },
   {
-    "title": "Business application",
-    "image": "/videos/presentation-poster.jpg"
+    "slug": "biosency-boraconnect-mobile",
+    "title": "Biosency BoraConnect — Medical mobile platform",
+    "descriptor": "Patient mobile app for iOS and Android",
+    "summary": "Cross-platform mobile application for remotely monitored patients, sharing the same serverless API as the web platform.",
+    "image": "/logo/logo-biosency.png",
+    "categories": [
+      "mobile",
+      "api"
+    ],
+    "details": {
+      "tagline": "A single codebase for iOS and Android, plugged into the medical API.",
+      "need": {
+        "context": "Biosency patients needed smooth mobile access for their day-to-day monitoring.",
+        "problem": "Maintaining two separate native apps would have doubled development and maintenance costs.",
+        "objective": "Deliver a native mobile experience on iOS and Android from a single codebase."
+      },
+      "stakes": [
+        "Offer a smooth and reassuring patient experience",
+        "Share code between web and mobile",
+        "Keep the same serverless API to reduce complexity"
+      ],
+      "solution": {
+        "what": "An Angular application wrapped in Capacitor, shipped to the App Store and Google Play.",
+        "why": "Capacitor exposes native APIs while reusing the Angular ecosystem already in place on the web.",
+        "how": "Reuse of the web business layer, integration of native notifications and publication on both stores."
+      },
+      "features": [
+        "iOS and Android app from a single codebase",
+        "Native push notifications",
+        "Secure patient authentication",
+        "Synchronisation with the web platform",
+        "Access to native APIs (camera, biometrics...)"
+      ],
+      "results": [
+        "One team for two mobile platforms",
+        "Shorter production lead times",
+        "Patient experience consistent with the web"
+      ],
+      "stack": [
+        "Angular",
+        "Capacitor",
+        "TypeScript",
+        "AWS API Gateway",
+        "AWS Lambda"
+      ]
+    }
   },
   {
-    "title": "Automation",
-    "image": "/videos/presentation-poster.jpg"
+    "slug": "atoutgraph-brithotel",
+    "title": "Brit Hotel — Hotel group website",
+    "descriptor": "Corporate site of the Brit Hotel group",
+    "summary": "Brit Hotel group corporate website built for the AtoutGraph agency, with a booking interface and pages for each hotel.",
+    "image": "/logo/logo-brithotel.png",
+    "categories": [
+      "web",
+      "api"
+    ],
+    "details": {
+      "tagline": "A group website that aligns traffic, brand and bookings.",
+      "need": {
+        "context": "Brit Hotel, France's leading independent hotel group, needed to modernise its online presence.",
+        "problem": "An ageing corporate website with poor performance that did not match the strength of the network.",
+        "objective": "Rebuild the corporate site to reflect the size and diversity of the group."
+      },
+      "stakes": [
+        "Promote the brand across the network",
+        "Handle the diversity of properties",
+        "Hold up under high-demand periods"
+      ],
+      "solution": {
+        "what": "A PHP + JavaScript website built for AtoutGraph and integrated with the group's booking tools.",
+        "why": "A stack mastered by the agency, robust and aligned with existing hosting constraints.",
+        "how": "Template design, multi-hotel content integration and connection to booking modules."
+      },
+      "features": [
+        "Group corporate website",
+        "Dedicated pages per hotel",
+        "Integrated booking module",
+        "SEO-optimised content",
+        "Cross-device compatibility"
+      ],
+      "results": [
+        "Site live for a major player in French hospitality",
+        "Stack maintainable by the agency over time",
+        "Traffic and brand image consolidated"
+      ],
+      "stack": [
+        "PHP",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "MySQL"
+      ]
+    }
+  },
+  {
+    "slug": "atoutgraph-saint-malo",
+    "title": "City of Saint-Malo — Institutional website",
+    "descriptor": "Official website of the City of Saint-Malo",
+    "summary": "Institutional website of the City of Saint-Malo built for the AtoutGraph agency, with editorial content management and citizen services.",
+    "image": "/logo/logo-villlesaintmalo.webp",
+    "categories": [
+      "web",
+      "api"
+    ],
+    "details": {
+      "tagline": "A city website that informs, guides and simplifies life for citizens.",
+      "need": {
+        "context": "The City of Saint-Malo wanted to overhaul its institutional website to better serve residents, visitors and local stakeholders.",
+        "problem": "Hard-to-maintain legacy site, dated ergonomics, scattered content and limited accessibility.",
+        "objective": "Deliver a modern, accessible website that the city's communication team can easily update."
+      },
+      "stakes": [
+        "Serve a broad audience (citizens, tourists, businesses)",
+        "Make in-house content editing easy",
+        "Meet public-sector accessibility requirements"
+      ],
+      "solution": {
+        "what": "A PHP + JavaScript website delivered for AtoutGraph, plugged into the agency's in-house CMS.",
+        "why": "A proven technical base capable of absorbing the diversity of municipal content.",
+        "how": "Editorial template design, integration of service modules and editor training."
+      },
+      "features": [
+        "Multi-section editorial pages",
+        "Directory of municipal services",
+        "News and cultural agenda",
+        "Strengthened accessibility",
+        "Cross-section search"
+      ],
+      "results": [
+        "Official website of a major tourist city",
+        "Easier updates for internal teams",
+        "Clearer and more accessible citizen information"
+      ],
+      "stack": [
+        "PHP",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "MySQL"
+      ]
+    }
+  },
+  {
+    "slug": "atoutgraph-cms",
+    "title": "AtoutGraph — In-house agency CMS",
+    "descriptor": "Internal PHP + Laravel CMS used to ship client sites",
+    "summary": "CMS built in-house at AtoutGraph to produce and maintain the agency's client websites, based on PHP and Laravel.",
+    "image": "/logo/logo-atoutgraph.jpg",
+    "categories": [
+      "web",
+      "api"
+    ],
+    "details": {
+      "tagline": "The engine the agency uses to ship every client website.",
+      "need": {
+        "context": "AtoutGraph was shipping many client websites and reinventing the wheel on every project.",
+        "problem": "No unified tooling to deliver fast without depending on an open-source CMS that constrained agency-specific needs.",
+        "objective": "Build an in-house CMS on Laravel, tailored to the agency's workflows and client deliveries."
+      },
+      "stakes": [
+        "Industrialise client website production",
+        "Stay in full control of the stack",
+        "Evolve without depending on a third-party vendor"
+      ],
+      "solution": {
+        "what": "A custom Laravel CMS with content management, media handling and reusable business modules.",
+        "why": "Laravel offers a balance of robustness and development speed well suited to a multi-project agency.",
+        "how": "Modular architecture, user and role management, and building blocks reusable across projects."
+      },
+      "features": [
+        "Multi-site content management",
+        "Modules reusable across projects",
+        "Granular roles and permissions",
+        "Admin tools for editors",
+        "Deployment process owned by the agency"
+      ],
+      "results": [
+        "Several client websites delivered on the same base",
+        "Shorter production lead times",
+        "Full stack ownership for the team"
+      ],
+      "stack": [
+        "PHP",
+        "Laravel",
+        "MySQL",
+        "JavaScript",
+        "HTML",
+        "CSS"
+      ]
+    }
+  },
+  {
+    "slug": "agency-scraper",
+    "title": "Agency Scraper — Automated apartment search",
+    "descriptor": "Personal Go scraper — alerts on every new listing",
+    "summary": "Personal Go scraper that monitors 15 real estate agencies continuously and sends a mobile notification every time a new listing appears.",
+    "image": "/projects/agency-scraper.svg",
+    "categories": [
+      "automation",
+      "software"
+    ],
+    "details": {
+      "tagline": "Be the first on a real estate listing, without refreshing 15 sites by hand.",
+      "need": {
+        "context": "On a tight real estate market, the best listings disappear within minutes.",
+        "problem": "Manually monitoring 15 agency websites is impossible, and public feeds are too slow or non-existent.",
+        "objective": "Automate monitoring to receive a mobile notification as soon as a new listing appears."
+      },
+      "stakes": [
+        "Spot a new listing before anyone else",
+        "Stay light on the scraped sites",
+        "Run 24/7 without intervention"
+      ],
+      "solution": {
+        "what": "A Go scraper that polls 15 agencies every minute and sends a mobile notification on every new listing.",
+        "why": "Go's native concurrency and low memory footprint are ideal for a continuously running service.",
+        "how": "Concurrent polling loop, diff against a local index, push notification whenever a new listing ID appears."
+      },
+      "features": [
+        "Parallel polling of 15 agencies",
+        "Detection of new listings only",
+        "Real-time mobile notification",
+        "Lightweight 24/7 service"
+      ],
+      "results": [
+        "Listing alerts received in under a minute",
+        "No manual supervision needed",
+        "Near-zero server footprint"
+      ],
+      "stack": [
+        "Go",
+        "Goroutines",
+        "HTTP",
+        "Push notifications"
+      ]
+    }
+  },
+  {
+    "slug": "crzgames-studio-website",
+    "title": "CrzGames — Game studio website",
+    "descriptor": "Main studio site with dashboard and store",
+    "summary": "Full website for the CrzGames video game studio: showcase, store, admin dashboard and launcher orchestration.",
+    "image": "/logo/logo-crzgames-seatyrants.jpg",
+    "categories": [
+      "web",
+      "saas",
+      "api"
+    ],
+    "details": {
+      "tagline": "The studio control point: showcase, store, dashboard and launcher in one place.",
+      "cover": "/videos/video-crzgames-siteweb.mp4",
+      "need": {
+        "context": "CrzGames, an independent game studio, needed a centralised platform to run its products.",
+        "problem": "No single entry point: showcase, store, launcher orchestration and back-office were fragmented.",
+        "objective": "Build a website and dashboard to run the whole studio from a single platform."
+      },
+      "stakes": [
+        "Centralise the studio's product management",
+        "Hold a modern and performant stack",
+        "Keep full ownership of data and business logic"
+      ],
+      "solution": {
+        "what": "A Vue 3 front-end backed by an Adonis v7 back-end, with an admin dashboard and an integrated store.",
+        "why": "Vue 3 + Adonis provide a clear, performant and maintainable TypeScript stack.",
+        "how": "Decoupled front / back architecture, dashboard to manage content and store, typed shared API."
+      },
+      "features": [
+        "Studio showcase built with Vue 3",
+        "Integrated store",
+        "Full admin dashboard",
+        "Launcher orchestration from the back-office",
+        "User, content and product management"
+      ],
+      "results": [
+        "Single platform to drive the whole studio",
+        "Modern stack maintainable solo",
+        "Shared technical base across multiple products"
+      ],
+      "stack": [
+        "Vue 3",
+        "TypeScript",
+        "Adonis 7",
+        "Node.js",
+        "MariaDB"
+      ]
+    }
+  },
+  {
+    "slug": "crzgames-seatyrants-website",
+    "title": "SeaTyrants — Official MMORPG website",
+    "descriptor": "Main website of the SeaTyrants MMORPG",
+    "summary": "Official SeaTyrants MMORPG website: game presentation, leaderboard, player accounts and launcher access to download the game.",
+    "image": "/logo/logo-seatyrants.png",
+    "categories": [
+      "web",
+      "api"
+    ],
+    "details": {
+      "tagline": "The game hub: leaderboard, player accounts and launcher access to download SeaTyrants.",
+      "cover": "/screen/screen-seatyrants-siteweb.png",
+      "need": {
+        "context": "SeaTyrants, the CrzGames MMORPG, needed a dedicated website to carry its brand and community.",
+        "problem": "There was no dedicated game website to present the universe, display the leaderboard, manage player accounts and guide players to the launcher download.",
+        "objective": "Deliver a clear, immersive official website connected to the CrzGames ecosystem, with simple launcher access."
+      },
+      "stakes": [
+        "Make people want to discover the game's universe",
+        "Explain where to download the launcher to install the game",
+        "Hold up under announcement spikes"
+      ],
+      "solution": {
+        "what": "A Nuxt v4 website connected to the Adonis v7 back-end shared with the rest of the CrzGames ecosystem.",
+        "why": "Reusing the studio stack means shared back-office, accounts and deployments.",
+        "how": "Immersion-focused Nuxt front, shared Adonis API, common player accounts, leaderboard and launcher access."
+      },
+      "features": [
+        "Immersive game presentation",
+        "Player account management",
+        "Player leaderboard",
+        "Clear page to download the launcher and install the game",
+        "Community area and news"
+      ],
+      "results": [
+        "Official website live with leaderboard and launcher access",
+        "Player accounts unified across the whole ecosystem",
+        "Capacity to absorb announcement spikes"
+      ],
+      "stack": [
+        "Nuxt 4",
+        "Vue 3",
+        "TypeScript",
+        "Adonis 7",
+        "Node.js"
+      ]
+    }
+  },
+  {
+    "slug": "crzgames-launcher",
+    "title": "CrzGames Launcher — Multi-platform software",
+    "descriptor": "Desktop launcher for Windows / macOS / Linux",
+    "summary": "Cross-platform Steam-like launcher, proprietary to the studio, to distribute and launch CrzGames games on Windows, macOS and Linux.",
+    "image": "/logo/logo-crzgames-seatyrants.jpg",
+    "categories": [
+      "software",
+      "api"
+    ],
+    "details": {
+      "tagline": "A Steam-like launcher, but proprietary to the studio.",
+      "cover": "/videos/video-crzgames-launcher.mp4",
+      "need": {
+        "context": "CrzGames distributes its games directly, without relying on a third-party platform.",
+        "problem": "No clean way to install, update and launch games across the three desktop systems.",
+        "objective": "Build a cross-platform launcher for Windows / macOS / Linux, proprietary and lightweight."
+      },
+      "stakes": [
+        "Stay in control of game distribution",
+        "Offer a native experience on three OSes",
+        "Minimise software size and footprint"
+      ],
+      "solution": {
+        "what": "A Tauri v2 launcher (Rust on the native side) with a Nuxt v4 + Tailwind front-end for the UI.",
+        "why": "Tauri produces very lightweight native binaries compared to Electron, with Rust for the system layer and a familiar web front.",
+        "how": "Nuxt front embedded in Tauri, communication through Rust commands, downloads and updates handled natively."
+      },
+      "features": [
+        "Game install and update",
+        "Built-in user authentication",
+        "Smooth themed interface",
+        "Windows, macOS and Linux builds",
+        "Reduced disk and memory footprint"
+      ],
+      "results": [
+        "Autonomous distribution of studio games",
+        "Native experience on three OSes from a single codebase",
+        "Updates fully owned by the studio"
+      ],
+      "stack": [
+        "Nuxt 4",
+        "Vue 3",
+        "Tailwind",
+        "Tauri 2",
+        "Rust",
+        "TypeScript"
+      ]
+    }
+  },
+  {
+    "slug": "crzgames-seatyrants-wiki",
+    "title": "SeaTyrants Wiki — Game documentation",
+    "descriptor": "Community wiki and game documentation",
+    "summary": "Wiki dedicated to the SeaTyrants MMORPG, built with VitePress for fast, static documentation that is easy to contribute to.",
+    "image": "/logo/logo-seatyrants.png",
+    "categories": [
+      "web"
+    ],
+    "details": {
+      "tagline": "All the game knowledge — static, Markdown, a few clicks away.",
+      "cover": "/screen/screen-seatyrants-siteweb-wiki.png",
+      "need": {
+        "context": "The SeaTyrants MMORPG generates a large volume of gameplay information that needs to be documented and maintained.",
+        "problem": "No dedicated medium to structure knowledge and let contributors edit easily.",
+        "objective": "Deliver a fast, readable, easy-to-contribute wiki without spinning up heavy infrastructure."
+      },
+      "stakes": [
+        "Document the game clearly and hierarchically",
+        "Allow simple contributions (Markdown)",
+        "Keep maximum load performance"
+      ],
+      "solution": {
+        "what": "A VitePress static site, deployable in seconds and editable in Markdown.",
+        "why": "VitePress is built for documentation: static, fast, easy to maintain and ideal for a technical wiki.",
+        "how": "Game-specific navigation, Vue components for rich content, static deployment."
+      },
+      "features": [
+        "Structured game documentation",
+        "Markdown editing",
+        "Built-in search",
+        "Vue components for rich content",
+        "Ultra-fast static deployment"
+      ],
+      "results": [
+        "Wiki live for the game's community",
+        "Easy contributions from editors",
+        "Maximum load performance"
+      ],
+      "stack": [
+        "VitePress",
+        "Vue 3",
+        "Markdown",
+        "TypeScript"
+      ]
+    }
+  },
+  {
+    "slug": "crzgames-seatyrants-antibot",
+    "title": "SeaTyrants — Anti-bot AI",
+    "descriptor": "Real-time bot detection via ONNX Runtime",
+    "summary": "Embedded AI system to detect players using bots in the SeaTyrants MMORPG, based on ONNX models executed in C/C++.",
+    "image": "/logo/logo-seatyrants.png",
+    "categories": [
+      "ai",
+      "software"
+    ],
+    "details": {
+      "tagline": "An AI that exposes bots before they rot the game.",
+      "need": {
+        "context": "The SeaTyrants MMORPG is exposed to automated behaviours that degrade the experience of legitimate players.",
+        "problem": "Classic heuristics fall short against increasingly sophisticated bots.",
+        "objective": "Detect bot behaviours in real time from gameplay signals, without penalising honest players."
+      },
+      "stakes": [
+        "Protect the game's economy and fairness",
+        "Hold real-time performance on the server side",
+        "Limit false positives on legitimate players"
+      ],
+      "solution": {
+        "what": "An ONNX Runtime integration in C/C++ that loads trained models and evaluates them on gameplay signals.",
+        "why": "ONNX Runtime allows ML inference directly on the server side, natively, with minimal latency.",
+        "how": "Offline training pipeline, ONNX export, C/C++ inference plugged into the server-side gameplay flows."
+      },
+      "features": [
+        "Server-side ML inference in C/C++",
+        "Real-time detection on gameplay flows",
+        "Confidence score per player",
+        "Models retrained and redeployed without touching the binary",
+        "Continuous improvement loop"
+      ],
+      "results": [
+        "Server-side bot detection without degrading the experience",
+        "Inference latency compatible with a real-time MMORPG",
+        "Ability to iterate on models independently from the game"
+      ],
+      "stack": [
+        "C",
+        "C++",
+        "ONNX Runtime",
+        "Python (training)"
+      ]
+    }
+  },
+  {
+    "slug": "crzgames-seatyrants-gameserver",
+    "title": "SeaTyrants GameServer — MMORPG infrastructure",
+    "descriptor": "High-frequency UDP game server on Kubernetes",
+    "summary": "Full game server infrastructure for SeaTyrants: Kubernetes with one pod per map, UDP server (forked ENET), 128 Hz tick rate, Quilkin proxy and event-driven NATS bus.",
+    "image": "/logo/logo-seatyrants.png",
+    "categories": [
+      "devops"
+    ],
+    "details": {
+      "tagline": "An MMORPG infra that holds 128 Hz, map per map, behind a UDP proxy.",
+      "need": {
+        "context": "SeaTyrants is a real-time MMORPG that must serve thousands of players with low latency and a high server tick rate.",
+        "problem": "No infra capable of splitting maps, holding 128 Hz per tick and routing UDP traffic in a scalable way.",
+        "objective": "Build a Kubernetes infrastructure able to scale per map and hold real time on the UDP network."
+      },
+      "stakes": [
+        "Hold a 128-tick-per-second cadence on the server side",
+        "Scale horizontally map by map",
+        "Route UDP traffic reliably and efficiently",
+        "Manage concurrency (mutex, multi-threading) without breaking the tick rate"
+      ],
+      "solution": {
+        "what": "A Kubernetes infrastructure where each game map maps to a dedicated pod, powered by a UDP server forked from ENET, an event-driven NATS bus and a Quilkin UDP proxy at the edge.",
+        "why": "Splitting per map allows independent scaling, Quilkin handles UDP routing, NATS decouples services, and ENET remains one of the most solid UDP protocols for real-time games.",
+        "how": "One pod per map, multi-threading and mutexes on the game process side, NATS for cross-service events, Quilkin for UDP routing, infra-side load balancers to absorb load."
+      },
+      "features": [
+        "One Kubernetes pod per game map",
+        "UDP server based on a fork of ENET",
+        "128 Hz tick rate on the server side",
+        "NATS event bus for inter-service communication",
+        "Quilkin UDP proxy and infra-side load balancers",
+        "Synchronisation via mutex and multi-threading"
+      ],
+      "results": [
+        "Infra capable of holding real time for an MMORPG",
+        "Per-map scalability without breaking server tick rate",
+        "Event-driven architecture ready to evolve"
+      ],
+      "stack": [
+        "Kubernetes",
+        "ENET (fork)",
+        "C / C++",
+        "NATS",
+        "Quilkin",
+        "Docker",
+        "Linux"
+      ]
+    }
+  },
+  {
+    "slug": "crzgames-rc2d-engine",
+    "title": "CrzGames - RC2D (2D game engine)",
+    "descriptor": "C-based 2D engine with SDL3 and cross-platform modules",
+    "summary": "A native C99 2D engine built with SDL3, designed to keep full independence from third-party 3D engines.",
+    "image": "/logo/logo-crzgames-seatyrants.jpg",
+    "categories": [
+      "software"
+    ],
+    "details": {
+      "tagline": "A proprietary 2D engine to keep full control of the tech stack.",
+      "need": {
+        "context": "CrzGames needed a long-term technical foundation for its 2D games without relying on external engines.",
+        "problem": "Third-party engines can impose licensing, roadmap and runtime constraints that are risky for an indie studio.",
+        "objective": "Build a complete, portable and modular 2D engine in C, fully owned by the studio."
+      },
+      "stakes": [
+        "Keep strong technology independence",
+        "Maintain reproducible builds across platforms",
+        "Deliver native C performance"
+      ],
+      "solution": {
+        "what": "RC2DCore implemented in C99 with CMake and GitHub Actions CI/CD.",
+        "why": "This foundation provides tight control over performance, memory behavior and dependency lifecycle.",
+        "how": "Modular architecture, locked dependencies, native desktop/mobile builds and versioned release pipelines."
+      },
+      "features": [
+        "Rendering, input and GPU via SDL3",
+        "Text, image and audio through SDL3_ttf, SDL3_image and SDL3_mixer",
+        "Shader pipeline powered by SDL3_shadercross",
+        "Optional networking, data, video and ONNX AI modules",
+        "Criterion unit tests and multi-platform publishing"
+      ],
+      "results": [
+        "In-house 2D engine maintained by CrzGames",
+        "Unified build chain for desktop and mobile targets",
+        "Stable technical base for future games"
+      ],
+      "stack": [
+        "C99",
+        "CMake",
+        "GitHub Actions",
+        "SDL3",
+        "SDL3_ttf",
+        "SDL3_image",
+        "SDL3_mixer",
+        "SDL3_shadercross"
+      ]
+    }
+  },
+  {
+    "slug": "crzgames-rcnet-server-engine",
+    "title": "CrzGames - RCNET (game server engine)",
+    "descriptor": "C++ server engine for UDP, microservices and orchestration",
+    "summary": "A C++17 server engine built around RCNETCore to run performant, distributed and reproducible game backends.",
+    "image": "/logo/logo-crzgames-seatyrants.jpg",
+    "categories": [
+      "software",
+      "devops"
+    ],
+    "details": {
+      "tagline": "A modular server engine for modern multiplayer architectures.",
+      "need": {
+        "context": "CrzGames needed a robust server engine for multiplayer game services.",
+        "problem": "Manually assembling networking, security, orchestration and inter-service communication creates high operational complexity.",
+        "objective": "Deliver a single industrialized and versioned server foundation around RCNETCore."
+      },
+      "stakes": [
+        "Ensure reproducible builds on all supported OSes",
+        "Stabilize UDP, HTTP and service-to-service communication",
+        "Provide native Kubernetes/Agones integration"
+      ],
+      "solution": {
+        "what": "RCNET in C++17 with CMake, pinned dependencies and automated CI/CD.",
+        "why": "A modular design allows fast evolution without breaking game server integrations.",
+        "how": "Dependency bootstrap from dependencies.txt, client/server examples, public include API and versioned docs."
+      },
+      "features": [
+        "RCNETCore server foundation in C++17",
+        "UDP through RCENet and HTTP/HTTPS through cpp-httplib",
+        "NATS-based inter-service communication",
+        "Agones SDK + gRPC integration for Kubernetes orchestration",
+        "Release pipelines with automated versioning and changelog"
+      ],
+      "results": [
+        "Unified backend base for CrzGames projects",
+        "More reliable deployments on Windows, Linux and macOS",
+        "Lower long-term backend maintenance cost"
+      ],
+      "stack": [
+        "C++17",
+        "CMake",
+        "GitHub Actions",
+        "RCENet",
+        "OpenSSL",
+        "cpp-httplib",
+        "NATS C Client",
+        "libsodium",
+        "Agones SDK",
+        "gRPC"
+      ]
+    }
+  },
+  {
+    "slug": "crzgames-rcenet-fork",
+    "title": "CrzGames - RCENet (enhanced ENet fork for UDP)",
+    "descriptor": "ENet fork focused on IPv6, encryption and network observability",
+    "summary": "CrzGames-maintained ENet fork with full IPv6/IPv4 support, peer-level encryption, explicit timeout events and reliable packet ACK callbacks.",
+    "image": "/logo/logo-crzgames-seatyrants.jpg",
+    "categories": [
+      "software"
+    ],
+    "details": {
+      "tagline": "A hardened ENet fork for real-time multiplayer networking.",
+      "need": {
+        "context": "CrzGames networking requirements exceeded what standard ENet provided for production workloads.",
+        "problem": "Core features were missing for IPv6 support, flexible encryption and precise disconnect/ACK event handling.",
+        "objective": "Build a compatible but stronger ENet fork tailored to high-demand UDP game traffic."
+      },
+      "stakes": [
+        "Increase UDP transport security",
+        "Differentiate timeout disconnects from intentional disconnects",
+        "Track reliable packet acknowledgements more precisely"
+      ],
+      "solution": {
+        "what": "RCENet implemented in C with multi-platform CI and native package distribution.",
+        "why": "Owning the fork makes it possible to ship critical networking features without waiting on upstream release cadence.",
+        "how": "Added ENetEncryptor, ENET_EVENT_TYPE_DISCONNECT_TIMEOUT and reliable packet acknowledgement callbacks."
+      },
+      "features": [
+        "Full IPv6 + IPv4 support",
+        "ENetEncryptor system (AES, ChaCha20, etc.)",
+        "Dedicated ENET_EVENT_TYPE_DISCONNECT_TIMEOUT event",
+        "Acknowledgement callback on reliable fragmented packets",
+        "Multi-platform build/distribution (desktop, mobile, Steam Linux)"
+      ],
+      "results": [
+        "Safer and more observable UDP stack in production",
+        "Better incident handling for network failures",
+        "Reusable networking core for RCNET and CrzGames games"
+      ],
+      "stack": [
+        "C",
+        "xmake",
+        "GitHub Actions",
+        "ENet (fork)",
+        "UDP",
+        "OpenSSL / libsodium (encryptor-dependent)"
+      ]
+    }
   }
 ]
