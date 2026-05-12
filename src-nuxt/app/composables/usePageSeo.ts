@@ -16,8 +16,11 @@ interface PageSeoOptions {
 export function usePageSeo(options: PageSeoOptions): void {
   const config: ReturnType<typeof useRuntimeConfig> = useRuntimeConfig()
   const route: ReturnType<typeof useRoute> = useRoute()
-  const siteUrl: string = (config.public.siteUrl as string) || ''
-  const url: string | undefined = siteUrl ? `${siteUrl}${route.fullPath}` : undefined
+  const siteUrl: string = ((config.public.siteUrl as string) || '').replace(/\/$/, '')
+  const canonicalUrl: string | undefined = siteUrl ? `${siteUrl}${route.path}` : undefined
+  const currentUrl: string | undefined = siteUrl ? `${siteUrl}${route.fullPath}` : undefined
+  const imageUrl: string | undefined =
+    siteUrl && options.image?.startsWith('/') ? `${siteUrl}${options.image}` : options.image
 
   useSeoMeta({
     title: options.title,
@@ -25,12 +28,18 @@ export function usePageSeo(options: PageSeoOptions): void {
     ogTitle: options.title,
     ogDescription: options.description,
     ogType: options.type ?? 'website',
-    ogUrl: url,
-    ogImage: options.image,
+    ogUrl: currentUrl,
+    ogImage: imageUrl,
     twitterCard: 'summary_large_image',
     twitterTitle: options.title,
     twitterDescription: options.description,
-    twitterImage: options.image,
+    twitterImage: imageUrl,
     robots: options.noindex ? 'noindex, nofollow' : 'index, follow',
   })
+
+  if (canonicalUrl) {
+    useHead({
+      link: [{ rel: 'canonical', href: canonicalUrl }],
+    })
+  }
 }
