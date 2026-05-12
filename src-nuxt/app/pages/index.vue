@@ -63,10 +63,10 @@
               <span class="hero-stat-halo" aria-hidden="true" />
               <span class="hero-stat-ring" aria-hidden="true" />
               <span class="hero-stat-value text-2xl font-bold tabular-nums">
-                <span
-                  class="hero-stat-number"
-                  :style="{ '--digits': String(stat.target).length }"
-                >{{ statDisplays[index] }}</span>{{ stat.suffix }}
+                <span class="hero-stat-number" :style="{ '--digits': String(stat.target).length }">{{
+                  statDisplays[index]
+                }}</span
+                >{{ stat.suffix }}
               </span>
             </span>
             <p class="text-muted mt-1 text-sm">{{ stat.label }}</p>
@@ -221,7 +221,7 @@
 </template>
 
 <script setup lang="ts">
-import type { ComputedRef } from 'vue'
+import type { ComputedRef, Ref } from 'vue'
 
 const { t } = useI18n()
 const localePath: ReturnType<typeof useLocalePath> = useLocalePath()
@@ -300,13 +300,7 @@ const solutionIcons: readonly string[] = [
   'i-lucide-rocket',
 ]
 
-const problemAccents: readonly string[] = [
-  '244 63 94',
-  '245 158 11',
-  '14 165 233',
-  '139 92 246',
-  '16 185 129',
-]
+const problemAccents: readonly string[] = ['244 63 94', '245 158 11', '14 165 233', '139 92 246', '16 185 129']
 const valueAccents: readonly string[] = [
   '16 185 129',
   '14 165 233',
@@ -315,12 +309,7 @@ const valueAccents: readonly string[] = [
   '139 92 246',
   '20 184 166',
 ]
-const solutionAccents: readonly string[] = [
-  '14 165 233',
-  '139 92 246',
-  '245 158 11',
-  '16 185 129',
-]
+const solutionAccents: readonly string[] = ['14 165 233', '139 92 246', '245 158 11', '16 185 129']
 
 /**
  * Return an optional translation without rendering the path when the key is missing.
@@ -345,15 +334,15 @@ const heroStats: ComputedRef<HeroStat[]> = computed((): HeroStat[] =>
     return {
       key,
       target: match ? Number(match[1]) : 0,
-      suffix: match ? (match[2] ?? '') : raw,
+      suffix: match ? match[2] || '' : raw,
       label: t(`home.hero.stats.${key}.label`),
     }
   }),
 )
 
-const heroStatsRef = ref<HTMLElement | null>(null)
-const heroStatsVisible = ref<boolean>(false)
-const statDisplays = ref<number[]>([0, 0, 0])
+const heroStatsRef: Ref<HTMLElement | null> = ref<HTMLElement | null>(null)
+const heroStatsVisible: Ref<boolean> = ref<boolean>(false)
+const statDisplays: Ref<number[]> = ref<number[]>([0, 0, 0])
 
 const heroLinks: ComputedRef<HomeLink[]> = computed((): HomeLink[] => [
   {
@@ -454,9 +443,20 @@ function startHeroStatsCount(): void {
   const targets: number[] = heroStats.value.map((stat: HeroStat): number => stat.target)
   const duration: number = 1600
   const start: number = performance.now()
-  const ease = (progress: number): number => 1 - Math.pow(1 - progress, 3)
 
-  const frame = (now: number): void => {
+  /**
+   * Apply an ease-out curve to the counter progress.
+   * @param {number} progress - Animation progress between zero and one.
+   * @returns {number} Eased animation progress.
+   */
+  const ease: (progress: number) => number = (progress: number): number => 1 - Math.pow(1 - progress, 3)
+
+  /**
+   * Render a single counter animation frame.
+   * @param {number} now - Current animation timestamp.
+   * @returns {void}
+   */
+  const frame: (now: number) => void = (now: number): void => {
     const progress: number = Math.min(1, (now - start) / duration)
     const eased: number = ease(progress)
     statDisplays.value = targets.map((target: number): number => Math.round(target * eased))
@@ -764,7 +764,12 @@ onBeforeUnmount((): void => {
 }
 
 .accent-bar {
-  background: linear-gradient(90deg, rgb(var(--card-accent)) 0%, rgb(var(--card-accent) / 0.55) 60%, rgb(var(--card-accent) / 0) 100%);
+  background: linear-gradient(
+    90deg,
+    rgb(var(--card-accent)) 0%,
+    rgb(var(--card-accent) / 0.55) 60%,
+    rgb(var(--card-accent) / 0) 100%
+  );
 }
 
 .reveal-item {

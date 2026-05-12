@@ -153,7 +153,7 @@
       ansible.builtin.shell: |
         env PATH=$PATH:/usr/bin pm2 startup systemd -u {{ app_user }} --hp /home/{{ app_user }}
       args:
-        creates: "/etc/systemd/system/pm2-{{ app_user }}.service"
+        creates: '/etc/systemd/system/pm2-{{ app_user }}.service'
 
     - name: Enable PM2 service
       ansible.builtin.systemd:
