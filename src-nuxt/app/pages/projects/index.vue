@@ -30,7 +30,9 @@
           class="project-card border-default bg-default group relative flex flex-col overflow-hidden rounded-2xl border"
           :style="{ '--project-card-delay': `${260 + index * 95}ms` }"
         >
-          <div class="project-card-media bg-muted relative flex aspect-[4/3] items-center justify-center overflow-hidden p-6">
+          <div
+            class="project-card-media bg-muted relative flex aspect-[4/3] items-center justify-center overflow-hidden p-6"
+          >
             <img
               :src="card.image"
               :alt="card.title"
@@ -166,11 +168,7 @@ usePageSeo({
   z-index: -1;
   pointer-events: none;
   content: '';
-  background: radial-gradient(
-    circle at 50% 0%,
-    rgb(var(--ui-primary, 14 165 233) / 0.08),
-    transparent 55%
-  );
+  background: radial-gradient(circle at 50% 0%, rgb(var(--ui-primary, 14 165 233) / 0.08), transparent 55%);
   opacity: 0;
   transition: opacity 320ms ease;
 }

@@ -5,11 +5,7 @@
     "descriptor": "Plateforme médecin / patients pour le suivi à distance",
     "summary": "Plateforme web de télésurveillance médicale reliant médecins et patients, avec gestion des alertes en temps réel et architecture serverless.",
     "image": "/logo/logo-biosency.png",
-    "categories": [
-      "web",
-      "saas",
-      "api"
-    ],
+    "categories": ["web", "saas", "api"],
     "details": {
       "tagline": "Une plateforme médicale qui transforme les signaux patients en décisions cliniques.",
       "need": {
@@ -39,13 +35,7 @@
         "Architecture capable d'absorber les pics sans intervention",
         "Coûts infrastructure alignés sur l'usage réel"
       ],
-      "stack": [
-        "Angular",
-        "TypeScript",
-        "AWS API Gateway",
-        "AWS Lambda",
-        "Node.js"
-      ]
+      "stack": ["Angular", "TypeScript", "AWS API Gateway", "AWS Lambda", "Node.js"]
     }
   },
   {
@@ -54,10 +44,7 @@
     "descriptor": "App mobile patient pour iOS et Android",
     "summary": "Application mobile cross-platform pour les patients suivis à distance, partageant la même API serverless que la plateforme web.",
     "image": "/logo/logo-biosency.png",
-    "categories": [
-      "mobile",
-      "api"
-    ],
+    "categories": ["mobile", "api"],
     "details": {
       "tagline": "Une seule base de code pour iOS et Android, branchée sur l'API médicale.",
       "need": {
@@ -87,13 +74,7 @@
         "Délais de mise en production raccourcis",
         "Expérience patient cohérente avec le web"
       ],
-      "stack": [
-        "Angular",
-        "Capacitor",
-        "TypeScript",
-        "AWS API Gateway",
-        "AWS Lambda"
-      ]
+      "stack": ["Angular", "Capacitor", "TypeScript", "AWS API Gateway", "AWS Lambda"]
     }
   },
   {
@@ -102,10 +83,7 @@
     "descriptor": "Site corporate du groupe Brit Hotel",
     "summary": "Site web du groupe Brit Hotel développé pour l'agence AtoutGraph, avec interface de réservation et pages multi-établissements.",
     "image": "/logo/logo-brithotel.png",
-    "categories": [
-      "web",
-      "api"
-    ],
+    "categories": ["web", "api"],
     "details": {
       "tagline": "Un site groupe qui fait converger trafic, marque et réservations.",
       "need": {
@@ -135,13 +113,7 @@
         "Stack maintenable par l'agence sur la durée",
         "Trafic et image du groupe consolidés"
       ],
-      "stack": [
-        "PHP",
-        "JavaScript",
-        "HTML",
-        "CSS",
-        "MySQL"
-      ]
+      "stack": ["PHP", "JavaScript", "HTML", "CSS", "MySQL"]
     }
   },
   {
@@ -150,10 +122,7 @@
     "descriptor": "Site officiel de la Ville de Saint-Malo",
     "summary": "Site institutionnel de la Ville de Saint-Malo développé pour l'agence AtoutGraph, avec gestion de contenus éditoriaux et services aux citoyens.",
     "image": "/logo/logo-villlesaintmalo.webp",
-    "categories": [
-      "web",
-      "api"
-    ],
+    "categories": ["web", "api"],
     "details": {
       "tagline": "Un site municipal qui informe, oriente et simplifie la vie des Malouins.",
       "need": {
@@ -183,13 +152,7 @@
         "Mises à jour facilitées pour les équipes internes",
         "Information citoyenne plus claire et plus accessible"
       ],
-      "stack": [
-        "PHP",
-        "JavaScript",
-        "HTML",
-        "CSS",
-        "MySQL"
-      ]
+      "stack": ["PHP", "JavaScript", "HTML", "CSS", "MySQL"]
     }
   },
   {
@@ -198,10 +161,7 @@
     "descriptor": "CMS interne PHP + Laravel pour piloter les sites clients",
     "summary": "CMS développé en interne chez AtoutGraph pour produire et maintenir les sites clients de l'agence, basé sur PHP et Laravel.",
     "image": "/logo/logo-atoutgraph.jpg",
-    "categories": [
-      "web",
-      "api"
-    ],
+    "categories": ["web", "api"],
     "details": {
       "tagline": "Le CMS sur lequel l'agence livre tous ses sites clients.",
       "need": {
@@ -231,14 +191,7 @@
         "Délais de production raccourcis",
         "Maîtrise complète de la stack pour l'équipe"
       ],
-      "stack": [
-        "PHP",
-        "Laravel",
-        "MySQL",
-        "JavaScript",
-        "HTML",
-        "CSS"
-      ]
+      "stack": ["PHP", "Laravel", "MySQL", "JavaScript", "HTML", "CSS"]
     }
   },
   {
@@ -247,10 +200,7 @@
     "descriptor": "Scraper personnel en Go — alerte sur chaque nouvelle annonce",
     "summary": "Scraper personnel en Go qui surveille 15 agences immobilières en continu et envoie une notification mobile à chaque nouvelle annonce.",
     "image": "/projects/agency-scraper.svg",
-    "categories": [
-      "automation",
-      "software"
-    ],
+    "categories": ["automation", "software"],
     "details": {
       "tagline": "Être le premier sur une annonce immobilière, sans rafraîchir 15 sites à la main.",
       "need": {
@@ -279,12 +229,7 @@
         "Aucune supervision manuelle nécessaire",
         "Empreinte serveur quasi nulle"
       ],
-      "stack": [
-        "Go",
-        "Goroutines",
-        "HTTP",
-        "Push notifications"
-      ]
+      "stack": ["Go", "Goroutines", "HTTP", "Push notifications"]
     }
   },
   {
@@ -293,11 +238,7 @@
     "descriptor": "Site principal du studio avec dashboard et boutique",
     "summary": "Site web complet du studio de jeux vidéo CrzGames : vitrine, boutique, dashboard d'administration et pilotage du launcher.",
     "image": "/logo/logo-crzgames-seatyrants.jpg",
-    "categories": [
-      "web",
-      "saas",
-      "api"
-    ],
+    "categories": ["web", "saas", "api"],
     "details": {
       "tagline": "Le point de contrôle du studio : vitrine, boutique, dashboard et launcher réunis.",
       "cover": "/videos/video-crzgames-siteweb.mp4",
@@ -328,13 +269,7 @@
         "Stack moderne maintenable en solo",
         "Base technique commune à plusieurs produits"
       ],
-      "stack": [
-        "Vue 3",
-        "TypeScript",
-        "Adonis 7",
-        "Node.js",
-        "MariaDB"
-      ]
+      "stack": ["Vue 3", "TypeScript", "Adonis 7", "Node.js", "MariaDB"]
     }
   },
   {
@@ -343,10 +278,7 @@
     "descriptor": "Site principal du jeu MMORPG SeaTyrants",
     "summary": "Site officiel du MMORPG SeaTyrants : présentation du jeu, classement, comptes joueurs et accès au launcher pour télécharger le jeu.",
     "image": "/logo/logo-seatyrants.png",
-    "categories": [
-      "web",
-      "api"
-    ],
+    "categories": ["web", "api"],
     "details": {
       "tagline": "Le hub du jeu : classement, comptes joueurs et accès au launcher pour télécharger SeaTyrants.",
       "cover": "/screen/screen-seatyrants-siteweb.png",
@@ -377,13 +309,7 @@
         "Comptes joueurs unifiés sur tout l’écosystème",
         "Capacité d’absorption des pics d’annonces"
       ],
-      "stack": [
-        "Nuxt 4",
-        "Vue 3",
-        "TypeScript",
-        "Adonis 7",
-        "Node.js"
-      ]
+      "stack": ["Nuxt 4", "Vue 3", "TypeScript", "Adonis 7", "Node.js"]
     }
   },
   {
@@ -392,10 +318,7 @@
     "descriptor": "Launcher de jeux desktop Windows / macOS / Linux",
     "summary": "Logiciel cross-platform façon Steam, propriétaire au studio, pour distribuer et lancer les jeux CrzGames sur Windows, macOS et Linux.",
     "image": "/logo/logo-crzgames-seatyrants.jpg",
-    "categories": [
-      "software",
-      "api"
-    ],
+    "categories": ["software", "api"],
     "details": {
       "tagline": "Un launcher façon Steam, mais propriétaire au studio.",
       "cover": "/videos/video-crzgames-launcher.mp4",
@@ -426,14 +349,7 @@
         "Expérience native sur trois OS avec une seule base de code",
         "Mises à jour gérées de bout en bout par le studio"
       ],
-      "stack": [
-        "Nuxt 4",
-        "Vue 3",
-        "Tailwind",
-        "Tauri 2",
-        "Rust",
-        "TypeScript"
-      ]
+      "stack": ["Nuxt 4", "Vue 3", "Tailwind", "Tauri 2", "Rust", "TypeScript"]
     }
   },
   {
@@ -442,9 +358,7 @@
     "descriptor": "Wiki communautaire et documentation du MMORPG",
     "summary": "Wiki dédié au MMORPG SeaTyrants, construit avec VitePress pour une documentation rapide, statique et facile à contribuer.",
     "image": "/logo/logo-seatyrants.png",
-    "categories": [
-      "web"
-    ],
+    "categories": ["web"],
     "details": {
       "tagline": "Toute la connaissance du jeu, en statique, en Markdown, en quelques clics.",
       "cover": "/screen/screen-seatyrants-siteweb-wiki.png",
@@ -475,12 +389,7 @@
         "Contributions simples côté éditeurs",
         "Performances maximales au chargement"
       ],
-      "stack": [
-        "VitePress",
-        "Vue 3",
-        "Markdown",
-        "TypeScript"
-      ]
+      "stack": ["VitePress", "Vue 3", "Markdown", "TypeScript"]
     }
   },
   {
@@ -489,10 +398,7 @@
     "descriptor": "Détection de bots en temps réel via ONNX Runtime",
     "summary": "Système d'IA embarqué pour détecter les joueurs utilisant des bots dans le MMORPG SeaTyrants, basé sur des modèles ONNX exécutés en C/C++.",
     "image": "/logo/logo-seatyrants.png",
-    "categories": [
-      "ai",
-      "software"
-    ],
+    "categories": ["ai", "software"],
     "details": {
       "tagline": "Une IA qui démasque les bots avant qu'ils ne pourrissent le jeu.",
       "need": {
@@ -522,12 +428,7 @@
         "Latence d'inférence compatible avec un MMORPG temps réel",
         "Capacité à itérer sur les modèles indépendamment du jeu"
       ],
-      "stack": [
-        "C",
-        "C++",
-        "ONNX Runtime",
-        "Python (entraînement)"
-      ]
+      "stack": ["C", "C++", "ONNX Runtime", "Python (entraînement)"]
     }
   },
   {
@@ -536,9 +437,7 @@
     "descriptor": "Game server UDP haute fréquence sur Kubernetes",
     "summary": "Infrastructure complète du serveur de jeu SeaTyrants : Kubernetes avec un pod par map, serveur UDP (ENET forké), cadence 128 Hz, proxy Quilkin et bus NATS event-driven.",
     "image": "/logo/logo-seatyrants.png",
-    "categories": [
-      "devops"
-    ],
+    "categories": ["devops"],
     "details": {
       "tagline": "Une infra MMORPG qui tient le 128 Hz, map par map, derrière un proxy UDP.",
       "need": {
@@ -570,15 +469,7 @@
         "Scalabilité par map sans casser la cadence serveur",
         "Architecture event-driven prête à évoluer"
       ],
-      "stack": [
-        "Kubernetes",
-        "ENET (fork)",
-        "C / C++",
-        "NATS",
-        "Quilkin",
-        "Docker",
-        "Linux"
-      ]
+      "stack": ["Kubernetes", "ENET (fork)", "C / C++", "NATS", "Quilkin", "Docker", "Linux"]
     }
   },
   {
@@ -587,9 +478,7 @@
     "descriptor": "Moteur 2D en C avec SDL3 et modules multiplateformes",
     "summary": "Moteur 2D natif développé en C99 avec SDL3, pensé pour garder une indépendance totale vis-à-vis des moteurs 3D externes.",
     "image": "/logo/logo-crzgames-seatyrants.jpg",
-    "categories": [
-      "software"
-    ],
+    "categories": ["software"],
     "details": {
       "tagline": "Un moteur 2D propriétaire pour contrôler la techno de bout en bout.",
       "need": {
@@ -619,16 +508,7 @@
         "Chaîne de build unifiée pour desktop et mobile",
         "Base technique stable pour les projets CrzGames"
       ],
-      "stack": [
-        "C99",
-        "CMake",
-        "GitHub Actions",
-        "SDL3",
-        "SDL3_ttf",
-        "SDL3_image",
-        "SDL3_mixer",
-        "SDL3_shadercross"
-      ]
+      "stack": ["C99", "CMake", "GitHub Actions", "SDL3", "SDL3_ttf", "SDL3_image", "SDL3_mixer", "SDL3_shadercross"]
     }
   },
   {
@@ -637,10 +517,7 @@
     "descriptor": "Moteur serveur C++ orienté UDP, microservices et orchestration",
     "summary": "Moteur serveur C++17 construit autour de RCNETCore pour gérer des backends de jeux performants, distribués et reproductibles.",
     "image": "/logo/logo-crzgames-seatyrants.jpg",
-    "categories": [
-      "software",
-      "devops"
-    ],
+    "categories": ["software", "devops"],
     "details": {
       "tagline": "Un moteur serveur modulaire pour les architectures de jeu modernes.",
       "need": {
@@ -690,9 +567,7 @@
     "descriptor": "Fork ENet orienté IPv6, chiffrement et observabilité réseau",
     "summary": "Fork ENet maintenu par CrzGames avec support IPv6/IPv4, chiffrement par peer, nouveaux événements réseau et callbacks ACK avancés.",
     "image": "/logo/logo-crzgames-seatyrants.jpg",
-    "categories": [
-      "software"
-    ],
+    "categories": ["software"],
     "details": {
       "tagline": "Un ENet renforcé pour les contraintes réseau des jeux temps réel.",
       "need": {

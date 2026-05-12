@@ -17,6 +17,23 @@ type LocalePaths = {
   contact: string
 }
 
+/**
+ * Hreflang alternative entry for a sitemap page.
+ */
+type HreflangAlternative = {
+  hreflang: string
+  href: string
+}
+
+/**
+ * Sitemap entry for a page, including the hreflang alternatives.
+ */
+type SitemapEntry = {
+  loc: string
+  _i18nTransform: false
+  alternatives: HreflangAlternative[]
+}
+
 const localePathConfig: Record<LocaleCode, LocalePaths> = {
   fr: { prefix: '', home: '/', projects: '/projets', contact: '/contact' },
   en: { prefix: '/en', home: '/en', projects: '/projects', contact: '/contact' },
@@ -75,9 +92,7 @@ function projectDetailUrl(locale: LocaleCode, slug: string): string {
  * @param {(locale: LocaleCode) => string} builder - Function returning the URL per locale.
  * @returns {{ hreflang: string; href: string }[]} List of hreflang alternatives.
  */
-function alternatives(
-  builder: (locale: LocaleCode) => string,
-): { hreflang: string; href: string }[] {
+function alternatives(builder: (locale: LocaleCode) => string): { hreflang: string; href: string }[] {
   return localeCodes.map((locale: LocaleCode) => ({
     hreflang: locale,
     href: builder(locale),
@@ -85,8 +100,9 @@ function alternatives(
 }
 
 export default defineEventHandler(() => {
-  const entries = localeCodes.flatMap((locale: LocaleCode) => {
-    const projects = projectsByLocale[locale]
+  const entries: SitemapEntry[] = localeCodes.flatMap((locale: LocaleCode): SitemapEntry[] => {
+    const projects: { slug: string }[] = projectsByLocale[locale]
+
     return [
       {
         loc: homeUrl(locale),
@@ -103,11 +119,13 @@ export default defineEventHandler(() => {
         _i18nTransform: false,
         alternatives: alternatives(contactUrl),
       },
-      ...projects.map((project: { slug: string }) => ({
-        loc: projectDetailUrl(locale, project.slug),
-        _i18nTransform: false,
-        alternatives: alternatives((alt: LocaleCode) => projectDetailUrl(alt, project.slug)),
-      })),
+      ...projects.map(
+        (project: { slug: string }): SitemapEntry => ({
+          loc: projectDetailUrl(locale, project.slug),
+          _i18nTransform: false,
+          alternatives: alternatives((alt: LocaleCode) => projectDetailUrl(alt, project.slug)),
+        }),
+      ),
     ]
   })
 
