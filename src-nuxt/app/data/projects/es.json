@@ -1,14 +1,119 @@
 [
   {
-    "title": "Sitio web a medida",
-    "image": "/videos/presentation-poster.jpg"
+    "slug": "site-vitrine-multilingue",
+    "title": "Alyvo — Sitio escaparate multilingüe",
+    "descriptor": "Plataforma SaaS internacional",
+    "summary": "Sitio multilingüe con gestión de contenido dinámica, despliegue continuo y rendimiento SEO optimizado para tres mercados europeos.",
+    "image": "/videos/presentation-poster.jpg",
+    "categories": ["web", "devops", "saas"],
+    "details": {
+      "tagline": "Un sitio que vive, escala y convierte en tres idiomas.",
+      "need": {
+        "context": "Una joven marca SaaS que se dirige a Francia, Reino Unido y España con un equipo técnico reducido.",
+        "problem": "Ningún sitio capaz de gestionar contenido en tres idiomas, rendimiento móvil bajo y un SEO casi inexistente.",
+        "objective": "Construir un sitio rápido, multilingüe, optimizado para SEO y fácil de mantener sin recurrir cada vez a un desarrollador."
+      },
+      "stakes": [
+        "Conquistar tres mercados con un único sitio coherente",
+        "Mantener un coste operativo controlado",
+        "Permitir al equipo publicar contenido sin depender del área técnica"
+      ],
+      "solution": {
+        "what": "Un sitio Nuxt renderizado en servidor, con gestión de contenido por archivos JSON y despliegues automatizados en Kubernetes.",
+        "why": "Un stack moderno, simple de mantener, que combina rendimiento puro y SEO nativo para cada idioma.",
+        "how": "Rutas localizadas, marcado SEO por página, sitemap dinámico y despliegues automáticos en cada commit."
+      },
+      "features": [
+        "Rutas multilingües FR / EN / ES",
+        "Marcado SEO y sitemap autogenerados",
+        "Animaciones cuidadas sin penalizar el rendimiento",
+        "Pipeline de despliegue continuo en Kubernetes",
+        "Modo oscuro nativo con preferencia del sistema"
+      ],
+      "results": [
+        "Puntuación Lighthouse por encima de 95 en los tres idiomas",
+        "Tiempo de publicación de una página dividido por 4",
+        "Primer tráfico SEO en menos de dos meses"
+      ],
+      "stack": ["Nuxt", "Vue 3", "TypeScript", "Tailwind", "Nuxt UI", "Docker", "Kubernetes"]
+    }
   },
   {
-    "title": "Aplicación de negocio",
-    "image": "/videos/presentation-poster.jpg"
+    "slug": "logiciel-metier-sur-mesure",
+    "title": "Sigma — Software de negocio a medida",
+    "descriptor": "Herramienta interna para equipos operativos",
+    "summary": "Aplicación web con API REST, paneles en tiempo real y automatización de flujos críticos para 50 colaboradores.",
+    "image": "/videos/presentation-poster.jpg",
+    "categories": ["software", "api", "data"],
+    "details": {
+      "tagline": "Una herramienta que sustituye diez Excel y a cero humanos.",
+      "need": {
+        "context": "Una pyme de 50 personas dirigía toda su operación con archivos Excel compartidos y correos.",
+        "problem": "Datos duplicados, errores recurrentes, pérdida diaria de tiempo y cero visibilidad en tiempo real sobre la producción.",
+        "objective": "Centralizar los datos, automatizar lo automatizable y ofrecer a los responsables una vista en tiempo real de la operación."
+      },
+      "stakes": [
+        "Fiabilizar los datos críticos de la empresa",
+        "Reducir la carga mental de los equipos operativos",
+        "Dar a los responsables los indicadores adecuados en el momento adecuado"
+      ],
+      "solution": {
+        "what": "Una aplicación web con API REST segura, paneles en tiempo real y automatización de flujos de negocio.",
+        "why": "Una herramienta a medida para encajar exactamente con los procesos, sin sobrecoste ni licencia por usuario.",
+        "how": "Modelado del negocio, API tipada, integración con las herramientas existentes y automatizaciones sobre las tareas repetitivas."
+      },
+      "features": [
+        "Gestión centralizada de los datos operativos",
+        "Paneles en tiempo real por rol",
+        "Automatizaciones de flujos y notificaciones",
+        "API REST documentada para integraciones",
+        "Gestión fina de permisos por equipo"
+      ],
+      "results": [
+        "8 horas por semana recuperadas por colaborador",
+        "Errores de entrada reducidos en más del 80%",
+        "Decisiones de dirección basadas en datos fiables"
+      ],
+      "stack": ["Nuxt", "Node.js", "PostgreSQL", "Prisma", "Tailwind", "Docker"]
+    }
   },
   {
-    "title": "Automatización",
-    "image": "/videos/presentation-poster.jpg"
+    "slug": "automatisation-ia-documents",
+    "title": "DocFlow — Automatización documental con IA",
+    "descriptor": "Pipeline de extracción y clasificación",
+    "summary": "Procesamiento inteligente de documentos con OCR, clasificación por IA y orquestación mediante flujos automatizados.",
+    "image": "/videos/presentation-poster.jpg",
+    "categories": ["ai", "automation", "devops"],
+    "details": {
+      "tagline": "Cuando la IA digiere los documentos para que tu equipo piense en lo importante.",
+      "need": {
+        "context": "Un equipo de back-office procesaba cada mes varios miles de documentos entrantes, a mano.",
+        "problem": "Entrada manual, clasificación aproximada, plazos cada vez más largos y fatiga creciente del equipo.",
+        "objective": "Automatizar la extracción y la clasificación manteniendo un humano en el bucle para los casos sensibles."
+      },
+      "stakes": [
+        "Cumplir los plazos prometidos a los clientes",
+        "Liberar al equipo de las tareas repetitivas",
+        "Mantener el control y la trazabilidad de las decisiones"
+      ],
+      "solution": {
+        "what": "Un pipeline que combina OCR, un modelo de IA para la clasificación y orquestación mediante flujos automatizados.",
+        "why": "La IA solo aporta valor conectada a un flujo real: el valor viene de la cadena completa, no del modelo aislado.",
+        "how": "Extracción OCR, clasificación automática, supervisión humana en los casos ambiguos y exportación normalizada hacia las herramientas de negocio."
+      },
+      "features": [
+        "OCR multilingüe sobre documentos escaneados",
+        "Clasificación por IA con puntuación de confianza",
+        "Flujo de supervisión humana para casos ambiguos",
+        "Registro completo y trazabilidad del pipeline",
+        "Conectores hacia las herramientas de negocio existentes"
+      ],
+      "results": [
+        "Plazo de procesamiento dividido por 5",
+        "Más del 90% de los documentos procesados sin intervención",
+        "Equipo enfocado en los casos de mayor valor"
+      ],
+      "stack": ["Python", "FastAPI", "OpenAI API", "Postgres", "Docker", "Kubernetes"]
+    }
   }
 ]

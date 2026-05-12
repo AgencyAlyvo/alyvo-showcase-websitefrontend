@@ -215,7 +215,19 @@
     "card": {
       "need": "Need",
       "solution": "Solution",
-      "result": "Result"
+      "result": "Result",
+      "learnMore": "Learn more"
+    },
+    "categories": {
+      "web": "Website",
+      "software": "Software",
+      "mobile": "Mobile app",
+      "ai": "AI",
+      "devops": "Infrastructure & DevOps",
+      "automation": "Automation",
+      "api": "API",
+      "saas": "SaaS",
+      "data": "Data"
     },
     "empty": {
       "title": "No project for this filter",

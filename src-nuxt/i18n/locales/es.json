@@ -215,7 +215,19 @@
     "card": {
       "need": "Necesidad",
       "solution": "Solución",
-      "result": "Resultado"
+      "result": "Resultado",
+      "learnMore": "Más información"
+    },
+    "categories": {
+      "web": "Sitio web",
+      "software": "Software",
+      "mobile": "Aplicación móvil",
+      "ai": "IA",
+      "devops": "Infraestructura y DevOps",
+      "automation": "Automatización",
+      "api": "API",
+      "saas": "SaaS",
+      "data": "Datos"
     },
     "empty": {
       "title": "No hay proyecto para este filtro",

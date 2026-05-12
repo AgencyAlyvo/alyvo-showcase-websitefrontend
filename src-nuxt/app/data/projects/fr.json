@@ -1,14 +1,119 @@
 [
   {
-    "title": "Site web sur mesure",
-    "image": "/videos/presentation-poster.jpg"
+    "slug": "site-vitrine-multilingue",
+    "title": "Alyvo — Site vitrine multilingue",
+    "descriptor": "Plateforme SaaS internationale",
+    "summary": "Site multilingue avec gestion de contenu dynamique, déploiement continu et performance SEO optimisée pour trois marchés européens.",
+    "image": "/videos/presentation-poster.jpg",
+    "categories": ["web", "devops", "saas"],
+    "details": {
+      "tagline": "Un site qui vit, qui scale et qui convertit dans trois langues.",
+      "need": {
+        "context": "Une jeune marque SaaS qui adresse la France, le Royaume-Uni et l'Espagne avec une équipe technique réduite.",
+        "problem": "Pas de site capable de gérer le contenu sur trois langues, des performances faibles côté mobile, un référencement quasi nul.",
+        "objective": "Construire une vitrine rapide, multilingue, optimisée pour le SEO et facile à faire évoluer sans repasser par un développeur."
+      },
+      "stakes": [
+        "Conquérir trois marchés avec un seul site cohérent",
+        "Garder un coût d'exploitation maîtrisé",
+        "Pouvoir publier du contenu sans dépendre de la tech"
+      ],
+      "solution": {
+        "what": "Un site Nuxt rendu côté serveur, avec gestion du contenu par fichiers JSON et déploiements automatisés sur Kubernetes.",
+        "why": "Une stack moderne, simple à maintenir, qui combine performance brute et SEO natif pour chaque langue.",
+        "how": "Routes localisées, balisage SEO par page, sitemap dynamique et déploiements automatiques à chaque commit."
+      },
+      "features": [
+        "Routes multilingues FR / EN / ES",
+        "Balisage SEO et sitemap auto-générés",
+        "Animations soignées sans plomber la performance",
+        "Pipeline de déploiement continu sur Kubernetes",
+        "Dark mode natif avec préférence système"
+      ],
+      "results": [
+        "Score Lighthouse au-dessus de 95 sur les trois langues",
+        "Temps de mise en ligne d'une nouvelle page divisé par 4",
+        "Premier trafic SEO en moins de deux mois"
+      ],
+      "stack": ["Nuxt", "Vue 3", "TypeScript", "Tailwind", "Nuxt UI", "Docker", "Kubernetes"]
+    }
   },
   {
-    "title": "Application métier",
-    "image": "/videos/presentation-poster.jpg"
+    "slug": "logiciel-metier-sur-mesure",
+    "title": "Sigma — Logiciel métier sur mesure",
+    "descriptor": "Outil interne pour équipes opérationnelles",
+    "summary": "Application web avec API REST, tableaux de bord temps réel et automatisation des workflows critiques pour 50 collaborateurs.",
+    "image": "/videos/presentation-poster.jpg",
+    "categories": ["software", "api", "data"],
+    "details": {
+      "tagline": "Un outil métier qui remplace dix feuilles Excel et zéro humain.",
+      "need": {
+        "context": "Une PME de 50 personnes pilotait toute son opération sur des fichiers Excel partagés et des emails.",
+        "problem": "Données dupliquées, erreurs récurrentes, perte de temps quotidienne et zéro visibilité sur la production en temps réel.",
+        "objective": "Centraliser la donnée, automatiser ce qui peut l'être et donner aux managers une vue temps réel sur les opérations."
+      },
+      "stakes": [
+        "Fiabiliser la donnée critique de l'entreprise",
+        "Réduire la charge mentale des opérationnels",
+        "Donner aux managers les bons indicateurs au bon moment"
+      ],
+      "solution": {
+        "what": "Une application web avec API REST sécurisée, tableaux de bord temps réel et automatisation des workflows métier.",
+        "why": "Un outil sur mesure pour coller exactement aux process, sans surcouche inutile ni licence par utilisateur.",
+        "how": "Modélisation métier, mise en place d'une API typée, intégration aux outils existants et automatisations sur les tâches répétitives."
+      },
+      "features": [
+        "Gestion centralisée des données opérationnelles",
+        "Tableaux de bord temps réel par rôle",
+        "Automatisations de workflows et notifications",
+        "API REST documentée pour les intégrations",
+        "Gestion fine des droits par équipe"
+      ],
+      "results": [
+        "8 heures par semaine récupérées par collaborateur",
+        "Erreurs de saisie réduites de plus de 80 %",
+        "Décisions managériales prises sur la base de données fiables"
+      ],
+      "stack": ["Nuxt", "Node.js", "PostgreSQL", "Prisma", "Tailwind", "Docker"]
+    }
   },
   {
-    "title": "Automatisation",
-    "image": "/videos/presentation-poster.jpg"
+    "slug": "automatisation-ia-documents",
+    "title": "DocFlow — Automatisation IA documentaire",
+    "descriptor": "Pipeline d'extraction et de classification",
+    "summary": "Traitement intelligent de documents avec OCR, classification par IA et orchestration via workflows automatisés.",
+    "image": "/videos/presentation-poster.jpg",
+    "categories": ["ai", "automation", "devops"],
+    "details": {
+      "tagline": "Quand l'IA digère les documents pour que vous gardiez le cerveau.",
+      "need": {
+        "context": "Une équipe back-office traitait chaque mois plusieurs milliers de documents entrants, à la main.",
+        "problem": "Saisie manuelle, classification approximative, délais de traitement élevés et fatigue d'équipe en hausse.",
+        "objective": "Automatiser l'extraction et la classification des documents tout en gardant un humain dans la boucle pour les cas sensibles."
+      },
+      "stakes": [
+        "Tenir les délais de traitement promis aux clients",
+        "Libérer l'équipe des tâches répétitives",
+        "Garder la maîtrise et la traçabilité des décisions"
+      ],
+      "solution": {
+        "what": "Un pipeline qui combine OCR, modèle d'IA pour la classification et orchestration via workflows automatisés.",
+        "why": "L'IA n'est pertinente que branchée sur un workflow réel : la valeur vient de la chaîne complète, pas du modèle seul.",
+        "how": "Extraction OCR, classification automatique, supervision humaine pour les cas ambigus et exports normalisés vers les outils métier."
+      },
+      "features": [
+        "OCR multilingue sur documents scannés",
+        "Classification par IA avec score de confiance",
+        "Workflow de supervision humaine pour les cas ambigus",
+        "Journalisation et audit complet du pipeline",
+        "Connecteurs vers les outils métier existants"
+      ],
+      "results": [
+        "Délai de traitement divisé par 5",
+        "Plus de 90 % des documents traités sans intervention",
+        "Équipe recentrée sur les cas à forte valeur"
+      ],
+      "stack": ["Python", "FastAPI", "OpenAI API", "Postgres", "Docker", "Kubernetes"]
+    }
   }
 ]

@@ -1,14 +1,119 @@
 [
   {
-    "title": "Custom website",
-    "image": "/videos/presentation-poster.jpg"
+    "slug": "site-vitrine-multilingue",
+    "title": "Alyvo — Multilingual showcase site",
+    "descriptor": "International SaaS platform",
+    "summary": "Multilingual site with dynamic content management, continuous deployment and SEO performance optimised for three European markets.",
+    "image": "/videos/presentation-poster.jpg",
+    "categories": ["web", "devops", "saas"],
+    "details": {
+      "tagline": "A website that lives, scales and converts in three languages.",
+      "need": {
+        "context": "A young SaaS brand targeting France, the United Kingdom and Spain with a small technical team.",
+        "problem": "No site able to handle content in three languages, poor mobile performance and almost no organic traffic.",
+        "objective": "Build a fast, multilingual showcase, optimised for SEO and easy to maintain without going back to a developer for every change."
+      },
+      "stakes": [
+        "Reach three markets with one coherent website",
+        "Keep operational costs under control",
+        "Let the team publish content without depending on tech"
+      ],
+      "solution": {
+        "what": "A server-rendered Nuxt site, with JSON-based content and automated deployments on Kubernetes.",
+        "why": "A modern, low-maintenance stack that pairs raw performance with native SEO for each language.",
+        "how": "Localised routes, per-page SEO markup, dynamic sitemap and automatic deployments on every commit."
+      },
+      "features": [
+        "FR / EN / ES localised routes",
+        "SEO markup and auto-generated sitemap",
+        "Polished animations without hurting performance",
+        "Continuous deployment pipeline on Kubernetes",
+        "Native dark mode with system preference"
+      ],
+      "results": [
+        "Lighthouse score above 95 across all three languages",
+        "Time to publish a new page reduced by 4x",
+        "First organic traffic in under two months"
+      ],
+      "stack": ["Nuxt", "Vue 3", "TypeScript", "Tailwind", "Nuxt UI", "Docker", "Kubernetes"]
+    }
   },
   {
-    "title": "Business application",
-    "image": "/videos/presentation-poster.jpg"
+    "slug": "logiciel-metier-sur-mesure",
+    "title": "Sigma — Custom business software",
+    "descriptor": "Internal tool for operations teams",
+    "summary": "Web application with REST API, real-time dashboards and automation of critical workflows for 50 collaborators.",
+    "image": "/videos/presentation-poster.jpg",
+    "categories": ["software", "api", "data"],
+    "details": {
+      "tagline": "One tool that replaces ten Excel files and zero humans.",
+      "need": {
+        "context": "A 50-person SMB was running its entire operation on shared Excel files and email threads.",
+        "problem": "Duplicated data, recurring mistakes, daily lost time and zero real-time visibility on production.",
+        "objective": "Centralise the data, automate what could be automated and give managers a real-time view of operations."
+      },
+      "stakes": [
+        "Make the company's critical data reliable",
+        "Reduce the cognitive load on operational teams",
+        "Give managers the right indicators at the right time"
+      ],
+      "solution": {
+        "what": "A web application with a secured REST API, real-time dashboards and automated business workflows.",
+        "why": "A custom tool that fits the actual processes, without unnecessary overhead or per-user licensing.",
+        "how": "Business modelling, typed API, integrations with existing tools and automations on repetitive tasks."
+      },
+      "features": [
+        "Centralised management of operational data",
+        "Real-time dashboards per role",
+        "Workflow automations and notifications",
+        "Documented REST API for integrations",
+        "Fine-grained access control per team"
+      ],
+      "results": [
+        "8 hours per week saved per collaborator",
+        "Data entry errors reduced by more than 80%",
+        "Management decisions driven by reliable data"
+      ],
+      "stack": ["Nuxt", "Node.js", "PostgreSQL", "Prisma", "Tailwind", "Docker"]
+    }
   },
   {
-    "title": "Automation",
-    "image": "/videos/presentation-poster.jpg"
+    "slug": "automatisation-ia-documents",
+    "title": "DocFlow — AI document automation",
+    "descriptor": "Extraction and classification pipeline",
+    "summary": "Intelligent document processing with OCR, AI classification and orchestration through automated workflows.",
+    "image": "/videos/presentation-poster.jpg",
+    "categories": ["ai", "automation", "devops"],
+    "details": {
+      "tagline": "When AI digests the paperwork so your team can focus on the thinking.",
+      "need": {
+        "context": "A back-office team was processing thousands of incoming documents every month, manually.",
+        "problem": "Manual data entry, approximate classification, growing delays and team fatigue.",
+        "objective": "Automate extraction and classification while keeping a human in the loop for sensitive cases."
+      },
+      "stakes": [
+        "Meet the processing SLAs promised to clients",
+        "Free the team from repetitive tasks",
+        "Keep control and traceability over decisions"
+      ],
+      "solution": {
+        "what": "A pipeline that combines OCR, an AI model for classification and orchestration through automated workflows.",
+        "why": "AI only matters when wired into a real workflow: value comes from the full chain, not from the model alone.",
+        "how": "OCR extraction, automatic classification, human supervision on ambiguous cases and normalised exports to business tools."
+      },
+      "features": [
+        "Multilingual OCR on scanned documents",
+        "AI classification with confidence scoring",
+        "Human supervision workflow for edge cases",
+        "Full pipeline logging and audit trail",
+        "Connectors to existing business tools"
+      ],
+      "results": [
+        "Processing time reduced by 5x",
+        "Over 90% of documents processed without human input",
+        "Team refocused on high-value cases"
+      ],
+      "stack": ["Python", "FastAPI", "OpenAI API", "Postgres", "Docker", "Kubernetes"]
+    }
   }
 ]
