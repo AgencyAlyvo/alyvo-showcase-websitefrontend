@@ -2,22 +2,8 @@
   <UHeader>
     <template #left>
       <NuxtLink :to="localePath('index')" class="flex items-center gap-2" :aria-label="t('brand.name')">
-        <span
-          class="bg-primary text-inverted flex size-7 items-center justify-center rounded-lg text-sm font-bold"
-          aria-hidden="true"
-        >
-          A
-        </span>
-        <span class="text-highlighted text-sm font-bold tracking-tight">{{ t('brand.name') }}</span>
+        <img src="/logo/logo-alyvo.svg" :alt="t('brand.name')" class="h-7 w-auto dark:brightness-0 dark:invert" />
       </NuxtLink>
-
-      <UBadge
-        :label="t('brand.badge')"
-        color="primary"
-        variant="subtle"
-        size="sm"
-        class="-mb-[6px] hidden rounded-full font-semibold sm:inline-flex"
-      />
     </template>
 
     <nav class="hidden items-center gap-1 md:flex" :aria-label="t('footer.navigation')">
