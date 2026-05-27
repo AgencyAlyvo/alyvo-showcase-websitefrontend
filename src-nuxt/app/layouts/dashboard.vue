@@ -163,6 +163,13 @@ watch(mobileMenuOpen, (open: boolean): void => {
   }
 })
 
+watch(
+  () => route.fullPath,
+  (): void => {
+    mobileMenuOpen.value = false
+  },
+)
+
 /**
  *
  */
