@@ -1,26 +1,5 @@
 # Changelog
 
-## [1.1.0](https://github.com/AgencyAlyvo/alyvo-showcase-websitefrontend/compare/v1.0.5...v1.1.0) (2026-05-27)
-
-
-### Features
-
-* add ([e6b0f19](https://github.com/AgencyAlyvo/alyvo-showcase-websitefrontend/commit/e6b0f19e761698b973988fabfa35c32df527e5cc))
-* add animations ([877c0a4](https://github.com/AgencyAlyvo/alyvo-showcase-websitefrontend/commit/877c0a404cc8c3590d285e90d05f72ad54d88302))
-* add logo ([92924e8](https://github.com/AgencyAlyvo/alyvo-showcase-websitefrontend/commit/92924e88676569977ba5f7ed58ed27143da0f35a))
-* add umami in app ([8152821](https://github.com/AgencyAlyvo/alyvo-showcase-websitefrontend/commit/8152821147994031e8ff7e76236897bcbaf773f9))
-* finish all ([bc9eac2](https://github.com/AgencyAlyvo/alyvo-showcase-websitefrontend/commit/bc9eac2f9ec3ecd225a86b106e7cb314666e42a0))
-
-
-### Bug Fixes
-
-* check rollback ([ff11cd0](https://github.com/AgencyAlyvo/alyvo-showcase-websitefrontend/commit/ff11cd0b5482cdbba6b42b043281fb1190d589a2))
-* fixed lint ([05cf564](https://github.com/AgencyAlyvo/alyvo-showcase-websitefrontend/commit/05cf5641ab1107ce3838f987d241aed085c5475d))
-* fixed lint ([604a935](https://github.com/AgencyAlyvo/alyvo-showcase-websitefrontend/commit/604a9353acd08ff4e389902e5ce80073dd690156))
-* fixed lint ts ([7abd016](https://github.com/AgencyAlyvo/alyvo-showcase-websitefrontend/commit/7abd016e532bd88e9ed9aef51e971e63a25b2f81))
-* test ([bcf78ea](https://github.com/AgencyAlyvo/alyvo-showcase-websitefrontend/commit/bcf78ea8547fad514b29d4a3f0f1acef08e2a36d))
-* test ([bd1e2e2](https://github.com/AgencyAlyvo/alyvo-showcase-websitefrontend/commit/bd1e2e2a1e70591af6b800b74b5efdd32d6cd5c3))
-
 ## [1.3.0](https://github.com/AgencyAlyvo/alyvo-showcase-websitefrontend/compare/v1.2.0...v1.3.0) (2026-05-12)
 
 
