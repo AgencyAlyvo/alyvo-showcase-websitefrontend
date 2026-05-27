@@ -1,7 +1,12 @@
 <template>
-  <UHeader>
+  <UHeader v-model:open="mobileMenuOpen">
     <template #left>
-      <NuxtLink :to="localePath('index')" class="flex items-center gap-2" :aria-label="t('brand.name')">
+      <NuxtLink
+        :to="localePath('index')"
+        class="flex items-center gap-2"
+        :aria-label="t('brand.name')"
+        @click="closeMobileMenu"
+      >
         <img src="/logo/logo-alyvo.svg" :alt="t('brand.name')" class="h-7 w-auto dark:brightness-0 dark:invert" />
       </NuxtLink>
     </template>
@@ -60,7 +65,7 @@
             :href="href"
             class="rounded-md px-3 py-2 text-sm font-medium transition-colors"
             :class="isNavItemActive(item, isActive, isExactActive) ? activeLinkClass : inactiveLinkClass"
-            @click="navigate"
+            @click="onMobileNavClick(navigate, $event)"
           >
             {{ item.label }}
           </a>
@@ -77,13 +82,46 @@
         trailing-icon="i-lucide-arrow-right"
         :to="localePath('contact')"
         block
+        @click="closeMobileMenu"
       />
     </template>
   </UHeader>
 </template>
 
 <script setup lang="ts">
-import type { ComputedRef } from 'vue'
+import type { ComputedRef, Ref } from 'vue'
+
+const mobileMenuOpen: Ref<boolean> = ref(false)
+const route: ReturnType<typeof useRoute> = useRoute()
+
+watch(
+  () => route.fullPath,
+  (): void => {
+    mobileMenuOpen.value = false
+  },
+)
+
+/**
+ * Ferme le panneau de navigation mobile.
+ * @returns {void}
+ */
+const closeMobileMenu: () => void = (): void => {
+  mobileMenuOpen.value = false
+}
+
+/**
+ * Ferme le menu puis delegue la navigation au routeur.
+ * @param {(event?: MouseEvent) => void} navigate - Handler NuxtLink.
+ * @param {MouseEvent} [event] - Evenement clic.
+ * @returns {void}
+ */
+const onMobileNavClick: (navigate: (event?: MouseEvent) => void, event?: MouseEvent) => void = (
+  navigate: (event?: MouseEvent) => void,
+  event?: MouseEvent,
+): void => {
+  closeMobileMenu()
+  navigate(event)
+}
 
 /** Navigation item consumed by Nuxt UI's navigation menu. */
 type HeaderNavItem = {
