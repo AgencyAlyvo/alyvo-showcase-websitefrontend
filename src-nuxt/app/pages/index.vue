@@ -15,38 +15,6 @@
         <span class="text-primary block">{{ t('home.hero.lead') }}</span>
       </template>
 
-      <div>
-        <div class="home-video-frame">
-          <div class="home-video-shell border-default overflow-hidden rounded-xl border bg-black shadow-sm">
-            <video
-              class="home-video-media aspect-video w-full object-cover"
-              controls
-              preload="metadata"
-              poster="/videos/presentation-poster.jpg"
-            >
-              <source src="/videos/presentation.mp4" type="video/mp4" />
-              {{ t('home.hero.videoFallback') }}
-            </video>
-          </div>
-        </div>
-        <div class="mt-[50px] flex flex-col items-center justify-center gap-2 text-center sm:flex-row sm:gap-6">
-          <a
-            :href="`mailto:${t('home.hero.contact.email')}`"
-            class="text-primary hover:text-primary/80 inline-flex items-center gap-2 text-base font-semibold transition-colors sm:text-lg"
-          >
-            <UIcon name="i-lucide-mail" class="size-5" />
-            {{ t('home.hero.contact.email') }}
-          </a>
-          <span class="text-muted hidden sm:inline">•</span>
-          <a
-            :href="`tel:${t('home.hero.contact.phone').replace(/[^+\d]/g, '')}`"
-            class="text-primary hover:text-primary/80 inline-flex items-center gap-2 text-base font-semibold transition-colors sm:text-lg"
-          >
-            <UIcon name="i-lucide-phone" class="size-5" />
-            {{ t('home.hero.contact.phone') }}
-          </a>
-        </div>
-      </div>
       <div
         ref="heroStatsRef"
         class="hero-stats border-default relative right-1/2 left-1/2 -mx-[50vw] mt-[10px] w-screen border p-4 sm:p-5"
